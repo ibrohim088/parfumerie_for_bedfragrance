@@ -1,0 +1,81 @@
+@use 'variables' as *;
+
+// ============================================
+// MOBILE FIRST (min-width)
+// ============================================
+
+@mixin sm-up {
+  @media (min-width: $breakpoint-sm) { @content; }
+}
+
+@mixin md-up {
+  @media (min-width: $breakpoint-md) { @content; }
+}
+
+@mixin lg-up {
+  @media (min-width: $breakpoint-lg) { @content; }
+}
+
+@mixin xl-up {
+  @media (min-width: $breakpoint-xl) { @content; }
+}
+
+@mixin 2xl-up {
+  @media (min-width: $breakpoint-2xl) { @content; }
+}
+
+// ============================================
+// DESKTOP FIRST (max-width)
+// ============================================
+
+@mixin sm-down {
+  @media (max-width: calc($breakpoint-sm - 1px)) { @content; }
+}
+
+@mixin md-down {
+  @media (max-width: calc($breakpoint-md - 1px)) { @content; }
+}
+
+@mixin lg-down {
+  @media (max-width: calc($breakpoint-lg - 1px)) { @content; }
+}
+
+@mixin xl-down {
+  @media (max-width: calc($breakpoint-xl - 1px)) { @content; }
+}
+
+// ============================================
+// NAMED HELPERS
+// ============================================
+
+@mixin mobile-only {
+  @media (max-width: calc($breakpoint-md - 1px)) { @content; }
+}
+
+@mixin tablet-only {
+  @media (min-width: $breakpoint-md) and (max-width: calc($breakpoint-lg - 1px)) { @content; }
+}
+
+@mixin desktop-only {
+  @media (min-width: $breakpoint-lg) { @content; }
+}
+
+@mixin tablet-down {
+  @media (max-width: calc($breakpoint-lg - 1px)) { @content; }
+}
+
+// ============================================
+// ACCESSIBILITY
+// ============================================
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+
+@mixin dark-mode-pref {
+  @media (prefers-color-scheme: dark) { @content; }
+}
+
+@mixin print-only {
+  @media print { @content; }
+}

@@ -1,0 +1,111 @@
+@use 'variables' as *;
+
+// ============================================
+// LIGHT THEME (default)
+// ============================================
+
+:root,
+[data-theme='light'] {
+  // Brand
+  --primary-color:     #{$primary-color};
+  --primary-light:     #{$primary-light};
+  --primary-dark:      #{$primary-dark};
+  --primary-hover:     #{$primary-hover};
+
+  // Semantic
+  --color-success:     #{$color-success};
+  --color-error:       #{$color-error};
+  --color-warning:     #{$color-warning};
+  --color-info:        #{$color-info};
+  --color-success-bg:  #{$color-success-bg};
+  --color-error-bg:    #{$color-error-bg};
+  --color-warning-bg:  #{$color-warning-bg};
+  --color-info-bg:     #{$color-info-bg};
+
+  // Backgrounds
+  --bg-primary:        #ffffff;
+  --bg-secondary:      #{$color-gray-50};
+  --bg-card:           #ffffff;
+  --bg-input:          #ffffff;
+  --bg-hover:          #{$color-gray-50};
+  --bg-active:         rgba(#{$primary-color}, 0.08);
+
+  // Text
+  --text-primary:      #{$color-gray-900};
+  --text-secondary:    #{$color-gray-600};
+  --text-muted:        #{$color-gray-400};
+  --text-inverse:      #ffffff;
+
+  // Borders
+  --border-color:      #{$color-gray-200};
+  --border-strong:     #{$color-gray-300};
+
+  // Sidebar (always dark)
+  --sidebar-bg:        #{$sidebar-bg};
+  --sidebar-text:      #{$color-gray-300};
+  --sidebar-text-active: #ffffff;
+  --sidebar-item-hover:  rgba(255, 255, 255, 0.07);
+  --sidebar-item-active: rgba(#{$primary-color}, 0.25);
+
+  // Shadows
+  --shadow-sm:         #{$shadow-sm};
+  --shadow-md:         #{$shadow-md};
+  --shadow-lg:         #{$shadow-lg};
+  --shadow-xl:         #{$shadow-xl};
+}
+
+// ============================================
+// DARK THEME
+// ============================================
+
+[data-theme='dark'] {
+  // Brand (same)
+  --primary-color:     #{$primary-color};
+  --primary-light:     #{$primary-light};
+  --primary-dark:      #{$primary-dark};
+  --primary-hover:     #{$primary-hover};
+
+  // Semantic (same)
+  --color-success:     #{$color-success};
+  --color-error:       #{$color-error};
+  --color-warning:     #{$color-warning};
+  --color-info:        #{$color-info};
+  --color-success-bg:  rgba(34, 197, 94, 0.12);
+  --color-error-bg:    rgba(239, 68, 68, 0.12);
+  --color-warning-bg:  rgba(245, 158, 11, 0.12);
+  --color-info-bg:     rgba(59, 130, 246, 0.12);
+
+  // Backgrounds
+  --bg-primary:        #{$color-gray-900};
+  --bg-secondary:      #{$color-gray-800};
+  --bg-card:           #{$color-gray-800};
+  --bg-input:          #{$color-gray-700};
+  --bg-hover:          #{$color-gray-700};
+  --bg-active:         rgba(99, 102, 241, 0.15);
+
+  // Text
+  --text-primary:      #{$color-gray-50};
+  --text-secondary:    #{$color-gray-400};
+  --text-muted:        #{$color-gray-500};
+  --text-inverse:      #{$color-gray-900};
+
+  // Borders
+  --border-color:      #{$color-gray-700};
+  --border-strong:     #{$color-gray-600};
+
+  // Sidebar (always dark, slightly different)
+  --sidebar-bg:        #0d1117;
+  --sidebar-text:      #{$color-gray-400};
+  --sidebar-text-active: #ffffff;
+  --sidebar-item-hover:  rgba(255, 255, 255, 0.05);
+  --sidebar-item-active: rgba(99, 102, 241, 0.2);
+
+  // Shadows (deeper)
+  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md:         0 4px 6px -1px rgba(0, 0, 0, 0.4),
+                       0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg:         0 10px 15px -3px rgba(0, 0, 0, 0.4),
+                       0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl:         0 20px 25px -5px rgba(0, 0, 0, 0.5),
+                       0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
