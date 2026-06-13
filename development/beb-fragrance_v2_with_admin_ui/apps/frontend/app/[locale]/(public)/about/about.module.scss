@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.about {
+  padding: 40px 0;
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section {
+  h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: $primary-color;
+  }
+
+  p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+}

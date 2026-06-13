@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  USER
+// ─────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  phone         String    @unique
+  firstName     String
+  lastName      String
+  email         String?   @unique
+  role          String    @default("user")   // "user" | "admin"
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  addresses     Address[]
+  orders        Order[]
+  scentProfile  ScentProfile?
+  notifications Notification[]
+
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  PRODUCT
+// ─────────────────────────────────────────────────────────────
+
+model Product {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  brand         String
+  description   String
+  concentration String    // "parfum" | "edp" | "edt" | "edc" | "body_mist"
+  topNotes      String[]
+  middleNotes   String[]
+  baseNotes     String[]
+  status        String    @default("active") // "active" | "inactive" | "out_of_stock"
+  isFeatured    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  images        ProductImage[]
+  variants      ProductVariant[]
+  orderItems    OrderItem[]
+
+  @@map("products")
+}
+
+model ProductVariant {
+  id        String  @id @default(cuid())
+  productId String
+  volume    Int     // ml
+  price     Int     // UZS
+  stock     Int     @default(0)
+
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderItems OrderItem[]
+
+  @@map("product_variants")
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  url       String
+  alt       String?
+  isPrimary Boolean @default(false)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  ADDRESS
+// ─────────────────────────────────────────────────────────────
+
+model Address {
+  id        String  @id @default(cuid())
+  userId    String
+  label     String? // "Uy", "Ish" va h.k.
+  fullName  String
+  phone     String
+  region    String
+  district  String
+  street    String
+  apartment String?
+  landmark  String?
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders Order[]
+
+  @@map("addresses")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  ORDER
+// ─────────────────────────────────────────────────────────────
+
+model Order {
+  id                String   @id @default(cuid())
+  orderNumber       String   @unique
+  userId            String
+  deliveryAddressId String
+  status            String   @default("pending")
+  // "pending" | "confirmed" | "processing" | "shipped" | "delivered" | "cancelled" | "refunded"
+  paymentMethod     String
+  // "payme" | "click" | "cash"
+  paymentStatus     String   @default("pending")
+  // "pending" | "pending_cash" | "paid" | "failed" | "refunded"
+  subtotal          Int      // UZS
+  deliveryFee       Int      @default(30000)
+  total             Int      // UZS
+  notes             String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user            User        @relation(fields: [userId], references: [id])
+  deliveryAddress Address     @relation(fields: [deliveryAddressId], references: [id])
+  items           OrderItem[]
+  transaction     Transaction?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String @id @default(cuid())
+  orderId    String
+  productId  String
+  variantId  String
+  quantity   Int
+  unitPrice  Int    // UZS — buyurtma paytidagi narx
+  totalPrice Int    // UZS
+
+  order   Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product        @relation(fields: [productId], references: [id])
+  variant ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@map("order_items")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  TRANSACTION
+// ─────────────────────────────────────────────────────────────
+
+model Transaction {
+  id           String    @id @default(cuid())
+  orderId      String    @unique
+  provider     String    // "payme" | "click" | "cash"
+  externalId   String?   // Payme / Click dan kelgan ID
+  amount       Int       // Tiyin (UZS × 100)
+  currency     String    @default("UZS")
+  status       String    @default("pending")
+  // "pending" | "pending_cash" | "paid" | "failed" | "refunded"
+  providerData Json?     // Payme / Click raw response
+  confirmedBy  String?   // Admin user ID (naqt pul uchun)
+  paidAt       DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  @@map("transactions")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SCENT PROFILE
+// ─────────────────────────────────────────────────────────────
+
+model ScentProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  families  String[] // "floral" | "woody" | "oriental" | "fresh" | "citrus" ...
+  notes     String[] // individual nota nomlari
+  intensity String   // "light" | "moderate" | "strong"
+  seasons   String[] // "spring" | "summer" | "autumn" | "winter"
+  occasions String[] // "daily" | "evening" | "sport" | "office" | "date" ...
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("scent_profiles")
+}
+
+// ─────────────────────────────────────────────────────────────
+//  NOTIFICATION
+// ─────────────────────────────────────────────────────────────
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  // "order_confirmed" | "order_shipped" | "order_delivered"
+  // "order_cancelled" | "order_paid"   | "payment_failed" | "promo"
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  metadata  Json?    // { orderId, productId, ... }
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}

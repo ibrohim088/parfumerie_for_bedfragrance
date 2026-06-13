@@ -1,0 +1,17 @@
+@import '../../../styles/variables';
+
+.giftBox {
+  padding: 40px 0;
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+}

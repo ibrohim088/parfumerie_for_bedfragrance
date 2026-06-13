@@ -1,0 +1,764 @@
+BEB FRAGRANCE — TO'LIQ FILE STRUKTURASI (v2 — To'lov tizimi qo'shilgan)
+==========================================
+  Backend  → Express + TypeScript
+  Frontend → Next.js + TypeScript + SCSS
+  Bot      → Telegram Bot + TypeScript
+==========================================
+  To'lov usullari:
+    ✅ Payme        → payme.uz API (SOAP/REST)
+    ✅ Click        → click.uz API (REST)
+    ✅ Naqt pul     → Admin tasdiqlash orqali
+==========================================
+
+
+📦 beb-fragrance/                              ← Monorepo (root)
+│
+├── 📁 apps/
+│   ├── 📁 backend/                            ← EXPRESS + TypeScript
+│   ├── 📁 frontend/                           ← NEXT.JS + TypeScript + SCSS
+│   └── 📁 bot/                                ← TELEGRAM BOT + TypeScript
+│
+├── 📁 packages/
+│   └── 📁 shared/                             ← Umumiy TypeScript tiplar (3 app ham ishlatadi)
+│       ├── types/
+│       │   ├── user.ts
+│       │   ├── product.ts
+│       │   ├── order.ts
+│       │   ├── payment.ts                     ← [YANGI] To'lov tiplari
+│       │   │                                    PaymentMethod: 'payme' | 'click' | 'cash'
+│       │   │                                    PaymentStatus: 'pending' | 'paid' | 'failed' | 'refunded'
+│       │   │                                    PaymentProvider, Transaction tiplar
+│       │   └── index.ts
+│       └── package.json
+│
+├── package.json                               ← Root package.json (workspaces)
+├── turbo.json                                 ← Turborepo konfiguratsiyasi
+└── .env.example                               ← Barcha env o'zgaruvchilar namunasi
+                                                 [YANGI] PAYME_MERCHANT_ID, PAYME_SECRET_KEY
+                                                 [YANGI] CLICK_MERCHANT_ID, CLICK_SECRET_KEY,
+                                                         CLICK_SERVICE_ID
+                                                 [YANGI] PAYMENT_CALLBACK_URL
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. BACKEND — apps/backend/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/backend/
+│
+├── 📁 src/
+│   │
+│   ├── 📁 config/                             ← Barcha konfiguratsiyalar
+│   │   ├── database.ts                        → Prisma client singleton
+│   │   ├── redis.ts                           → Redis client (session, OTP cache)
+│   │   ├── s3.ts                              → AWS S3 client
+│   │   ├── sms.ts                             → SMS provider (Eskiz.uz yoki Play Mobile)
+│   │   ├── env.ts                             → Env o'zgaruvchilarni validate qilish
+│   │   └── payment.ts                         ← [YANGI] To'lov provayderlar konfiguratsiyasi
+│   │                                            Payme credentials, Click credentials,
+│   │                                            callback URL, test/prod rejim
+│   │
+│   ├── 📁 modules/                            ← Har bir domain o'z modulida
+│   │   │
+│   │   ├── 📁 auth/
+│   │   │   ├── auth.router.ts                 → POST /auth/send-otp
+│   │   │   │                                    POST /auth/verify-otp
+│   │   │   │                                    POST /auth/refresh
+│   │   │   │                                    POST /auth/logout
+│   │   │   ├── auth.controller.ts             → Request/Response handle
+│   │   │   ├── auth.service.ts                → OTP yaratish, tekshirish, JWT berish
+│   │   │   └── auth.types.ts                  → Auth uchun tip ta'riflari
+│   │   │
+│   │   ├── 📁 users/
+│   │   │   ├── users.router.ts                → GET /users/me
+│   │   │   │                                    PUT /users/me
+│   │   │   │                                    DELETE /users/me
+│   │   │   ├── users.controller.ts
+│   │   │   ├── users.service.ts
+│   │   │   └── users.types.ts
+│   │   │
+│   │   ├── 📁 products/
+│   │   │   ├── products.router.ts             → GET /products
+│   │   │   │                                    GET /products/:slug
+│   │   │   │                                    POST /products          (admin)
+│   │   │   │                                    PUT /products/:id       (admin)
+│   │   │   │                                    DELETE /products/:id    (admin)
+│   │   │   ├── products.controller.ts
+│   │   │   ├── products.service.ts
+│   │   │   └── products.types.ts
+│   │   │
+│   │   ├── 📁 orders/
+│   │   │   ├── orders.router.ts               → GET /orders
+│   │   │   │                                    GET /orders/:id
+│   │   │   │                                    POST /orders            ← buyurtma + to'lov usuli tanlanadi
+│   │   │   │                                    PATCH /orders/:id/cancel
+│   │   │   ├── orders.controller.ts
+│   │   │   ├── orders.service.ts              ← [O'ZGARGAN] to'lov moduli bilan bog'liq:
+│   │   │   │                                    - buyurtma yaratilganda paymentMethod saqlash
+│   │   │   │                                    - cash bo'lsa → status: 'pending_cash'
+│   │   │   │                                    - payme/click bo'lsa → payments moduliga yo'naltirish
+│   │   │   └── orders.types.ts
+│   │   │
+│   │   ├── 📁 addresses/
+│   │   │   ├── addresses.router.ts            → GET /addresses
+│   │   │   │                                    POST /addresses
+│   │   │   │                                    PUT /addresses/:id
+│   │   │   │                                    DELETE /addresses/:id
+│   │   │   ├── addresses.controller.ts
+│   │   │   ├── addresses.service.ts
+│   │   │   └── addresses.types.ts
+│   │   │
+│   │   ├── 📁 scent-profile/
+│   │   │   ├── scent-profile.router.ts        → GET /scent-profile
+│   │   │   │                                    POST /scent-profile
+│   │   │   │                                    PUT /scent-profile
+│   │   │   ├── scent-profile.controller.ts
+│   │   │   ├── scent-profile.service.ts
+│   │   │   └── scent-profile.types.ts
+│   │   │
+│   │   ├── 📁 notifications/
+│   │   │   ├── notifications.router.ts        → GET /notifications
+│   │   │   │                                    PATCH /notifications/:id/read
+│   │   │   │                                    PATCH /notifications/read-all
+│   │   │   ├── notifications.controller.ts
+│   │   │   ├── notifications.service.ts
+│   │   │   └── notifications.types.ts
+│   │   │
+│   │   ├── 📁 upload/
+│   │   │   ├── upload.router.ts               → POST /upload/image
+│   │   │   │                                    DELETE /upload/image
+│   │   │   ├── upload.controller.ts
+│   │   │   └── upload.service.ts              → S3 ga yuklash/o'chirish
+│   │   │
+│   │   │
+│   │   └── 📁 payments/                       ← ✅ [YANGI TO'LIQ MODUL]
+│   │       │
+│   │       ├── payments.router.ts             → POST /payments/payme/create
+│   │       │                                    POST /payments/payme/callback    (Payme webhook)
+│   │       │                                    POST /payments/click/prepare     (Click 1-qadam)
+│   │       │                                    POST /payments/click/complete    (Click 2-qadam)
+│   │       │                                    POST /payments/cash/confirm      (admin: naqt tasdiqlash)
+│   │       │                                    GET  /payments/:orderId/status   (to'lov holati)
+│   │       │                                    GET  /payments/history           (admin: barcha to'lovlar)
+│   │       │                                    POST /payments/:id/refund        (admin: qaytarish)
+│   │       │
+│   │       ├── payments.controller.ts         → Har bir endpoint uchun controller metodlari
+│   │       │                                    - createPaymeTransaction()
+│   │       │                                    - handlePaymeCallback()     ← Payme server chaqiradi
+│   │       │                                    - handleClickPrepare()      ← Click 1-bosqich
+│   │       │                                    - handleClickComplete()     ← Click 2-bosqich
+│   │       │                                    - confirmCashPayment()      ← Admin tasdiqlaydi
+│   │       │                                    - getPaymentStatus()
+│   │       │                                    - refundPayment()
+│   │       │
+│   │       ├── payments.service.ts            → Asosiy biznes logika:
+│   │       │                                    - Transaksiya yaratish
+│   │       │                                    - Holat yangilash (pending→paid→failed)
+│   │       │                                    - Buyurtma statusini yangilash
+│   │       │                                    - Qaytarish (refund) jarayoni
+│   │       │                                    - Webhook imzo tekshirish
+│   │       │
+│   │       ├── payments.types.ts              → To'lov tiplari:
+│   │       │                                    PaymentMethod, PaymentStatus,
+│   │       │                                    PaymeRequest, PaymeResponse,
+│   │       │                                    ClickPrepareDto, ClickCompleteDto,
+│   │       │                                    CashConfirmDto, TransactionDto
+│   │       │
+│   │       ├── 📁 providers/                  ← Har bir to'lov tizimi alohida provider
+│   │       │   │
+│   │       │   ├── payme.provider.ts          ← PAYME LOGIKASI
+│   │       │   │                                - createTransaction(orderId, amount)
+│   │       │   │                                  → Payme checkout URL qaytaradi
+│   │       │   │                                - verifyCallback(body, auth)
+│   │       │   │                                  → Basic Auth header tekshiradi
+│   │       │   │                                  → CheckPerformTransaction
+│   │       │   │                                  → CreateTransaction
+│   │       │   │                                  → PerformTransaction
+│   │       │   │                                  → CancelTransaction
+│   │       │   │                                  → CheckTransaction
+│   │       │   │                                - Payme method namespacing (JSON-RPC 2.0)
+│   │       │   │
+│   │       │   ├── click.provider.ts          ← CLICK LOGIKASI
+│   │       │   │                                - generateCheckoutUrl(orderId, amount)
+│   │       │   │                                  → click.uz/services/pay?... URL
+│   │       │   │                                - verifyPrepare(dto)
+│   │       │   │                                  → sign tekshirish: MD5(serviceId+clickTransId
+│   │       │   │                                     +secretKey+merchantTransId+amount+action+signTime)
+│   │       │   │                                - verifyComplete(dto)
+│   │       │   │                                  → to'lov yakunlandi, DB yangilash
+│   │       │   │                                - error kodlarni qaytarish (-1, 0, ...)
+│   │       │   │
+│   │       │   └── cash.provider.ts           ← NAQT PUL LOGIKASI
+│   │       │                                    - createCashOrder(orderId)
+│   │       │                                      → status: 'pending_cash' qo'yadi
+│   │       │                                    - confirmCash(orderId, adminId)
+│   │       │                                      → Admin tasdiqlaydi → status: 'paid'
+│   │       │                                    - Admin notification yuboradi (bot orqali)
+│   │       │
+│   │       └── payments.webhook.ts            ← [ALOHIDA FAYL] Webhook signature validator
+│   │                                            - verifyPaymeSignature(authHeader)
+│   │                                              → Base64 decode → merchant:key tekshirish
+│   │                                            - verifyClickSign(dto, secretKey)
+│   │                                              → MD5 hash hisoblash va solishtirish
+│   │
+│   │
+│   ├── 📁 middleware/                         ← Express middleware'lar
+│   │   ├── authenticate.ts                    → JWT tekshirish, req.user set qilish
+│   │   ├── errorHandler.ts                    → Global xato ushlash
+│   │   ├── validate.ts                        → Zod schema validation
+│   │   ├── rateLimiter.ts                     → OTP spam himoyasi (IP limiti)
+│   │   └── notFound.ts                        → 404 handler
+│   │
+│   ├── 📁 prisma/                             ← Ma'lumotlar bazasi
+│   │   ├── schema.prisma                      → Barcha jadval sxemalari
+│   │   │                                        [O'ZGARGAN] Order modeli:
+│   │   │                                          paymentMethod  String  (payme|click|cash)
+│   │   │                                          paymentStatus  String  (pending|paid|failed|refunded)
+│   │   │                                        [YANGI] Transaction modeli:
+│   │   │                                          id, orderId, provider, externalId,
+│   │   │                                          amount, currency, status,
+│   │   │                                          providerData (Json),
+│   │   │                                          createdAt, updatedAt, paidAt
+│   │   └── 📁 migrations/                     → Avtomat migratsiyalar
+│   │
+│   ├── 📁 utils/
+│   │   ├── jwt.ts                             → Token yaratish/tekshirish
+│   │   ├── otp.ts                             → 6 xonali OTP generatsiya
+│   │   ├── apiResponse.ts                     → Standart { success, data, message } format
+│   │   └── logger.ts                          → Winston logger
+│   │
+│   └── server.ts                              → Express app, port tinglash
+│
+├── .env                                       → DB_URL, JWT_SECRET, S3_*, SMS_*, REDIS_URL
+│                                                [YANGI] PAYME_MERCHANT_ID=xxxxxxxxxxxxxxxxxxxxxxxx
+│                                                [YANGI] PAYME_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
+│                                                [YANGI] PAYME_TEST_MODE=true
+│                                                [YANGI] CLICK_MERCHANT_ID=12345
+│                                                [YANGI] CLICK_SERVICE_ID=12345
+│                                                [YANGI] CLICK_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
+│                                                [YANGI] PAYMENT_CALLBACK_BASE_URL=https://api.bebfragrance.uz
+├── .env.example
+├── tsconfig.json
+├── package.json
+└── nodemon.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  2. FRONTEND — apps/frontend/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/frontend/
+│
+├── 📁 app/                                    ← Next.js App Router
+│   │
+│   ├── layout.tsx                             → Root layout (ThemeProvider, i18n, QueryProvider)
+│   ├── globals.scss                           → Global SCSS (reset, CSS variables, fonts)
+│   │
+│   ├── 📁 [locale]/                           ← i18n routing: /uz/... va /ru/...
+│   │   │
+│   │   ├── layout.tsx                         → Locale layout
+│   │   │
+│   │   ├── 📁 (public)/                       ← L1 — Hamma ko'rishi mumkin
+│   │   │   ├── layout.tsx                     → Navbar + Footer
+│   │   │   ├── page.tsx                       → Homepage
+│   │   │   │
+│   │   │   ├── 📁 catalog/
+│   │   │   │   ├── page.tsx                   → Catalog
+│   │   │   │   └── 📁 [slug]/
+│   │   │   │       └── page.tsx               → Product Detail
+│   │   │   │
+│   │   │   ├── 📁 gift-box/
+│   │   │   │   └── page.tsx                   → Gift Box
+│   │   │   │
+│   │   │   ├── 📁 about/
+│   │   │   │   └── page.tsx                   → About/Contact
+│   │   │   │
+│   │   │   └── 📁 checkout/                   ← [YANGI] Checkout sahifasi (L1 yoki L2)
+│   │   │       ├── page.tsx                   → Buyurtma shakli + TO'LOV USULI TANLASH
+│   │   │       │                                Payme / Click / Naqt pul radio tugmalari
+│   │   │       │                                Manzil, kontakt, izoh maydonlari
+│   │   │       └── 📁 result/
+│   │   │           └── page.tsx               → To'lov natijasi sahifasi
+│   │   │                                        ✅ Muvaffaqiyatli / ❌ Xato / ⏳ Kutilmoqda
+│   │   │
+│   │   ├── 📁 (auth)/                         ← Login, Register (Navbar yo'q)
+│   │   │   ├── layout.tsx                     → Auth layout
+│   │   │   ├── 📁 login/
+│   │   │   │   └── page.tsx                   → Telefon raqam kiritish + OTP
+│   │   │   └── 📁 register/
+│   │   │       └── page.tsx                   → Ro'yxatdan o'tish
+│   │   │
+│   │   └── 📁 (account)/                      ← L2 — Faqat login bo'lgan user
+│   │       ├── layout.tsx                     → Account layout (sidebar)
+│   │       └── 📁 account/
+│   │           ├── page.tsx                   → Account Overview
+│   │           ├── 📁 personal-info/
+│   │           │   └── page.tsx               → Personal Info
+│   │           ├── 📁 orders/
+│   │           │   └── page.tsx               → Order History (3 tab)
+│   │           │                                [O'ZGARGAN] har bir buyurtmada:
+│   │           │                                  - to'lov usuli badge (Payme/Click/Naqt)
+│   │           │                                  - to'lov holati (To'langan/Kutilmoqda/Bekor)
+│   │           │                                  - "To'lovni qayta boshlash" tugmasi (failed holat)
+│   │           ├── 📁 addresses/
+│   │           │   └── page.tsx               → Shipping Addresses
+│   │           ├── 📁 payment/
+│   │           │   └── page.tsx               → [O'ZGARGAN] To'lov tarixi
+│   │           │                                Barcha transaksiyalar ro'yxati:
+│   │           │                                  - sana, miqdor, usul, holat
+│   │           ├── 📁 notifications/
+│   │           │   └── page.tsx               → Notifications
+│   │           └── 📁 scent-profile/
+│   │               └── page.tsx               → Scent Profile
+│   │
+│   └── 📁 api/                                ← Next.js route handlers (proxy vazifasida)
+│       └── 📁 auth/
+│           └── 📁 [...nextauth]/
+│               └── route.ts                   → Session boshqaruvi
+│
+│
+├── 📁 components/
+│   │
+│   ├── 📁 layout/
+│   │   ├── Navbar/
+│   │   │   ├── Navbar.tsx
+│   │   │   └── Navbar.module.scss
+│   │   ├── Footer/
+│   │   │   ├── Footer.tsx
+│   │   │   └── Footer.module.scss
+│   │   └── AccountSidebar/
+│   │       ├── AccountSidebar.tsx
+│   │       └── AccountSidebar.module.scss
+│   │
+│   ├── 📁 ui/
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   └── Button.module.scss
+│   │   ├── Input/
+│   │   │   ├── Input.tsx
+│   │   │   └── Input.module.scss
+│   │   ├── Modal/
+│   │   │   ├── Modal.tsx
+│   │   │   └── Modal.module.scss
+│   │   ├── Badge/
+│   │   │   ├── Badge.tsx
+│   │   │   └── Badge.module.scss
+│   │   ├── Skeleton/
+│   │   │   ├── Skeleton.tsx
+│   │   │   └── Skeleton.module.scss
+│   │   └── OtpInput/
+│   │       ├── OtpInput.tsx
+│   │       └── OtpInput.module.scss
+│   │
+│   ├── 📁 catalog/
+│   │   ├── ProductCard/
+│   │   │   ├── ProductCard.tsx
+│   │   │   └── ProductCard.module.scss
+│   │   ├── ProductGrid/
+│   │   │   ├── ProductGrid.tsx
+│   │   │   └── ProductGrid.module.scss
+│   │   └── FilterPanel/
+│   │       ├── FilterPanel.tsx
+│   │       └── FilterPanel.module.scss
+│   │
+│   ├── 📁 home/
+│   │   ├── HeroSection/
+│   │   │   ├── HeroSection.tsx
+│   │   │   └── HeroSection.module.scss
+│   │   └── FeaturedProducts/
+│   │       ├── FeaturedProducts.tsx
+│   │       └── FeaturedProducts.module.scss
+│   │
+│   ├── 📁 account/
+│   │   ├── OrderCard/
+│   │   │   ├── OrderCard.tsx
+│   │   │   └── OrderCard.module.scss
+│   │   ├── OrderTabs/
+│   │   │   ├── OrderTabs.tsx
+│   │   │   └── OrderTabs.module.scss
+│   │   └── AddressCard/
+│   │       ├── AddressCard.tsx
+│   │       └── AddressCard.module.scss
+│   │
+│   └── 📁 payment/                            ← ✅ [YANGI] To'lov komponentlari
+│       │
+│       ├── PaymentMethodSelector/             ← Checkout'da usul tanlash
+│       │   ├── PaymentMethodSelector.tsx      → Payme / Click / Naqt pul radio kartalar
+│       │   │                                    Har birida: logo, tavsif, vaqt ko'rsatkichi
+│       │   └── PaymentMethodSelector.module.scss
+│       │
+│       ├── PaymeButton/                       ← Payme'ga yo'naltiruvchi tugma
+│       │   ├── PaymeButton.tsx                → "Payme orqali to'lash" tugmasi
+│       │   │                                    → /payments/payme/create chaqiradi
+│       │   │                                    → checkout URL oladi → window.location redirect
+│       │   └── PaymeButton.module.scss
+│       │
+│       ├── ClickButton/                       ← Click'ga yo'naltiruvchi tugma
+│       │   ├── ClickButton.tsx                → "Click orqali to'lash" tugmasi
+│       │   │                                    → click.uz checkout URL'ga redirect
+│       │   └── ClickButton.module.scss
+│       │
+│       ├── CashInfo/                          ← Naqt pul tanlanganda ko'rsatiladigan blok
+│       │   ├── CashInfo.tsx                   → "Yetkazib beruvchi kelganida to'lang"
+│       │   │                                    Manzil, vaqt, kontakt ma'lumotlari
+│       │   └── CashInfo.module.scss
+│       │
+│       └── PaymentStatus/                     ← To'lov natijasi ko'rsatuvchi komponent
+│           ├── PaymentStatus.tsx              → success / failed / pending holatlari
+│           │                                    Animatsiya + buyurtma raqami + keyingi qadam
+│           └── PaymentStatus.module.scss
+│
+│
+├── 📁 styles/
+│   ├── _variables.scss
+│   ├── _themes.scss
+│   ├── _typography.scss
+│   ├── _mixins.scss
+│   ├── _breakpoints.scss
+│   ├── _animations.scss
+│   └── _reset.scss
+│
+│
+├── 📁 hooks/
+│   ├── useProducts.ts
+│   ├── useProduct.ts
+│   ├── useOrders.ts
+│   ├── useAuth.ts
+│   ├── useTheme.ts
+│   ├── useTranslation.ts
+│   └── usePayment.ts                          ← [YANGI] To'lov hook'lari
+│                                                - createPaymeTransaction(orderId)
+│                                                - createClickTransaction(orderId)
+│                                                - getPaymentStatus(orderId)
+│                                                - pollPaymentStatus() ← har 3 sek tekshirish
+│
+│
+├── 📁 lib/
+│   ├── api.ts                                 → Axios instance
+│   ├── queryClient.ts                         → TanStack Query client
+│   └── utils.ts                               → Formatlovchi funksiyalar
+│
+│
+├── 📁 i18n/
+│   ├── config.ts
+│   ├── routing.ts
+│   └── 📁 messages/
+│       ├── uz.json                            → [O'ZGARGAN] + to'lov matnlari:
+│       │                                        "payment.choose": "To'lov usulini tanlang"
+│       │                                        "payment.payme": "Payme orqali to'lash"
+│       │                                        "payment.click": "Click orqali to'lash"
+│       │                                        "payment.cash": "Naqt pul (yetkazib berishda)"
+│       │                                        "payment.success": "To'lov muvaffaqiyatli amalga oshdi"
+│       │                                        "payment.pending": "To'lov kutilmoqda"
+│       │                                        "payment.failed": "To'lov amalga oshmadi"
+│       └── ru.json                            → [O'ZGARGAN] + to'lov matnlari (rus tilida)
+│
+│
+├── 📁 providers/
+│   ├── ThemeProvider.tsx
+│   ├── QueryProvider.tsx
+│   └── AuthProvider.tsx
+│
+│
+├── 📁 types/
+│   ├── api.ts
+│   ├── payment.ts                             ← [YANGI] Frontend to'lov tiplari
+│   │                                            PaymentMethod, PaymentStatus,
+│   │                                            CreateTransactionResponse,
+│   │                                            PaymentStatusResponse
+│   └── next-auth.d.ts
+│
+│
+├── middleware.ts
+├── next.config.ts
+├── .env.local                                 → [O'ZGARGAN] + NEXT_PUBLIC_PAYME_MERCHANT_ID
+│                                                             + NEXT_PUBLIC_CLICK_MERCHANT_ID
+│                                                             + NEXT_PUBLIC_CLICK_SERVICE_ID
+├── .env.example
+├── tsconfig.json
+└── package.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  3. TELEGRAM BOT — apps/bot/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/bot/
+│
+├── 📁 src/
+│   │
+│   ├── 📁 config/
+│   │   ├── bot.ts
+│   │   └── env.ts
+│   │
+│   ├── 📁 scenes/
+│   │   ├── authScene.ts
+│   │   └── profileScene.ts
+│   │
+│   ├── 📁 handlers/
+│   │   ├── startHandler.ts
+│   │   ├── menuHandler.ts
+│   │   ├── catalogHandler.ts
+│   │   ├── ordersHandler.ts                   → [O'ZGARGAN] Buyurtmada to'lov holati ham ko'rinadi
+│   │   ├── contactHandler.ts
+│   │   └── paymentHandler.ts                  ← [YANGI] Admin to'lov boshqaruvi
+│   │                                            - Naqt buyurtma kelganda admin'ga xabar
+│   │                                            - "✅ Tasdiqlash" / "❌ Bekor qilish" tugmalar
+│   │                                            - Tasdiqlanganda backend /payments/cash/confirm
+│   │
+│   ├── 📁 keyboards/
+│   │   ├── mainKeyboard.ts
+│   │   ├── authKeyboard.ts
+│   │   └── paymentKeyboard.ts                 ← [YANGI] Admin to'lov tugmalari
+│   │                                            [ ✅ To'lovni tasdiqlash ]
+│   │                                            [ ❌ Buyurtmani bekor qilish ]
+│   │
+│   ├── 📁 services/
+│   │   ├── apiService.ts
+│   │   └── sessionService.ts
+│   │
+│   ├── 📁 i18n/
+│   │   ├── uz.ts
+│   │   └── ru.ts
+│   │
+│   ├── 📁 middleware/
+│   │   └── languageMiddleware.ts
+│   │
+│   └── index.ts
+│
+├── .env
+├── .env.example
+├── tsconfig.json
+└── package.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  4. BOT ↔ SAYT ULANISH DIAGRAMMASI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [Telegram Bot]
+       │
+       ├── /start bosganda → Inline tugma: "🌐 Saytni Ochish"
+       │                      ↓
+       │                   [Telegram WebApp]
+       │                      ↓
+       │               Next.js sayt ochiladi
+       │               (to'liq brauzer ichida)
+       │
+       └── Bot auth jarayoni:
+           1. User raqamini ulashadi (Telegram contact)
+           2. Bot backend ga /auth/send-otp yuboradi
+           3. SMS orqali OTP keladi
+           4. User OTP kiritadi
+           5. Backend JWT qaytaradi
+           6. Bot session'da token saqlanadi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  5. AUTH JARAYONI (Telefon + OTP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Saytda:                          Botda:
+  ─────────────────────────────    ─────────────────────────────
+  1. +998 XX XXX XX XX kiriting    1. "📱 Raqam ulashish" tugmasi
+  2. SMS OTP keladi                2. Telegram raqamni o'zi beradi
+  3. 6 raqam kiritiladi            3. SMS OTP keladi
+  4. JWT token → cookie'ga         4. 6 raqam kiritiladi
+                                   5. JWT → bot session'ga
+
+  Forgot Password:
+  ─────────────────────────────
+  1. "Parolni unutdim" bosiladi
+  2. Telefon raqam kiritiladi
+  3. SMS OTP yuboriladi
+  4. OTP + yangi parol o'rnatiladi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  6. ✅ TO'LOV JARAYONI — 3 USUL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  PAYME TO'LOV OQIMI:
+  ──────────────────────────────────────────
+  1. User checkout sahifasida "Payme" tanlaydi
+  2. Frontend → POST /payments/payme/create { orderId }
+  3. Backend Payme'dan checkout URL oladi
+  4. User payme.uz saytiga redirect bo'ladi
+  5. User to'laydi
+  6. Payme → POST /payments/payme/callback (webhook)
+  7. Backend imzoni tekshiradi (Basic Auth)
+  8. Transaksiya holati 'paid' ga yangiladi
+  9. Buyurtma holati 'confirmed' ga o'tadi
+  10. User /checkout/result?status=success sahifasiga qaytadi
+
+  CLICK TO'LOV OQIMI:
+  ──────────────────────────────────────────
+  1. User checkout sahifasida "Click" tanlaydi
+  2. Frontend → click.uz/services/pay?... URL'ga redirect
+  3. User to'laydi
+  4. Click → POST /payments/click/prepare (1-callback)
+     Backend MD5 imzoni tekshiradi → 0 qaytaradi
+  5. Click → POST /payments/click/complete (2-callback)
+     Backend to'lovni tasdiqlaydi → DB yangilaydi
+  6. User /checkout/result?status=success sahifasiga qaytadi
+
+  NAQT PUL OQIMI:
+  ──────────────────────────────────────────
+  1. User checkout sahifasida "Naqt pul" tanlaydi
+  2. Buyurtma paymentStatus: 'pending_cash' bilan yaratiladi
+  3. Admin Telegram bot'ga xabar keladi:
+     "🛍 Yangi naqt buyurtma #1234
+      💰 Summa: 450,000 so'm
+      📍 Manzil: Chilonzor, ...
+      👤 Mijoz: +998 90 123 45 67
+      [✅ Tasdiqlash] [❌ Bekor qilish]"
+  4. Admin "Tasdiqlash" bosganda:
+     Bot → POST /payments/cash/confirm { orderId }
+  5. Buyurtma paymentStatus: 'paid' ga o'tadi
+  6. User'ga SMS va notification keladi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  7. SCSS ARXITEKTURASI (7-1 pattern)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  styles/
+  ├── _variables.scss     → $, rang, o'lcham o'zgaruvchilar
+  ├── _themes.scss        → --css-variable light/dark
+  ├── _typography.scss    → Shrift stillari
+  ├── _mixins.scss        → @mixin qayta ishlatiladigan kod
+  ├── _breakpoints.scss   → Responsive media querylar
+  ├── _animations.scss    → Animatsiyalar
+  └── _reset.scss         → Standart reset
+
+  Har komponent o'z *.module.scss fayliga ega:
+  components/ui/Button/Button.module.scss
+  components/payment/PaymentMethodSelector/PaymentMethodSelector.module.scss
+  va hokazo...
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  8. TEXNOLOGIYALAR XARITASI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  BACKEND (apps/backend)
+  ├── Express + TypeScript    → Server, routing
+  ├── Prisma ORM              → PostgreSQL bilan ishlash
+  ├── Redis                   → OTP cache (5 daqiqa), session
+  ├── JWT                     → Autentifikatsiya tokenlari
+  ├── Zod                     → Request validation
+  ├── AWS S3                  → Rasm saqlash
+  ├── SMS API (Eskiz.uz)      → OTP yuborish
+  ├── Payme API               → [YANGI] Online to'lov (JSON-RPC 2.0 + Basic Auth)
+  └── Click API               → [YANGI] Online to'lov (REST + MD5 imzo)
+
+  FRONTEND (apps/frontend)
+  ├── Next.js 14 + TypeScript → Sahifalar, SSR/SSG
+  ├── SCSS Modules            → Stillar (har komponent alohida)
+  ├── TanStack Query          → API so'rovlar va kesh
+  ├── next-intl               → uz/ru tarjima
+  ├── next-themes             → Light/Dark mode
+  ├── Lucide React            → Ikonlar (kod qismida)
+  └── Axios                   → HTTP so'rovlar
+
+  BOT (apps/bot)
+  ├── Telegraf                → Telegram Bot framework
+  ├── Telegram WebApp API     → Saytni bot ichida ochish
+  └── Axios                   → Backend ga so'rov
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  9. PRISMA SCHEMA — TO'LIQ O'ZGARISHLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  // Order modeliga qo'shilganlar:
+  model Order {
+    ...
+    paymentMethod   String   // "payme" | "click" | "cash"
+    paymentStatus   String   @default("pending")
+                             // "pending" | "pending_cash" | "paid" | "failed" | "refunded"
+    transaction     Transaction?
+    ...
+  }
+
+  // Yangi Transaction modeli:
+  model Transaction {
+    id            String   @id @default(cuid())
+    orderId       String   @unique
+    order         Order    @relation(fields: [orderId], references: [id])
+    provider      String   // "payme" | "click" | "cash"
+    externalId    String?  // Payme/Click tomonidan berilgan ID
+    amount        Int      // Tiyin (so'm × 100)
+    currency      String   @default("UZS")
+    status        String   @default("pending")
+    providerData  Json?    // Payme/Click'dan kelgan raw response
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+    paidAt        DateTime?
+  }
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  10. ENV O'ZGARUVCHILAR — TO'LIQ RO'YXAT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  # === DATABASE ===
+  DATABASE_URL=postgresql://user:pass@host:5432/beb_fragrance
+
+  # === JWT ===
+  JWT_SECRET=your_jwt_secret
+  JWT_REFRESH_SECRET=your_refresh_secret
+
+  # === REDIS ===
+  REDIS_URL=redis://localhost:6379
+
+  # === AWS S3 ===
+  AWS_ACCESS_KEY_ID=
+  AWS_SECRET_ACCESS_KEY=
+  AWS_BUCKET_NAME=
+  AWS_REGION=
+
+  # === SMS (Eskiz.uz) ===
+  SMS_EMAIL=
+  SMS_SECRET=
+
+  # === PAYME [YANGI] ===
+  PAYME_MERCHANT_ID=your_merchant_id_from_payme_uz
+  PAYME_SECRET_KEY=your_secret_key_from_payme_uz
+  PAYME_TEST_MODE=true          # false → production
+
+  # === CLICK [YANGI] ===
+  CLICK_MERCHANT_ID=your_merchant_id
+  CLICK_SERVICE_ID=your_service_id
+  CLICK_SECRET_KEY=your_secret_key
+
+  # === PAYMENT GENERAL [YANGI] ===
+  PAYMENT_CALLBACK_BASE_URL=https://api.bebfragrance.uz
+  # Payme callback: ${PAYMENT_CALLBACK_BASE_URL}/payments/payme/callback
+  # Click prepare:  ${PAYMENT_CALLBACK_BASE_URL}/payments/click/prepare
+  # Click complete: ${PAYMENT_CALLBACK_BASE_URL}/payments/click/complete
+
+  # === TELEGRAM BOT ===
+  BOT_TOKEN=
+  WEBAPP_URL=https://bebfragrance.uz
+  API_URL=http://localhost:3001

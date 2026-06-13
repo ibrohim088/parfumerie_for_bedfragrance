@@ -1,0 +1,87 @@
+@import '../../../styles/variables';
+
+.item {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px 40px;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.details {
+  h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+
+  .price {
+    margin: 0;
+    font-size: 14px;
+    color: $primary-color;
+    font-weight: 600;
+  }
+}
+
+.quantity {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+      border-color: $primary-color;
+    }
+  }
+
+  input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 5px;
+  }
+}
+
+.remove {
+  width: 40px;
+  height: 40px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+}

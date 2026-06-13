@@ -1,0 +1,21 @@
+@import '../../../../styles/variables';
+
+.addresses {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}

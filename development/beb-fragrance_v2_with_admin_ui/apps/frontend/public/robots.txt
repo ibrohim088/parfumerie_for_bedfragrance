@@ -1,0 +1,28 @@
+# BEB Fragrance Website - Robots.txt
+
+# Allow all bots
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.next/
+
+# Sitemaps
+Sitemap: https://bebfragrance.uz/sitemap.xml
+Sitemap: https://bebfragrance.uz/sitemap-uz.xml
+Sitemap: https://bebfragrance.uz/sitemap-ru.xml
+
+# Google Search Console
+User-agent: Googlebot
+Allow: /
+
+# Bing Crawler
+User-agent: Bingbot
+Allow: /
+
+# Yandex Bot
+User-agent: Yandex
+Allow: /

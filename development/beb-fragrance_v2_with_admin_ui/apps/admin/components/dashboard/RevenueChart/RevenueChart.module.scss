@@ -1,0 +1,129 @@
+.card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #eceff3);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text-primary, #101828);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary, #101828);
+}
+
+.currency {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted, #667085);
+  margin-left: 4px;
+}
+
+.growth {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.up   { color: #137d3f; background: #e7f8ee; }
+.down { color: #c13b3b; background: #fdecec; }
+
+.tabs {
+  display: inline-flex;
+  background: var(--muted, #f4f5f7);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted, #667085);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover { color: var(--text-primary, #101828); }
+}
+
+.tabActive {
+  background: #fff;
+  color: var(--text-primary, #101828);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+.chartWrap {
+  width: 100%;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.grid {
+  stroke: var(--border-light, #f1f2f4);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.axis {
+  font-size: 10.5px;
+  fill: var(--text-muted, #98a2b3);
+  font-family: inherit;
+}
+
+.line {
+  fill: none;
+  stroke: #6c4ef0;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dot {
+  fill: #fff;
+  stroke: #6c4ef0;
+  stroke-width: 2;
+  transition: r 0.15s ease;
+}
+
+.tipBg {
+  fill: #101828;
+  opacity: 0.92;
+}
+
+.tipText {
+  fill: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}

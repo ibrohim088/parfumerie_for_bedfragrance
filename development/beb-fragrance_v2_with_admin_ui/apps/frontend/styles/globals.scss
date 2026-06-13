@@ -1,0 +1,161 @@
+// ============================================
+// GLOBAL STYLES ENTRY POINT
+// ============================================
+
+// 1. Configuration & Themes
+@import './themes';
+
+// 2. Variables & Layout
+@import './variables';
+
+// 3. Reset & Base
+@import './reset';
+
+// 4. Typography
+@import './typography';
+
+// 5. Breakpoints & Mixins
+@import './breakpoints';
+
+// 6. Animations
+@import './animations';
+
+// 7. Utilities
+@import './utilities';
+
+// ============================================
+// GLOBAL LAYOUT CLASSES
+// ============================================
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  @include md-up {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+
+  @include lg-up {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.section {
+  padding: $spacing-3xl $spacing-md;
+
+  @include md-up {
+    padding: $spacing-4xl $spacing-lg;
+  }
+
+  @include lg-up {
+    padding: $spacing-4xl;
+  }
+}
+
+// ============================================
+// FOCUS & ACCESSIBILITY
+// ============================================
+
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// ============================================
+// SELECTION STYLING
+// ============================================
+
+::selection {
+  background-color: $primary-color;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: $primary-color;
+  color: white;
+}
+
+// ============================================
+// PLACEHOLDER STYLING
+// ============================================
+
+::placeholder {
+  color: var(--text-secondary);
+}
+
+::-webkit-input-placeholder {
+  color: var(--text-secondary);
+}
+
+::-moz-placeholder {
+  color: var(--text-secondary);
+}
+
+:-ms-input-placeholder {
+  color: var(--text-secondary);
+}
+
+// ============================================
+// PRINT STYLES
+// ============================================
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  ul,
+  ol {
+    page-break-inside: avoid;
+  }
+
+  li {
+    page-break-inside: avoid;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+}

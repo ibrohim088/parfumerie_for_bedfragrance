@@ -1,0 +1,108 @@
+.card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #eceff3);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary, #101828);
+  margin: 0;
+}
+
+.viewAll {
+  background: transparent;
+  border: none;
+  color: var(--primary, #6c4ef0);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+
+  &:hover { background: rgba(108, 78, 240, 0.08); }
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+
+  thead th {
+    text-align: left;
+    color: var(--text-muted, #667085);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border, #eceff3);
+  }
+
+  tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border-light, #f4f5f7);
+    color: var(--text-primary, #101828);
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+}
+
+.clickable {
+  cursor: pointer;
+  transition: background 0.15s ease;
+  &:hover { background: var(--hover, #f9fafb); }
+}
+
+.right { text-align: right; }
+.mono  { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; color: var(--text-muted, #667085); }
+.muted { color: var(--text-muted, #667085); }
+.amount { font-weight: 600; }
+
+.customer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .name  { font-weight: 500; }
+  .email { font-size: 12px; color: var(--text-muted, #667085); }
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.status_pending     { background: #fff7e6; color: #b76e00; }
+.status_processing  { background: #eef2ff; color: #4f46e5; }
+.status_shipped     { background: #e0f2fe; color: #0369a1; }
+.status_delivered   { background: #e7f8ee; color: #137d3f; }
+.status_cancelled   { background: #fdecec; color: #c13b3b; }
+
+.empty {
+  text-align: center;
+  color: var(--text-muted, #667085);
+  padding: 32px !important;
+}

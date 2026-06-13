@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "name": "BEB Fragrance",
+  "description": "Zamonaviy atir dunyo - Modern fragrance world",
+  "license": "MIT",
+  "author": "BEB Fragrance Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bebfragrance.git"
+  },
+  "homepage": "https://bebfragrance.uz",
+  "bugs": {
+    "url": "https://github.com/yourusername/bebfragrance/issues",
+    "email": "support@bebfragrance.uz"
+  },
+  "keywords": [
+    "fragrance",
+    "perfume",
+    "atir",
+    "e-commerce",
+    "shop",
+    "uzbekistan"
+  ],
+  "languages": [
+    "uz",
+    "ru"
+  ],
+  "supported_currencies": [
+    "UZS",
+    "RUB"
+  ],
+  "contact": {
+    "email": "info@bebfragrance.uz",
+    "phone": "+998 (95) 123-45-67",
+    "address": "Tashkent, Uzbekistan"
+  },
+  "social_media": {
+    "instagram": "https://instagram.com/bebfragrance",
+    "telegram": "https://t.me/bebfragrance",
+    "facebook": "https://facebook.com/bebfragrance",
+    "tiktok": "https://tiktok.com/@bebfragrance"
+  },
+  "payment_methods": [
+    "payme",
+    "click",
+    "cash"
+  ],
+  "delivery_partners": [
+    "uzpost",
+    "easyway"
+  ],
+  "features": [
+    "product_catalog",
+    "shopping_cart",
+    "user_accounts",
+    "order_tracking",
+    "payment_gateway",
+    "gift_boxes",
+    "scent_profile",
+    "notifications",
+    "multi_language",
+    "dark_mode"
+  ]
+}

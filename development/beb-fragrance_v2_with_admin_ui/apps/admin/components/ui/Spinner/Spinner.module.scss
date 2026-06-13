@@ -1,0 +1,45 @@
+.spinner {
+  --spinner-color: #6366f1;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+
+  &.xs  { width: 16px; height: 16px; }
+  &.sm  { width: 20px; height: 20px; }
+  &.md  { width: 28px; height: 28px; }
+  &.lg  { width: 40px; height: 40px; }
+  &.xl  { width: 56px; height: 56px; }
+}
+
+.track,
+.fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.track {
+  border-color: rgba(99, 102, 241, 0.15);
+  border-color: color-mix(in srgb, var(--spinner-color) 20%, transparent);
+}
+
+.fill {
+  border-top-color: var(--spinner-color);
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fullPage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}

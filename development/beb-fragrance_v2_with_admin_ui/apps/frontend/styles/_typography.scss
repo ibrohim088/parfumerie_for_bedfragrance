@@ -1,0 +1,335 @@
+@import './variables';
+
+// ============================================
+// HEADING STYLES
+// ============================================
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-lg;
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-lg;
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+}
+
+h4 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  margin-bottom: $spacing-md;
+}
+
+h5 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  margin-bottom: $spacing-sm;
+}
+
+h6 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  margin-bottom: $spacing-sm;
+}
+
+// ============================================
+// PARAGRAPH STYLES
+// ============================================
+
+p {
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text-small {
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+.text-xsmall {
+  font-size: $font-size-xs;
+  line-height: $line-height-tight;
+}
+
+.text-large {
+  font-size: $font-size-lg;
+  line-height: $line-height-normal;
+}
+
+.text-xlarge {
+  font-size: $font-size-xl;
+  line-height: $line-height-normal;
+}
+
+// ============================================
+// TEXT VARIANTS
+// ============================================
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: $color-gray-500;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-error {
+  color: $color-error;
+}
+
+.text-warning {
+  color: $color-warning;
+}
+
+.text-info {
+  color: $color-info;
+}
+
+// ============================================
+// TEXT WEIGHT
+// ============================================
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+// ============================================
+// TEXT ALIGNMENT
+// ============================================
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// ============================================
+// TEXT TRANSFORMATION
+// ============================================
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// ============================================
+// TEXT DECORATION
+// ============================================
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.text-no-decoration {
+  text-decoration: none;
+}
+
+// ============================================
+// LINE HEIGHT
+// ============================================
+
+.leading-tight {
+  line-height: $line-height-tight;
+}
+
+.leading-normal {
+  line-height: $line-height-normal;
+}
+
+.leading-relaxed {
+  line-height: $line-height-relaxed;
+}
+
+// ============================================
+// TEXT TRUNCATION
+// ============================================
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ============================================
+// LETTER SPACING
+// ============================================
+
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.02em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+// ============================================
+// CODE BLOCK
+// ============================================
+
+code {
+  font-family: $font-mono;
+  font-size: 0.85em;
+  background-color: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: $border-radius-sm;
+  color: var(--text-primary);
+}
+
+pre {
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  overflow-x: auto;
+  background-color: var(--bg-secondary);
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-md;
+
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// ============================================
+// LINK STYLES
+// ============================================
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-dark;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $primary-dark;
+  }
+
+  &:disabled {
+    color: $color-gray-400;
+    cursor: not-allowed;
+  }
+}
+
+.link-muted {
+  color: var(--text-secondary);
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+// ============================================
+// QUOTE STYLES
+// ============================================
+
+blockquote {
+  margin: $spacing-lg 0;
+  padding: 0 $spacing-lg;
+  border-left: 4px solid $primary-color;
+  font-style: italic;
+  color: var(--text-secondary);
+
+  p {
+    margin: 0;
+  }
+}

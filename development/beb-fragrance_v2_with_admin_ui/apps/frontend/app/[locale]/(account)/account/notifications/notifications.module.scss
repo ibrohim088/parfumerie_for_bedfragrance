@@ -1,0 +1,21 @@
+@import '../../../../styles/variables';
+
+.notifications {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item {
+  padding: 15px;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border-left: 4px solid var(--border-color);
+}

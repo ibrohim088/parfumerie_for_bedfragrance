@@ -1,0 +1,65 @@
+@import '../../../../styles/variables';
+
+.personalInfo {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  input {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      background-color: var(--bg-secondary);
+    }
+  }
+}
+
+button {
+  padding: 12px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}

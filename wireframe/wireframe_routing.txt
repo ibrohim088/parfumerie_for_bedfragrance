@@ -1,0 +1,17 @@
+Navbar
+├── HOME → Homepage (L1)
+├── CATALOG → Catalog (L1)
+│   └── [Mahsulot klik] → Product Detail (L1)
+├── GIFT BOX → Gift Box (L1)
+├── ABOUT → About/Contact (L1)
+└── 👤 Account icon
+    └── Login → Account Overview (L2)
+        ├── Personal Info (L2)
+        ├── Order History (L2)
+        │   ├── In Progress tab
+        │   ├── Completed tab
+        │   └── Cancelled tab
+        ├── Shipping Addresses (L2)
+        ├── Payment Methods (L2)
+        ├── Notifications (L2)
+        └── Scent Profile (L2)

@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+@import '../../../styles/breakpoints';
+
+.checkout {
+  padding: 40px 0;
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section {
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+  }
+}
+
+.summary {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}

@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.authLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 20%) 100%);
+  padding: 20px;
+}

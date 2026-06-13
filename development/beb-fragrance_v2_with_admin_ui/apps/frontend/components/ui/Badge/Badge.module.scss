@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.primary {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &.success {
+    background-color: #10b981;
+    color: white;
+  }
+
+  &.warning {
+    background-color: #f59e0b;
+    color: white;
+  }
+
+  &.danger {
+    background-color: #ef4444;
+    color: white;
+  }
+}

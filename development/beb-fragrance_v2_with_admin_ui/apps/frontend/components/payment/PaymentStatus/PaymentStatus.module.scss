@@ -1,0 +1,55 @@
+@import '../../../styles/variables';
+
+.status {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid;
+
+  h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  &.success {
+    background-color: #dcfce7;
+    border-left-color: #10b981;
+    color: #065f46;
+
+    h4 {
+      color: #059669;
+    }
+  }
+
+  &.pending {
+    background-color: #fef3c7;
+    border-left-color: #f59e0b;
+    color: #78350f;
+
+    h4 {
+      color: #d97706;
+    }
+  }
+
+  &.failed {
+    background-color: #fee2e2;
+    border-left-color: #ef4444;
+    color: #7f1d1d;
+
+    h4 {
+      color: #dc2626;
+    }
+  }
+}
+
+.icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}

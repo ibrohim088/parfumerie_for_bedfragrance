@@ -1,0 +1,87 @@
+@import '../../../styles/variables';
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+  max-width: 400px;
+
+  &.success {
+    background-color: #dcfce7;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+  }
+
+  &.error {
+    background-color: #fee2e2;
+    color: #7f1d1d;
+    border-left: 4px solid #ef4444;
+  }
+
+  &.info {
+    background-color: #dbeafe;
+    color: #0c2340;
+    border-left: 4px solid #3b82f6;
+  }
+
+  &.warning {
+    background-color: #fef3c7;
+    color: #78350f;
+    border-left: 4px solid #f59e0b;
+  }
+
+  .icon {
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    flex: 1;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

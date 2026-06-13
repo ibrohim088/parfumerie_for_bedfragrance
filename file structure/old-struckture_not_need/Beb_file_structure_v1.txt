@@ -1,0 +1,472 @@
+BEB FRAGRANCE — TO'LIQ FILE STRUKTURASI
+==========================================
+  Backend  → Express + TypeScript
+  Frontend → Next.js + TypeScript + SCSS
+  Bot      → Telegram Bot + TypeScript
+==========================================
+
+
+📦 beb-fragrance/                              ← Monorepo (root)
+│
+├── 📁 apps/
+│   ├── 📁 backend/                            ← EXPRESS + TypeScript
+│   ├── 📁 frontend/                           ← NEXT.JS + TypeScript + SCSS
+│   └── 📁 bot/                                ← TELEGRAM BOT + TypeScript
+│
+├── 📁 packages/
+│   └── 📁 shared/                             ← Umumiy TypeScript tiplar (3 app ham ishlatadi)
+│       ├── types/
+│       │   ├── user.ts
+│       │   ├── product.ts
+│       │   ├── order.ts
+│       │   └── index.ts
+│       └── package.json
+│
+├── package.json                               ← Root package.json (workspaces)
+├── turbo.json                                 ← Turborepo konfiguratsiyasi
+└── .env.example                               ← Barcha env o'zgaruvchilar namunasi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. BACKEND — apps/backend/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/backend/
+│
+├── 📁 src/
+│   │
+│   ├── 📁 config/                             ← Barcha konfiguratsiyalar
+│   │   ├── database.ts                        → Prisma client singleton
+│   │   ├── redis.ts                           → Redis client (session, OTP cache)
+│   │   ├── s3.ts                              → AWS S3 client
+│   │   ├── sms.ts                             → SMS provider (Eskiz.uz yoki Play Mobile)
+│   │   └── env.ts                             → Env o'zgaruvchilarni validate qilish
+│   │
+│   ├── 📁 modules/                            ← Har bir domain o'z modulida
+│   │   │
+│   │   ├── 📁 auth/
+│   │   │   ├── auth.router.ts                 → POST /auth/send-otp
+│   │   │   │                                    POST /auth/verify-otp
+│   │   │   │                                    POST /auth/refresh
+│   │   │   │                                    POST /auth/logout
+│   │   │   ├── auth.controller.ts             → Request/Response handle
+│   │   │   ├── auth.service.ts                → OTP yaratish, tekshirish, JWT berish
+│   │   │   └── auth.types.ts                  → Auth uchun tip ta'riflari
+│   │   │
+│   │   ├── 📁 users/
+│   │   │   ├── users.router.ts                → GET /users/me
+│   │   │   │                                    PUT /users/me
+│   │   │   │                                    DELETE /users/me
+│   │   │   ├── users.controller.ts
+│   │   │   ├── users.service.ts
+│   │   │   └── users.types.ts
+│   │   │
+│   │   ├── 📁 products/
+│   │   │   ├── products.router.ts             → GET /products
+│   │   │   │                                    GET /products/:slug
+│   │   │   │                                    POST /products          (admin)
+│   │   │   │                                    PUT /products/:id       (admin)
+│   │   │   │                                    DELETE /products/:id    (admin)
+│   │   │   ├── products.controller.ts
+│   │   │   ├── products.service.ts
+│   │   │   └── products.types.ts
+│   │   │
+│   │   ├── 📁 orders/
+│   │   │   ├── orders.router.ts               → GET /orders
+│   │   │   │                                    GET /orders/:id
+│   │   │   │                                    POST /orders
+│   │   │   │                                    PATCH /orders/:id/cancel
+│   │   │   ├── orders.controller.ts
+│   │   │   ├── orders.service.ts
+│   │   │   └── orders.types.ts
+│   │   │
+│   │   ├── 📁 addresses/
+│   │   │   ├── addresses.router.ts            → GET /addresses
+│   │   │   │                                    POST /addresses
+│   │   │   │                                    PUT /addresses/:id
+│   │   │   │                                    DELETE /addresses/:id
+│   │   │   ├── addresses.controller.ts
+│   │   │   ├── addresses.service.ts
+│   │   │   └── addresses.types.ts
+│   │   │
+│   │   ├── 📁 scent-profile/
+│   │   │   ├── scent-profile.router.ts        → GET /scent-profile
+│   │   │   │                                    POST /scent-profile
+│   │   │   │                                    PUT /scent-profile
+│   │   │   ├── scent-profile.controller.ts
+│   │   │   ├── scent-profile.service.ts
+│   │   │   └── scent-profile.types.ts
+│   │   │
+│   │   ├── 📁 notifications/
+│   │   │   ├── notifications.router.ts        → GET /notifications
+│   │   │   │                                    PATCH /notifications/:id/read
+│   │   │   │                                    PATCH /notifications/read-all
+│   │   │   ├── notifications.controller.ts
+│   │   │   ├── notifications.service.ts
+│   │   │   └── notifications.types.ts
+│   │   │
+│   │   └── 📁 upload/
+│   │       ├── upload.router.ts               → POST /upload/image
+│   │       │                                    DELETE /upload/image
+│   │       ├── upload.controller.ts
+│   │       └── upload.service.ts              → S3 ga yuklash/o'chirish
+│   │
+│   ├── 📁 middleware/                         ← Express middleware'lar
+│   │   ├── authenticate.ts                    → JWT tekshirish, req.user set qilish
+│   │   ├── errorHandler.ts                    → Global xato ushlash
+│   │   ├── validate.ts                        → Zod schema validation
+│   │   ├── rateLimiter.ts                     → OTP spam himoyasi (IP limiti)
+│   │   └── notFound.ts                        → 404 handler
+│   │
+│   ├── 📁 prisma/                             ← Ma'lumotlar bazasi
+│   │   ├── schema.prisma                      → Barcha jadval sxemalari
+│   │   └── 📁 migrations/                     → Avtomat migratsiyalar
+│   │
+│   ├── 📁 utils/
+│   │   ├── jwt.ts                             → Token yaratish/tekshirish
+│   │   ├── otp.ts                             → 6 xonali OTP generatsiya
+│   │   ├── apiResponse.ts                     → Standart { success, data, message } format
+│   │   └── logger.ts                          → Winston logger
+│   │
+│   └── server.ts                              → Express app, port tinglash
+│
+├── .env                                       → DB_URL, JWT_SECRET, S3_*, SMS_*, REDIS_URL
+├── .env.example
+├── tsconfig.json
+├── package.json
+└── nodemon.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  2. FRONTEND — apps/frontend/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/frontend/
+│
+├── 📁 app/                                    ← Next.js App Router
+│   │
+│   ├── layout.tsx                             → Root layout (ThemeProvider, i18n, QueryProvider)
+│   ├── globals.scss                           → Global SCSS (reset, CSS variables, fonts)
+│   │
+│   ├── 📁 [locale]/                           ← i18n routing: /uz/... va /ru/...
+│   │   │
+│   │   ├── layout.tsx                         → Locale layout
+│   │   │
+│   │   ├── 📁 (public)/                       ← L1 — Hamma ko'rishi mumkin
+│   │   │   ├── layout.tsx                     → Navbar + Footer
+│   │   │   ├── page.tsx                       → Homepage
+│   │   │   │
+│   │   │   ├── 📁 catalog/
+│   │   │   │   ├── page.tsx                   → Catalog
+│   │   │   │   └── 📁 [slug]/
+│   │   │   │       └── page.tsx               → Product Detail
+│   │   │   │
+│   │   │   ├── 📁 gift-box/
+│   │   │   │   └── page.tsx                   → Gift Box
+│   │   │   │
+│   │   │   └── 📁 about/
+│   │   │       └── page.tsx                   → About/Contact
+│   │   │
+│   │   ├── 📁 (auth)/                         ← Login, Register (Navbar yo'q)
+│   │   │   ├── layout.tsx                     → Auth layout
+│   │   │   ├── 📁 login/
+│   │   │   │   └── page.tsx                   → Telefon raqam kiritish + OTP
+│   │   │   └── 📁 register/
+│   │   │       └── page.tsx                   → Ro'yxatdan o'tish
+│   │   │
+│   │   └── 📁 (account)/                      ← L2 — Faqat login bo'lgan user
+│   │       ├── layout.tsx                     → Account layout (sidebar)
+│   │       └── 📁 account/
+│   │           ├── page.tsx                   → Account Overview
+│   │           ├── 📁 personal-info/
+│   │           │   └── page.tsx               → Personal Info
+│   │           ├── 📁 orders/
+│   │           │   └── page.tsx               → Order History (3 tab)
+│   │           ├── 📁 addresses/
+│   │           │   └── page.tsx               → Shipping Addresses
+│   │           ├── 📁 payment/
+│   │           │   └── page.tsx               → Payment Methods
+│   │           ├── 📁 notifications/
+│   │           │   └── page.tsx               → Notifications
+│   │           └── 📁 scent-profile/
+│   │               └── page.tsx               → Scent Profile
+│   │
+│   └── 📁 api/                                ← Next.js route handlers (proxy vazifasida)
+│       └── 📁 auth/
+│           └── 📁 [...nextauth]/
+│               └── route.ts                   → Session boshqaruvi
+│
+│
+├── 📁 components/                             ← UI komponentlar
+│   │
+│   ├── 📁 layout/
+│   │   ├── Navbar/
+│   │   │   ├── Navbar.tsx
+│   │   │   └── Navbar.module.scss             ← Navbar stillari
+│   │   ├── Footer/
+│   │   │   ├── Footer.tsx
+│   │   │   └── Footer.module.scss
+│   │   └── AccountSidebar/
+│   │       ├── AccountSidebar.tsx
+│   │       └── AccountSidebar.module.scss
+│   │
+│   ├── 📁 ui/                                 ← Kichik qayta ishlatiladigan komponentlar
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   └── Button.module.scss
+│   │   ├── Input/
+│   │   │   ├── Input.tsx
+│   │   │   └── Input.module.scss
+│   │   ├── Modal/
+│   │   │   ├── Modal.tsx
+│   │   │   └── Modal.module.scss
+│   │   ├── Badge/
+│   │   │   ├── Badge.tsx
+│   │   │   └── Badge.module.scss
+│   │   ├── Skeleton/
+│   │   │   ├── Skeleton.tsx
+│   │   │   └── Skeleton.module.scss
+│   │   └── OtpInput/
+│   │       ├── OtpInput.tsx                   → 6 ta katak OTP kiritish
+│   │       └── OtpInput.module.scss
+│   │
+│   ├── 📁 catalog/
+│   │   ├── ProductCard/
+│   │   │   ├── ProductCard.tsx
+│   │   │   └── ProductCard.module.scss
+│   │   ├── ProductGrid/
+│   │   │   ├── ProductGrid.tsx
+│   │   │   └── ProductGrid.module.scss
+│   │   └── FilterPanel/
+│   │       ├── FilterPanel.tsx
+│   │       └── FilterPanel.module.scss
+│   │
+│   ├── 📁 home/
+│   │   ├── HeroSection/
+│   │   │   ├── HeroSection.tsx
+│   │   │   └── HeroSection.module.scss
+│   │   └── FeaturedProducts/
+│   │       ├── FeaturedProducts.tsx
+│   │       └── FeaturedProducts.module.scss
+│   │
+│   └── 📁 account/
+│       ├── OrderCard/
+│       │   ├── OrderCard.tsx
+│       │   └── OrderCard.module.scss
+│       ├── OrderTabs/
+│       │   ├── OrderTabs.tsx
+│       │   └── OrderTabs.module.scss
+│       └── AddressCard/
+│           ├── AddressCard.tsx
+│           └── AddressCard.module.scss
+│
+│
+├── 📁 styles/                                 ← Global SCSS fayllar
+│   ├── _variables.scss                        → Ranglar, font o'lchamlari, bo'shliqlar
+│   │                                            $color-primary, $color-bg-dark, $spacing-md...
+│   ├── _themes.scss                           → Light / Dark mode CSS variables
+│   │                                            [data-theme="light"] { --bg: #fff; }
+│   │                                            [data-theme="dark"]  { --bg: #0a0a0a; }
+│   ├── _typography.scss                       → Font face, heading, paragraph stillari
+│   ├── _mixins.scss                           → Qayta ishlatiladigan SCSS mixinlar
+│   │                                            @mixin flex-center, @mixin respond-to...
+│   ├── _breakpoints.scss                      → Media query breakpointlar
+│   │                                            $bp-mobile: 480px; $bp-tablet: 768px...
+│   ├── _animations.scss                       → Fade, slide, shimmer animatsiyalar
+│   └── _reset.scss                            → CSS reset / normalize
+│
+│
+├── 📁 hooks/                                  ← Custom React hooks
+│   ├── useProducts.ts                         → TanStack Query: mahsulotlar
+│   ├── useProduct.ts                          → TanStack Query: bitta mahsulot
+│   ├── useOrders.ts                           → TanStack Query: buyurtmalar
+│   ├── useAuth.ts                             → Login state, OTP yuborish
+│   ├── useTheme.ts                            → Light/Dark mode toggle
+│   └── useTranslation.ts                      → uz/ru tarjima
+│
+│
+├── 📁 lib/                                    ← Utilitalar
+│   ├── api.ts                                 → Axios instance (baseURL, token header)
+│   ├── queryClient.ts                         → TanStack Query client konfiguratsiyasi
+│   └── utils.ts                               → Formatlovchi funksiyalar
+│
+│
+├── 📁 i18n/                                   ← Ko'p tillilik (uz va ru)
+│   ├── config.ts                              → next-intl konfiguratsiyasi
+│   ├── routing.ts                             → /uz va /ru yo'nalishlar
+│   └── 📁 messages/
+│       ├── uz.json                            → O'zbek tilida barcha matnlar
+│       └── ru.json                            → Rus tilida barcha matnlar
+│
+│
+├── 📁 providers/                              ← React context provayderlar
+│   ├── ThemeProvider.tsx                      → Dark/Light mode context
+│   ├── QueryProvider.tsx                      → TanStack Query provider
+│   └── AuthProvider.tsx                       → Auth session context
+│
+│
+├── 📁 types/                                  ← Frontend TypeScript tiplari
+│   ├── api.ts                                 → API response tiplari
+│   └── next-auth.d.ts                         → Session tip kengaytmasi
+│
+│
+├── middleware.ts                              → Auth himoyasi (/account/* redirect)
+│                                                Locale detect va redirect (/uz, /ru)
+├── next.config.ts                             → S3 image domain ruxsati, i18n
+├── tailwind.config.ts                         → (agar kerak bo'lsa)
+├── .env.local                                 → NEXT_PUBLIC_API_URL, NEXTAUTH_SECRET...
+├── .env.example
+├── tsconfig.json
+└── package.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  3. TELEGRAM BOT — apps/bot/
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 apps/bot/
+│
+├── 📁 src/
+│   │
+│   ├── 📁 config/
+│   │   ├── bot.ts                             → Telegraf instance yaratish
+│   │   └── env.ts                             → BOT_TOKEN, WEBAPP_URL, API_URL validate
+│   │
+│   ├── 📁 scenes/                             ← Telegraf sahna (multi-step dialog)
+│   │   ├── authScene.ts                       → Telefon raqam so'rash → OTP → login
+│   │   └── profileScene.ts                    → Profil ko'rish/tahrirlash
+│   │
+│   ├── 📁 handlers/                           ← Xabar va buyruq handlerlari
+│   │   ├── startHandler.ts                    → /start → salomlashish + WebApp tugmasi
+│   │   ├── menuHandler.ts                     → Asosiy menyu (inline keyboard)
+│   │   ├── catalogHandler.ts                  → Katalogni bot ichida ko'rish
+│   │   ├── ordersHandler.ts                   → Buyurtmalarni bot ichida ko'rish
+│   │   └── contactHandler.ts                  → Telefon raqam qabul qilish (auth uchun)
+│   │
+│   ├── 📁 keyboards/                          ← Inline va Reply klaviaturalar
+│   │   ├── mainKeyboard.ts                    → Asosiy menyu tugmalari
+│   │   │                                        [ 🛍 Katalog ]  [ 📦 Buyurtmalar ]
+│   │   │                                        [ 🌐 Saytni Ochish ]  [ 👤 Profil ]
+│   │   └── authKeyboard.ts                    → "📱 Raqam ulashish" tugmasi
+│   │
+│   ├── 📁 services/
+│   │   ├── apiService.ts                      → Express backend ga so'rov (axios)
+│   │   └── sessionService.ts                  → Bot session boshqaruvi
+│   │
+│   ├── 📁 i18n/                               ← Bot uchun uz/ru matnlar
+│   │   ├── uz.ts                              → O'zbek matnlar
+│   │   └── ru.ts                              → Rus matnlar
+│   │
+│   ├── 📁 middleware/
+│   │   └── languageMiddleware.ts              → User tiliga qarab uz/ru tanlash
+│   │
+│   └── index.ts                               → Bot ishga tushirish
+│                                                Webhook yoki long-polling rejimi
+│
+├── .env                                       → BOT_TOKEN, WEBAPP_URL, API_URL
+├── .env.example
+├── tsconfig.json
+└── package.json
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  4. BOT ↔ SAYT ULANISH DIAGRAMMASI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [Telegram Bot]
+       │
+       ├── /start bosganda → Inline tugma: "🌐 Saytni Ochish"
+       │                      ↓
+       │                   [Telegram WebApp]
+       │                      ↓
+       │               Next.js sayt ochiladi
+       │               (to'liq brauzer ichida)
+       │
+       └── Bot auth jarayoni:
+           1. User raqamini ulashadi (Telegram contact)
+           2. Bot backend ga /auth/send-otp yuboradi
+           3. SMS orqali OTP keladi
+           4. User OTP kiritadi
+           5. Backend JWT qaytaradi
+           6. Bot session'da token saqlanadi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  5. AUTH JARAYONI (Telefon + OTP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Saytda:                          Botda:
+  ─────────────────────────────    ─────────────────────────────
+  1. +998 XX XXX XX XX kiriting    1. "📱 Raqam ulashish" tugmasi
+  2. SMS OTP keladi                2. Telegram raqamni o'zi beradi
+  3. 6 raqam kiritiladi            3. SMS OTP keladi
+  4. JWT token → cookie'ga         4. 6 raqam kiritiladi
+                                   5. JWT → bot session'ga
+
+  Forgot Password:
+  ─────────────────────────────
+  1. "Parolni unutdim" bosiladi
+  2. Telefon raqam kiritiladi
+  3. SMS OTP yuboriladi
+  4. OTP + yangi parol o'rnatiladi
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  6. SCSS ARXITEKTURASI (7-1 pattern)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  styles/
+  ├── _variables.scss     → $, rang, o'lcham o'zgaruvchilar
+  ├── _themes.scss        → --css-variable light/dark
+  ├── _typography.scss    → Shrift stillari
+  ├── _mixins.scss        → @mixin qayta ishlatiladigan kod
+  ├── _breakpoints.scss   → Responsive media querylar
+  ├── _animations.scss    → Animatsiyalar
+  └── _reset.scss         → Standart reset
+
+  Har komponent o'z *.module.scss fayliga ega:
+  components/ui/Button/Button.module.scss
+  components/layout/Navbar/Navbar.module.scss
+  va hokazo...
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  7. TEXNOLOGIYALAR XARITASI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  BACKEND (apps/backend)
+  ├── Express + TypeScript    → Server, routing
+  ├── Prisma ORM              → PostgreSQL bilan ishlash
+  ├── Redis                   → OTP cache (5 daqiqa), session
+  ├── JWT                     → Autentifikatsiya tokenlari
+  ├── Zod                     → Request validation
+  ├── AWS S3                  → Rasm saqlash
+  └── SMS API (Eskiz.uz)      → OTP yuborish
+
+  FRONTEND (apps/frontend)
+  ├── Next.js 14 + TypeScript → Sahifalar, SSR/SSG
+  ├── SCSS Modules            → Stillar (har komponent alohida)
+  ├── TanStack Query          → API so'rovlar va kesh
+  ├── next-intl               → uz/ru tarjima
+  ├── next-themes             → Light/Dark mode
+  ├── Lucide React            → Ikonlar (kod qismida)
+  └── Axios                   → HTTP so'rovlar
+
+  BOT (apps/bot)
+  ├── Telegraf                → Telegram Bot framework
+  ├── Telegram WebApp API     → Saytni bot ichida ochish
+  └── Axios                   → Backend ga so'rov

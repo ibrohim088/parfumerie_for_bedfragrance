@@ -1,0 +1,111 @@
+@import '../styles/variables';
+@import '../styles/reset';
+@import '../styles/typography';
+@import '../styles/themes';
+@import '../styles/breakpoints';
+@import '../styles/animations';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  min-height: calc(100vh - 200px);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-color;
+  border-radius: 5px;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+/* Selection Color */
+::selection {
+  background-color: $primary-color;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: $primary-color;
+  color: white;
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+/* Form Elements */
+input,
+textarea,
+select {
+  font-family: $font-primary;
+  font-size: 16px;
+
+  &:focus {
+    outline: 2px solid $primary-color;
+  }
+}
+
+/* Button Reset */
+button {
+  cursor: pointer;
+  font-family: $font-primary;
+}
+
+/* Link Styles */
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Image Responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Loading State */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Disabled State */
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
