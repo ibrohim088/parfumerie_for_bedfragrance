@@ -11,13 +11,13 @@ export interface RefreshTokenPayload {
 }
 
 export function generateAccessToken(payload: AccessTokenPayload): string {
-  return jwt.sign(payload, env.JWT_SECRET, {
+  return (jwt.sign as any)(payload, env.JWT_SECRET, {
     expiresIn: env.JWT_EXPIRES_IN,
   });
 }
 
 export function generateRefreshToken(payload: RefreshTokenPayload): string {
-  return jwt.sign(payload, env.JWT_REFRESH_SECRET, {
+  return (jwt.sign as any)(payload, env.JWT_REFRESH_SECRET, {
     expiresIn: env.JWT_REFRESH_EXPIRES_IN,
   });
 }

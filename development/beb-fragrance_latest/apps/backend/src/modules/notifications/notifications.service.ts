@@ -1,6 +1,5 @@
 import { prisma } from '../../config/database';
 import { AppError } from '../../middleware/errorHandler';
-import { Prisma } from '@prisma/client';
 import type { SendNotificationRequest } from './notifications.types';
 
 export async function getNotifications(userId: string) {
@@ -28,7 +27,7 @@ export async function sendNotification(data: SendNotificationRequest) {
   return prisma.notification.create({
     data: {
       ...data,
-      metadata: data.metadata as Prisma.InputJsonValue ?? Prisma.JsonNull,
+      metadata: (data.metadata ?? null) as any,
     },
   });
 }
@@ -47,7 +46,7 @@ export async function createSystemNotification(
       type,
       title,
       message,
-      metadata: metadata as Prisma.InputJsonValue ?? Prisma.JsonNull,
+      metadata: (metadata ?? null) as any,
     },
   });
 }
