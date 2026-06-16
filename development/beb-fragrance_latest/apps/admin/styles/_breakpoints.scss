@@ -20,7 +20,7 @@
   @media (min-width: $breakpoint-xl) { @content; }
 }
 
-@mixin 2xl-up {
+@mixin xxl-up {
   @media (min-width: $breakpoint-2xl) { @content; }
 }
 
