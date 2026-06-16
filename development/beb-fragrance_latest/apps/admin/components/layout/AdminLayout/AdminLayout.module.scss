@@ -1,0 +1,96 @@
+// CSS variables (--sidebar-width, --bg-main, --transition-speed, ...) are
+// declared globally in `app/globals.scss`. A `:root { ... }` block here is
+// not allowed by Next.js CSS Modules ("Selector :root is not pure") and was
+// a duplicate of the global definitions anyway.
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  z-index: 100;
+  transition: width var(--transition-speed) ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarOpen {
+  width: var(--sidebar-width);
+}
+
+.sidebarCollapsed {
+  width: var(--sidebar-collapsed);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left var(--transition-speed) ease;
+}
+
+.mainExpanded {
+  margin-left: var(--sidebar-width);
+}
+
+.mainCollapsed {
+  margin-left: var(--sidebar-collapsed);
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+.contentInner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mobileOverlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .sidebarOpen,
+  .sidebarCollapsed {
+    width: var(--sidebar-width);
+  }
+
+  .sidebarMobileOpen {
+    transform: translateX(0);
+  }
+
+  .mobileOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+
+  .mainExpanded,
+  .mainCollapsed {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+  }
+}

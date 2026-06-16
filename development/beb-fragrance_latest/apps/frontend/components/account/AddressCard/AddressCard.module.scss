@@ -1,0 +1,81 @@
+@import 'variables';
+
+.card {
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &.default {
+    border-color: $primary-color;
+    background-color: rgba(139, 92, 246, 0.05);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+  h4 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+
+  .badge {
+    background-color: $primary-color;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.address,
+.phone {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+
+  button {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--bg-primary);
+    }
+
+    &.delete {
+      color: #ef4444;
+      border-color: #ef4444;
+
+      &:hover {
+        background-color: rgba(239, 68, 68, 0.1);
+      }
+    }
+  }
+}

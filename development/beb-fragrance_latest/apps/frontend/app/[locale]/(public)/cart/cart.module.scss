@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'breakpoints';
+
+.cart {
+  padding: 40px 0;
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: var(--text-secondary);
+}

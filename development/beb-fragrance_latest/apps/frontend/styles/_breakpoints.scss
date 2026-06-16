@@ -1,0 +1,249 @@
+@import './variables';
+
+// ============================================
+// MEDIA QUERY MIXINS
+// ============================================
+
+// Extra Small (Mobile first)
+@mixin xs-up {
+  @media (min-width: $breakpoint-xs) {
+    @content;
+  }
+}
+
+// Small (640px and up)
+@mixin sm-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+// Medium (768px and up)
+@mixin md-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+// Large (1024px and up)
+@mixin lg-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// Extra Large (1280px and up)
+@mixin xl-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// 2xl (1536px and up)
+@mixin xxl-up {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+// ============================================
+// DESKTOP-FIRST BREAKPOINTS (DOWN)
+// ============================================
+
+// Small and down (639px and down)
+@mixin sm-down {
+  @media (max-width: calc($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+// Medium and down (767px and down)
+@mixin md-down {
+  @media (max-width: calc($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+// Large and down (1023px and down)
+@mixin lg-down {
+  @media (max-width: calc($breakpoint-lg - 1px)) {
+    @content;
+  }
+}
+
+// Extra Large and down (1279px and down)
+@mixin xl-down {
+  @media (max-width: calc($breakpoint-xl - 1px)) {
+    @content;
+  }
+}
+
+// ============================================
+// DEVICE-SPECIFIC MIXINS
+// ============================================
+
+// Mobile only (< 768px)
+@mixin mobile-only {
+  @media (max-width: calc($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+// Tablet only (768px - 1023px)
+@mixin tablet-only {
+  @media (min-width: $breakpoint-md) and (max-width: calc($breakpoint-lg - 1px)) {
+    @content;
+  }
+}
+
+// Desktop only (>= 1024px)
+@mixin desktop-only {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// Mobile and tablet (< 1024px)
+@mixin tablet-down {
+  @media (max-width: calc($breakpoint-lg - 1px)) {
+    @content;
+  }
+}
+
+// ============================================
+// RESPONSIVE TEXT SIZING
+// ============================================
+
+@mixin responsive-text($mobile, $tablet, $desktop) {
+  font-size: $mobile;
+
+  @include md-up {
+    font-size: $tablet;
+  }
+
+  @include lg-up {
+    font-size: $desktop;
+  }
+}
+
+// ============================================
+// RESPONSIVE GRID
+// ============================================
+
+@mixin responsive-grid($mobile-cols, $tablet-cols, $desktop-cols, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($mobile-cols, 1fr);
+  gap: $gap;
+
+  @include md-up {
+    grid-template-columns: repeat($tablet-cols, 1fr);
+  }
+
+  @include lg-up {
+    grid-template-columns: repeat($desktop-cols, 1fr);
+  }
+}
+
+// ============================================
+// PRINT MEDIA QUERY
+// ============================================
+
+@mixin print-only {
+  @media print {
+    @content;
+  }
+}
+
+// ============================================
+// LANDSCAPE/PORTRAIT ORIENTATION
+// ============================================
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+// ============================================
+// TOUCH DEVICE DETECTION
+// ============================================
+
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin no-touch-device {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+// ============================================
+// DARK MODE PREFERENCE
+// ============================================
+
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+@mixin light-mode {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
+// ============================================
+// REDUCED MOTION
+// ============================================
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin motion-allowed {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// ============================================
+// HIGH CONTRAST
+// ============================================
+
+@mixin high-contrast {
+  @media (prefers-contrast: more) {
+    @content;
+  }
+}
+
+// ============================================
+// CONTAINER QUERIES (CSS Containment)
+// ============================================
+
+@mixin container-md {
+  @supports (container-type: inline-size) {
+    @container (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+@mixin container-lg {
+  @supports (container-type: inline-size) {
+    @container (min-width: 1024px) {
+      @content;
+    }
+  }
+}

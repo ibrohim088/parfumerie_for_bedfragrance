@@ -1,0 +1,41 @@
+@import 'variables';
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tabButtons {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.tabButton {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &.active {
+    color: $primary-color;
+    border-bottom-color: $primary-color;
+  }
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
