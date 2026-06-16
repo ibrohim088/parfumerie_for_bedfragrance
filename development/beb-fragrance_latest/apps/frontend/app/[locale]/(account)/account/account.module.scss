@@ -1,10 +1,21 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .account {
   h1 {
     font-size: 28px;
     margin-bottom: 30px;
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -12,6 +23,11 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 
 .stat {
@@ -22,16 +38,29 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px;
+    gap: 8px;
+  }
 }
 
 .label {
   font-size: 14px;
   color: var(--text-secondary);
   font-weight: 500;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+  }
 }
 
 .value {
   font-size: 24px;
   font-weight: 700;
   color: var(--text-primary);
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 20px;
+  }
 }

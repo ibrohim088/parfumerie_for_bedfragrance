@@ -1,15 +1,28 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .result {
   padding: 60px 0;
   background-color: var(--bg-secondary);
   min-height: calc(100vh - 300px);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 40px 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 0;
+  }
 }
 
 .container {
   max-width: 500px;
   margin: 0 auto;
   padding: 0 20px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 16px;
+  }
 }
 
 .content {
@@ -18,6 +31,10 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 16px;
+  }
 }
 
 .success {
@@ -31,6 +48,13 @@
   justify-content: center;
   font-size: 48px;
   margin-bottom: 10px;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
 }
 
 .failed {
@@ -44,16 +68,34 @@
   justify-content: center;
   font-size: 48px;
   margin-bottom: 10px;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
 }
 
 .content :global(h1) {
   font-size: 28px;
   margin-bottom: 10px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
 }
 
 .content :global(p) {
   color: var(--text-secondary);
   margin-bottom: 20px;
+  font-size: 16px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
 }
 
 .button {
@@ -64,6 +106,17 @@
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  font-size: 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 10px 20px;
+    font-size: 12px;
+    min-height: 40px;
+  }
 
   &:hover {
     background-color: darken($primary-color, 10%);

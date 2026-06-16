@@ -1,4 +1,5 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 @keyframes slideIn {
   from {
@@ -22,6 +23,30 @@
   }
 }
 
+@media (max-width: $breakpoint-mobile) {
+  @keyframes slideIn {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+}
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -35,6 +60,15 @@
   z-index: 1000;
   animation: slideIn 0.3s ease;
   max-width: 400px;
+
+  @media (max-width: $breakpoint-mobile) {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    max-width: none;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
 
   &.success {
     background-color: #dcfce7;

@@ -1,9 +1,17 @@
-@import 'variables';
-@import 'breakpoints';
+@import "variables";
+@import "breakpoints";
 
 .accountLayout {
   padding: 40px 0;
   background-color: var(--bg-secondary);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 30px 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 20px 0;
+  }
 }
 
 .container {
@@ -16,6 +24,12 @@
 
   @media (max-width: $breakpoint-tablet) {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 16px;
+    gap: 16px;
   }
 }
 

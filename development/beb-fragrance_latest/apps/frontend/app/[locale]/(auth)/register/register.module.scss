@@ -1,8 +1,13 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .register {
   width: 100%;
   max-width: 400px;
+
+  @media (max-width: $breakpoint-mobile) {
+    max-width: 100%;
+  }
 }
 
 .card {
@@ -11,22 +16,41 @@
   border-radius: 10px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 
+  @media (max-width: $breakpoint-mobile) {
+    padding: 24px;
+  }
+
   h1 {
     font-size: 28px;
     margin-bottom: 30px;
     text-align: center;
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
   }
 }
 
 .formGroup {
   margin-bottom: 20px;
 
+  @media (max-width: $breakpoint-mobile) {
+    margin-bottom: 16px;
+  }
+
   label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
     color: var(--text-primary);
+    font-size: 14px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
   }
 
   input {
@@ -37,6 +61,12 @@
     font-size: 16px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 10px;
+      font-size: 14px;
+      min-height: 44px;
+    }
 
     &:focus {
       border-color: $primary-color;
@@ -57,6 +87,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 
+  @media (max-width: $breakpoint-mobile) {
+    padding: 10px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
   &:hover:not(:disabled) {
     background-color: darken($primary-color, 10%);
   }
@@ -71,6 +107,12 @@
   text-align: center;
   margin-top: 20px;
   color: var(--text-secondary);
+  font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin-top: 16px;
+    font-size: 12px;
+  }
 
   a {
     color: $primary-color;

@@ -1,17 +1,50 @@
-@import 'variables';
+@import "@/styles/variables";
+@import "@/styles/breakpoints";
 
 .sidebar {
-  padding: 20px;
+  width: 250px;
   background-color: var(--bg-primary);
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 0;
   height: fit-content;
   position: sticky;
   top: 100px;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 200px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    padding: 16px;
+    top: auto;
+  }
 }
 
 .nav {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin-bottom: 16px;
+  }
+}
+
+.navTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  padding: 0 16px;
+  margin: 0 0 16px 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
 }
 
 .menu {
@@ -20,40 +53,140 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+
+  @media (max-width: $breakpoint-mobile) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
 
   li {
-    a {
-      display: block;
-      padding: 12px 15px;
-      color: var(--text-primary);
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+  }
+}
 
-      &:hover {
-        background-color: var(--bg-secondary);
-      }
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 14px;
 
-      &.active {
-        background-color: $primary-color;
-        color: white;
-        font-weight: 600;
-      }
+  @media (max-width: $breakpoint-mobile) {
+    padding: 8px;
+    border-left: none;
+    border-radius: 6px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-left-color: var(--primary-color);
+
+    @media (max-width: $breakpoint-mobile) {
+      border-left: none;
+    }
+  }
+
+  &.active {
+    color: var(--primary-color);
+    background-color: var(--bg-secondary);
+    border-left-color: var(--primary-color);
+    font-weight: 600;
+
+    @media (max-width: $breakpoint-mobile) {
+      border-left: none;
     }
   }
 }
 
-.logout {
-  width: 100%;
-  padding: 12px;
-  background-color: #ef4444;
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  flex-shrink: 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 20px;
+  }
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: $breakpoint-mobile) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 32px);
+  margin: 0 16px;
+  padding: 12px 16px;
+  background-color: transparent;
+  color: var(--text-danger, #ef4444);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: calc(100% - 16px);
+    margin: 0 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  &:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: var(--text-danger, #ef4444);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.3s ease;
+  min-height: 44px;
+  font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 10px;
+    min-height: 40px;
+    font-size: 13px;
+  }
 
   &:hover {
     background-color: #dc2626;

@@ -1,9 +1,14 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .otpInput {
   display: flex;
   gap: 10px;
   justify-content: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 8px;
+  }
 }
 
 .input {
@@ -17,6 +22,13 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: all 0.3s ease;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    min-height: 40px;
+  }
 
   &:focus {
     outline: none;

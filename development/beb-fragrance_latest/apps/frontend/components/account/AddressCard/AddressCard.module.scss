@@ -1,4 +1,5 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .card {
   padding: 20px;
@@ -6,6 +7,10 @@
   border-radius: 8px;
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px;
+  }
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -22,11 +27,21 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin-bottom: 12px;
+  }
 
   h4 {
     margin: 0;
     font-size: 16px;
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+    }
   }
 
   .badge {
@@ -36,6 +51,11 @@
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
   }
 }
 
@@ -44,6 +64,12 @@
   margin: 8px 0;
   color: var(--text-secondary);
   font-size: 14px;
+  word-break: break-word;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+    margin: 6px 0;
+  }
 }
 
 .actions {
@@ -52,6 +78,13 @@
   margin-top: 15px;
   padding-top: 15px;
   border-top: 1px solid var(--border-color);
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    flex-wrap: wrap;
+  }
 
   button {
     flex: 1;
@@ -64,6 +97,13 @@
     font-size: 13px;
     font-weight: 500;
     transition: all 0.3s ease;
+    min-height: 32px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 11px;
+      padding: 6px 10px;
+      min-height: 28px;
+    }
 
     &:hover {
       background-color: var(--bg-primary);

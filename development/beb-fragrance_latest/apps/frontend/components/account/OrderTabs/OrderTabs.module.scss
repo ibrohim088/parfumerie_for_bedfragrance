@@ -1,9 +1,14 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .tabs {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 12px;
+  }
 }
 
 .tabButtons {
@@ -11,6 +16,11 @@
   gap: 10px;
   border-bottom: 2px solid var(--border-color);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 4px;
+  }
 }
 
 .tabButton {
@@ -23,6 +33,16 @@
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
   white-space: nowrap;
+  font-size: 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 10px 12px;
+    font-size: 12px;
+    min-height: 40px;
+  }
 
   &:hover {
     color: var(--text-primary);
@@ -38,4 +58,8 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 12px;
+  }
 }

@@ -1,4 +1,5 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .summary {
   background-color: var(--bg-primary);
@@ -9,10 +10,24 @@
   position: sticky;
   top: 100px;
 
+  @media (max-width: $breakpoint-tablet) {
+    position: relative;
+    top: 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 16px;
+  }
+
   h3 {
     margin: 0 0 20px 0;
     font-size: 18px;
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -21,11 +36,22 @@
   justify-content: space-between;
   padding: 10px 0;
   color: var(--text-primary);
+  font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+    padding: 8px 0;
+  }
 
   &.total {
     font-weight: 700;
     font-size: 16px;
     padding: 15px 0 10px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+      padding: 12px 0 8px;
+    }
   }
 }
 
@@ -33,6 +59,10 @@
   height: 1px;
   background-color: var(--border-color);
   margin: 15px 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin: 12px 0;
+  }
 }
 
 .button {
@@ -47,6 +77,13 @@
   font-weight: 600;
   margin-top: 20px;
   transition: background-color 0.3s ease;
+  font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 12px;
+    font-size: 12px;
+    margin-top: 16px;
+  }
 
   &:hover {
     background-color: darken($primary-color, 10%);

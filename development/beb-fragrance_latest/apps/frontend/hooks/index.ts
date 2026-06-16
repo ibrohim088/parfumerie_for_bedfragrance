@@ -1,5 +1,8 @@
-import useProducts from './useProducts';
-import useProduct from './useProduct';
+export { useProducts } from './useProducts';
+export { useProduct } from './useProduct';
+export { useBrands } from './useBrands';
+export { useDecants } from './useDecants';
+export { useBlog, useBlogPost } from './useBlog';
 import useOrders from './useOrders';
 import useOrder from './useOrder';
 import useCart from './useCart';
@@ -14,8 +17,6 @@ import useMediaQuery from './useMediaQuery';
 import useDebounce from './useDebounce';
 
 export {
-  useProducts,
-  useProduct,
   useOrders,
   useOrder,
   useCart,

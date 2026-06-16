@@ -1,9 +1,17 @@
-@import 'variables';
-@import 'breakpoints';
+@import "variables";
+@import "breakpoints";
 
 .section {
   padding: 60px 0;
   background-color: var(--bg-primary);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 40px 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 0;
+  }
 }
 
 .container {
@@ -17,6 +25,12 @@
 
   @media (max-width: $breakpoint-tablet) {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 16px;
+    gap: 16px;
   }
 }
 
@@ -25,6 +39,16 @@
     font-size: 32px;
     margin-bottom: 20px;
     color: var(--text-primary);
+    line-height: 1.2;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 28px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
   }
 
   p {
@@ -32,6 +56,16 @@
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 15px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

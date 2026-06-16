@@ -1,0 +1,88 @@
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
+
+.page {
+  width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.header {
+  padding: 60px 20px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 40px 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 16px;
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 28px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--text-secondary);
+  letter-spacing: 0.2px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+
+  @media (max-width: $breakpoint-tablet) {
+    position: static;
+    top: auto;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'breakpoints';
+@import "variables";
+@import "breakpoints";
 
 .navbar {
   background-color: var(--bg-primary);
@@ -18,6 +18,11 @@
   align-items: center;
   justify-content: space-between;
   height: 70px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 12px;
+    height: 60px;
+  }
 }
 
 .logo {
@@ -26,6 +31,11 @@
   color: $primary-color;
   text-decoration: none;
   white-space: nowrap;
+  min-width: fit-content;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 18px;
+  }
 
   &:hover {
     text-decoration: underline;
@@ -51,6 +61,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      white-space: nowrap;
 
       &:hover {
         color: $primary-color;
@@ -63,9 +74,79 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  min-width: fit-content;
 
   @media (max-width: $breakpoint-tablet) {
+    gap: 10px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 6px;
+  }
+}
+
+.language {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-secondary);
+
+  @media (max-width: $breakpoint-mobile) {
     display: none;
+  }
+}
+
+.langBtn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  white-space: nowrap;
+
+  &:hover:not(.active) {
+    color: $primary-color;
+  }
+
+  &.active {
+    color: $primary-color;
+    background-color: var(--bg-primary);
+  }
+}
+
+.separator {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 16px;
+    min-width: 28px;
+    min-height: 28px;
   }
 }
 
@@ -74,9 +155,49 @@
   text-decoration: none;
   transition: transform 0.3s ease;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--text-primary);
 
   &:hover {
     transform: scale(1.1);
+    color: $primary-color;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 16px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoutBtn {
+  background: $primary-color;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 12px;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 4px 8px;
+    font-size: 11px;
   }
 }
 
@@ -87,8 +208,20 @@
   font-size: 24px;
   cursor: pointer;
   color: var(--text-primary);
+  padding: 4px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: $breakpoint-tablet) {
-    display: block;
+    display: flex;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 20px;
+    min-width: 36px;
+    min-height: 36px;
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import styles from './Footer.module.scss';
@@ -37,17 +38,35 @@ export default function Footer() {
 
           <div className={styles.section}>
             <h3>{t('contact')}</h3>
-            <p>📞 +998 (90) 123-45-67</p>
-            <p>📧 info@bebfragrance.uz</p>
-            <p>📍 Tashkent, Uzbekistan</p>
+            <p>
+              <Phone size={16} style={{ display: 'inline', marginRight: '8px' }} />
+              +998 (90) 123-45-67
+            </p>
+            <p>
+              <Mail size={16} style={{ display: 'inline', marginRight: '8px' }} />
+              info@bebfragrance.uz
+            </p>
+            <p>
+              <MapPin size={16} style={{ display: 'inline', marginRight: '8px' }} />
+              Tashkent, Uzbekistan
+            </p>
           </div>
 
           <div className={styles.section}>
             <h3>{t('followUs')}</h3>
             <div className={styles.social}>
-              <a href="#" target="_blank">📱 Instagram</a>
-              <a href="#" target="_blank">🔵 Facebook</a>
-              <a href="#" target="_blank">▶️ YouTube</a>
+              <a href="#" target="_blank">
+                <Instagram size={18} style={{ marginRight: '6px' }} />
+                Instagram
+              </a>
+              <a href="#" target="_blank">
+                <Facebook size={18} style={{ marginRight: '6px' }} />
+                Facebook
+              </a>
+              <a href="#" target="_blank">
+                <Youtube size={18} style={{ marginRight: '6px' }} />
+                YouTube
+              </a>
             </div>
           </div>
         </div>

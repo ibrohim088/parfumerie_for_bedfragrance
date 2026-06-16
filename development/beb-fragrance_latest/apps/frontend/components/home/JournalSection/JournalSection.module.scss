@@ -1,0 +1,249 @@
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
+
+.section {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 60px 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 40px 16px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  @media (max-width: $breakpoint-tablet) {
+    gap: 40px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 30px;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 24px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 20px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.card {
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+    .imageContainer img {
+      transform: scale(1.05);
+    }
+
+    .readMore {
+      color: #c4a747;
+    }
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.articleTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 16px;
+  }
+}
+
+.excerpt {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  flex-grow: 1;
+}
+
+.readMore {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  align-self: flex-start;
+
+  &:hover {
+    color: #c4a747;
+  }
+}
+
+.newsletter {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 60px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 40px 30px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 20px;
+  }
+}
+
+.newsletterTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 18px;
+  }
+}
+
+.newsletterText {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--text-secondary);
+  max-width: 600px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 13px;
+  }
+}
+
+.form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+  width: 100%;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+  }
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #c4a747;
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+}
+
+.subscribe {
+  padding: 12px 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  background-color: #c4a747;
+  color: #000000;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #d4b757;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(196, 167, 71, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+}

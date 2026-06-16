@@ -1,0 +1,79 @@
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
+
+.page {
+  width: 100%;
+  padding: 40px 20px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 30px 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 20px 16px;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 13px;
+  color: var(--text-secondary);
+
+  @media (max-width: $breakpoint-mobile) {
+    margin-bottom: 24px;
+  }
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #c4a747;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 24px;
+  }
+}
+
+.gallery {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.loading,
+.notFound {
+  text-align: center;
+  padding: 100px 20px;
+  color: var(--text-secondary);
+}

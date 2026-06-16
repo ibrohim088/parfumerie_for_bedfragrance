@@ -1,8 +1,17 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .giftBox {
   padding: 40px 0;
   background-color: var(--bg-secondary);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 30px 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 20px 0;
+  }
 }
 
 .container {
@@ -10,8 +19,22 @@
   margin: 0 auto;
   padding: 0 20px;
 
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 16px;
+  }
+
   h1 {
     font-size: 32px;
     margin-bottom: 20px;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
   }
 }

@@ -1,4 +1,5 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .item {
   display: grid;
@@ -9,6 +10,18 @@
   border-radius: 8px;
   border: 1px solid var(--border-color);
   align-items: center;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 60px 1fr 80px 32px;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
 }
 
 .image {
@@ -18,6 +31,17 @@
   overflow: hidden;
   background-color: var(--bg-secondary);
 
+  @media (max-width: $breakpoint-tablet) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -26,10 +50,19 @@
 }
 
 .details {
+  @media (max-width: $breakpoint-mobile) {
+    grid-column: 1 / -1;
+  }
+
   h3 {
     margin: 0 0 5px 0;
     font-size: 16px;
     color: var(--text-primary);
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
   }
 
   .price {
@@ -37,6 +70,10 @@
     font-size: 14px;
     color: $primary-color;
     font-weight: 600;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 12px;
+    }
   }
 }
 
@@ -44,6 +81,11 @@
   display: flex;
   gap: 5px;
   align-items: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
 
   button {
     width: 30px;
@@ -53,6 +95,12 @@
     cursor: pointer;
     border-radius: 3px;
     transition: all 0.3s ease;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+    }
 
     &:hover {
       background-color: $primary-color;
@@ -67,6 +115,13 @@
     border: 1px solid var(--border-color);
     border-radius: 3px;
     padding: 5px;
+    font-size: 14px;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 36px;
+      padding: 4px;
+      font-size: 12px;
+    }
   }
 }
 
@@ -80,6 +135,23 @@
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: fit-content;
+    padding: 8px 12px;
+    font-size: 14px;
+    grid-column: 1 / -1;
+    justify-self: flex-start;
+  }
 
   &:hover {
     background-color: #dc2626;

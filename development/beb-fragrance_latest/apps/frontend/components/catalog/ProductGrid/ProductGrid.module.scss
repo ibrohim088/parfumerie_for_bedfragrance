@@ -1,5 +1,9 @@
-@import 'variables';
-@import 'breakpoints';
+@import "variables";
+@import "breakpoints";
+
+.gridWrapper {
+  width: 100%;
+}
 
 .grid {
   display: grid;
@@ -7,20 +11,26 @@
   gap: 20px;
 
   @media (max-width: $breakpoint-tablet) {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
+.loading,
 .empty {
   grid-column: 1 / -1;
   text-align: center;
   padding: 40px 20px;
   color: var(--text-secondary);
-  font-size: 18px;
+  font-size: 16px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 16px;
+    font-size: 14px;
+  }
 }

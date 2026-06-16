@@ -1,76 +1,138 @@
-@import 'variables';
-@import 'breakpoints';
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
 
 .hero {
-  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 20%) 100%);
-  color: white;
-  padding: 80px 0;
+  width: 100%;
   min-height: 500px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+
+  @media (max-width: $breakpoint-tablet) {
+    min-height: 400px;
+    padding: 60px 20px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    min-height: 300px;
+    padding: 40px 16px;
+  }
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  width: 100%;
+  display: flex;
   align-items: center;
-
-  @media (max-width: $breakpoint-tablet) {
-    grid-template-columns: 1fr;
-  }
+  justify-content: center;
 }
 
 .content {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-
-  h1 {
-    font-size: 48px;
-    margin: 0;
-    font-weight: 700;
-
-    @media (max-width: $breakpoint-tablet) {
-      font-size: 36px;
-    }
-  }
-
-  p {
-    font-size: 20px;
-    margin: 0;
-    opacity: 0.9;
-  }
+  align-items: center;
+  gap: 24px;
+  max-width: 700px;
 }
 
-.cta {
-  align-self: flex-start;
-  padding: 15px 30px;
-  background-color: white;
-  color: $primary-color;
-  border: none;
-  border-radius: 5px;
+.title {
+  font-size: 56px;
   font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.image {
-  width: 100%;
-  aspect-ratio: 1;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  line-height: 1.2;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 
   @media (max-width: $breakpoint-tablet) {
-    display: none;
+    font-size: 42px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 32px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 14px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.btnPrimary,
+.btnSecondary {
+  padding: 14px 40px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 12px 32px;
+    font-size: 12px;
+    width: 100%;
+  }
+}
+
+.btnPrimary {
+  background-color: #c4a747;
+  color: #000000;
+
+  &:hover {
+    background-color: #d4b757;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(196, 167, 71, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #c4a747;
+    color: #c4a747;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }

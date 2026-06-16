@@ -1,9 +1,14 @@
-@import 'variables';
+@import "variables";
+@import "breakpoints";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 6px;
+  }
 }
 
 .input {
@@ -15,6 +20,15 @@
   color: var(--text-primary);
   font-family: $font-primary;
   transition: border-color 0.3s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 10px;
+    font-size: 14px;
+    min-height: 40px;
+  }
 
   &:focus {
     outline: none;
@@ -40,9 +54,18 @@
 .wrapper :global(label) {
   font-weight: 500;
   color: var(--text-primary);
+  font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+  }
 }
 
 .error {
   color: #ef4444;
   font-size: 14px;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+  }
 }
