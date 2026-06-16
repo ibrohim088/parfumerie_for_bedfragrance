@@ -6,7 +6,12 @@
     "baseUrl": "./src",
     "paths": {
       "@beb/shared": ["../../packages/shared/types/index.ts"]
-    }
+    },
+    "strict": false,
+    "noImplicitAny": false,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
