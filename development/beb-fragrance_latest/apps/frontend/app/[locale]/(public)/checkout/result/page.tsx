@@ -3,6 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import styles from './result.module.scss';
 
 export default function CheckoutResultPage() {
@@ -16,13 +17,17 @@ export default function CheckoutResultPage() {
         <div className={styles.content}>
           {status === 'success' ? (
             <>
-              <div className={styles.success}>✓</div>
+              <div className={styles.success}>
+                <CheckCircle2 size={56} />
+              </div>
               <h1>{t('successTitle')}</h1>
               <p>{t('successMessage')}</p>
             </>
           ) : (
             <>
-              <div className={styles.failed}>✕</div>
+              <div className={styles.failed}>
+                <XCircle size={56} />
+              </div>
               <h1>{t('failedTitle')}</h1>
               <p>{t('failedMessage')}</p>
             </>

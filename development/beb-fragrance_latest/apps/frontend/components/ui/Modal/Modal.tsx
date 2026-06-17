@@ -1,5 +1,6 @@
 'use client';
 
+import { X } from 'lucide-react';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -18,7 +19,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
         <div className={styles.header}>
           {title && <h2>{title}</h2>}
           <button className={styles.close} onClick={onClose}>
-            ✕
+            <X size={20} />
           </button>
         </div>
         <div className={styles.content}>

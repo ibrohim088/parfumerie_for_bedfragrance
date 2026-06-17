@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -55,7 +56,7 @@ export default function JournalSection() {
                 <h3 className={styles.articleTitle}>{article.title}</h3>
                 <p className={styles.excerpt}>{article.excerpt}</p>
                 <a href="#" className={styles.readMore}>
-                  Read More →
+                  Read More <ArrowRight size={14} style={{ verticalAlign: 'middle' }} />
                 </a>
               </div>
             </article>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Frown } from 'lucide-react';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -22,8 +23,9 @@ export default function Error({ error, reset }: ErrorProps) {
       backgroundColor: '#f5f5f5',
       padding: '20px',
     }}>
+      <Frown size={40} style={{ marginBottom: '12px', color: '#666' }} />
       <h1 style={{ fontSize: '24px', marginBottom: '10px' }}>
-        Xatolik yuz berdi 😞
+        Xatolik yuz berdi
       </h1>
       <p style={{ color: '#666', marginBottom: '20px' }}>
         {error.message || "Noma'lum xatolik yuz berdi"}

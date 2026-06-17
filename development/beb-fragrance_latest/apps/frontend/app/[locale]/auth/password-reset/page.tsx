@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Phone, Mail as MailIcon } from 'lucide-react';
+import { CheckCircle, Phone, Mail as MailIcon, ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import styles from './PasswordResetPage.module.scss';
@@ -61,7 +61,8 @@ export default function PasswordResetPage({ params }: { params: { locale: string
             </div>
 
             <Link href={`/${locale}/auth/login`} className={styles.backBtn}>
-              ← {t('backToLogin')}
+              <ArrowLeft size={16} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+              {t('backToLogin')}
             </Link>
           </div>
         </div>
@@ -114,7 +115,8 @@ export default function PasswordResetPage({ params }: { params: { locale: string
 
           <div className={styles.links}>
             <Link href={`/${locale}/auth/login`}>
-              ← {t('backToLogin')}
+              <ArrowLeft size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+              {t('backToLogin')}
             </Link>
             <span>/</span>
             <Link href={`/${locale}/auth/register`}>

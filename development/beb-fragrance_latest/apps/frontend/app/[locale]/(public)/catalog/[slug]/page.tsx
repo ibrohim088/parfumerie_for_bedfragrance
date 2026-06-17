@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 import ProductImages from '@/components/productDetail/ProductImages/ProductImages';
 import ProductInfo from '@/components/productDetail/ProductInfo/ProductInfo';
 import styles from './ProductDetailPage.module.scss';
@@ -58,7 +59,8 @@ export default function ProductDetailPage({
     <div className={styles.page}>
       <div className={styles.breadcrumb}>
         <button onClick={() => router.back()} className={styles.back}>
-          ← Back
+          <ArrowLeft size={16} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+          Back
         </button>
         <span>/</span>
         <span>{product.name}</span>

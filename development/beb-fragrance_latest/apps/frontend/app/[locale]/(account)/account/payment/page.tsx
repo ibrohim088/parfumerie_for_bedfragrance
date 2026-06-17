@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CreditCard, Plus, Trash2 } from 'lucide-react';
+import { CreditCard, Plus, Trash2, Link2, Banknote } from 'lucide-react';
 import styles from './payment.module.scss';
 
 export default function PaymentPage() {
@@ -28,9 +28,18 @@ export default function PaymentPage() {
       <div className={styles.info}>
         <h2>Supported Payment Methods:</h2>
         <ul>
-          <li>💳 Payme</li>
-          <li>💳 Click</li>
-          <li>💵 Cash on Delivery</li>
+          <li>
+            <CreditCard size={16} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+            Payme
+          </li>
+          <li>
+            <Link2 size={16} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+            Click
+          </li>
+          <li>
+            <Banknote size={16} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+            Cash on Delivery
+          </li>
         </ul>
       </div>
     </div>

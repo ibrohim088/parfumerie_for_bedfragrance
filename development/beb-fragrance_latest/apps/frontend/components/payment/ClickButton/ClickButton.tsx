@@ -1,5 +1,6 @@
 'use client';
 
+import { Link2 } from 'lucide-react';
 import Button from '@/components/ui/Button/Button';
 import styles from './ClickButton.module.scss';
 
@@ -27,7 +28,8 @@ export default function ClickButton({
 
   return (
     <Button onClick={handleClick} className={styles.button}>
-      🔗 Click orqali to'lov
+      <Link2 size={18} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+      Click orqali to'lov
     </Button>
   );
 }

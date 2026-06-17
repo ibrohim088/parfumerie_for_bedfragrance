@@ -1,5 +1,6 @@
 'use client';
 
+import { X } from 'lucide-react';
 import styles from './CartItem.module.scss';
 
 interface CartItemProps {
@@ -21,7 +22,9 @@ export default function CartItem({ item }: CartItemProps) {
         <input type="number" value={item.quantity} min="1" readOnly />
         <button>+</button>
       </div>
-      <button className={styles.remove}>✕</button>
+      <button className={styles.remove}>
+        <X size={16} />
+      </button>
     </div>
   );
 }

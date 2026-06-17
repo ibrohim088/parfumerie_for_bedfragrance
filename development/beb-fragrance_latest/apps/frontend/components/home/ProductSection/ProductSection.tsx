@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -79,7 +80,8 @@ export default function ProductSection({
           <h2 className={styles.title}>{title}</h2>
           {showViewAll && (
             <button className={styles.viewAll} onClick={handleViewAll}>
-              {t('common.viewAll') || 'View All'} →
+              {t('common.viewAll') || 'View All'}{' '}
+              <ArrowRight size={16} style={{ verticalAlign: 'middle' }} />
             </button>
           )}
         </div>

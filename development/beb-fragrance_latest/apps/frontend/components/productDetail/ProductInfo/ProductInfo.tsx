@@ -89,7 +89,14 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           onClick={handleAddToCart}
           disabled={!product.inStock}
         >
-          {addedToCart ? '✓ Added to Cart' : 'Add to Cart'}
+          {addedToCart ? (
+            <>
+              <Check size={16} style={{ marginRight: '4px' }} />
+              Added to Cart
+            </>
+          ) : (
+            'Add to Cart'
+          )}
         </button>
       </div>
 

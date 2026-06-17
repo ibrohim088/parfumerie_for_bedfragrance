@@ -1,5 +1,6 @@
 'use client';
 
+import { Heart, Bookmark } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import styles from './InstagramSection.module.scss';
 
@@ -31,7 +32,10 @@ export default function InstagramSection() {
             >
               <img src={post.image} alt={`Instagram post ${post.id}`} />
               <div className={styles.overlay}>
-                <span className={styles.icon}>❤️ 🔖</span>
+                <span className={styles.icon}>
+                  <Heart size={18} fill="currentColor" />
+                  <Bookmark size={18} style={{ marginLeft: '8px' }} />
+                </span>
               </div>
             </a>
           ))}

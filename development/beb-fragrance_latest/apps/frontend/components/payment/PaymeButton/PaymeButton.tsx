@@ -1,5 +1,6 @@
 'use client';
 
+import { CreditCard } from 'lucide-react';
 import Button from '@/components/ui/Button/Button';
 import styles from './PaymeButton.module.scss';
 
@@ -27,7 +28,8 @@ export default function PaymeButton({
 
   return (
     <Button onClick={handleClick} className={styles.button}>
-      💳 Payme orqali to'lov
+      <CreditCard size={18} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+      Payme orqali to'lov
     </Button>
   );
 }

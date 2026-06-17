@@ -11,10 +11,10 @@
 }
 
 .card {
-  background: white;
+  background: var(--bg-secondary);
   padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: var(--shadow-xl);
 
   @media (max-width: $breakpoint-mobile) {
     padding: 24px;

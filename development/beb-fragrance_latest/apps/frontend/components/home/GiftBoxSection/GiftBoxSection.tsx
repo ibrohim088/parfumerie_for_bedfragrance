@@ -1,5 +1,6 @@
 'use client';
 
+import { Gift } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -28,7 +29,7 @@ export default function GiftBoxSection() {
 
         <div className={styles.image}>
           <div className={styles.imagePlaceholder}>
-            🎁
+            <Gift size={64} />
           </div>
         </div>
       </div>

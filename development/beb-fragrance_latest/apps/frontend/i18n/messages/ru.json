@@ -121,6 +121,15 @@
     "estimatedDelivery": "Примерная Доставка"
   },
   "auth": {
+    "haveAccount": "Уже есть аккаунт?",
+    "noAccount": "Нет аккаунта?",
+    "phone": "Номер телефона",
+    "sendOtp": "Отправить код",
+    "sending": "Отправка...",
+    "otp": "Код из SMS",
+    "verify": "Подтвердить",
+    "verifying": "Проверка...",
+    "back": "Назад",
     "login": "Вход",
     "register": "Регистрация",
     "loginSubtitle": "Войдите в свой аккаунт",

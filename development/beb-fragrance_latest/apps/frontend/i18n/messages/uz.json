@@ -121,6 +121,15 @@
     "estimatedDelivery": "Taxminiy Yetkazib Berish"
   },
   "auth": {
+    "haveAccount": "Akkauntingiz bormi?",
+    "noAccount": "Akkauntingiz yo'qmi?",
+    "phone": "Telefon raqami",
+    "sendOtp": "SMS-kod yuborish",
+    "sending": "Yuborilmoqda...",
+    "otp": "SMS-kod",
+    "verify": "Tasdiqlash",
+    "verifying": "Tekshirilmoqda...",
+    "back": "Orqaga",
     "login": "Kirish",
     "register": "Ro'yxatdan o'tish",
     "loginSubtitle": "Akkauntingizga kiring",
