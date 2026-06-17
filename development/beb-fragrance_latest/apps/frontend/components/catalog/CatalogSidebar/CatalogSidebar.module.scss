@@ -4,7 +4,6 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 0;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
 }
@@ -12,95 +11,88 @@
 .section {
   border-bottom: 1px solid var(--border-color);
 
-  &:last-child {
-    border-bottom: none;
-  }
+  &:last-of-type { border-bottom: none; }
 }
 
 .header {
   width: 100%;
-  padding: 16px;
+  padding: 14px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
+  background: none;
   color: var(--text-primary);
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
-  transition: background-color 0.3s ease;
+  transition: color $transition-fast;
 
-  &:hover {
-    background-color: var(--bg-primary);
-  }
+  &:hover { color: $primary-color; }
 
   span:last-child {
-    font-size: 12px;
+    font-size: 11px;
     transition: transform 0.3s ease;
 
-    &.expanded {
-      transform: rotate(180deg);
-    }
+    &.expanded { transform: rotate(180deg); }
   }
 }
 
 .content {
-  padding: 16px;
+  padding: 14px 18px;
   border-top: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.input {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 13px;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #c4a747;
-  }
-
-  &::placeholder {
-    color: var(--text-secondary);
-  }
-}
-
-.options {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+.input {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+
+  &::placeholder { color: var(--text-secondary); }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .option {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--text-primary);
+  gap: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
   cursor: pointer;
+  transition: color $transition-fast;
 
   input[type="radio"],
   input[type="checkbox"] {
     cursor: pointer;
-    accent-color: #c4a747;
+    accent-color: $primary-color;
+    width: 14px;
+    height: 14px;
   }
 
-  span {
-    user-select: none;
-  }
-
-  &:hover {
-    color: #c4a747;
-  }
+  &:hover { color: var(--text-primary); }
 }
 
 .priceInputs {
@@ -108,67 +100,54 @@
   align-items: center;
   gap: 8px;
 
-  span {
-    color: var(--text-secondary);
-  }
+  span { color: var(--text-secondary); font-size: 12px; }
 }
 
 .priceInput {
   flex: 1;
-  padding: 10px 12px;
+  padding: 9px 10px;
+  font-family: 'Jost', sans-serif;
   font-size: 13px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: border-color 0.3s ease;
+  transition: border-color $transition-fast;
 
-  &:focus {
-    outline: none;
-    border-color: #c4a747;
-  }
-
-  &::placeholder {
-    color: var(--text-secondary);
-  }
+  &:focus { outline: none; border-color: $primary-color; }
+  &::placeholder { color: var(--text-secondary); }
 }
 
 .select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 9px 12px;
+  font-family: 'Jost', sans-serif;
   font-size: 13px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: border-color $transition-fast;
 
-  &:focus {
-    outline: none;
-    border-color: #c4a747;
-  }
-
-  option {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-  }
+  &:focus { outline: none; border-color: $primary-color; }
 }
 
 .reset {
-  padding: 12px 16px;
-  margin: 16px;
-  font-size: 12px;
+  padding: 10px 18px;
+  margin: 14px 18px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
   border: 1px solid var(--border-color);
-  background-color: transparent;
-  color: var(--text-primary);
+  background: none;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all $transition-fast;
 
   &:hover {
-    background-color: #c4a747;
-    color: #000000;
-    border-color: #c4a747;
+    background-color: $primary-color;
+    color: #000;
+    border-color: $primary-color;
   }
 }

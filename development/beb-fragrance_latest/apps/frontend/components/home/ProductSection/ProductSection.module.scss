@@ -3,18 +3,9 @@
 
 .section {
   width: 100%;
-  padding: 80px 20px;
+  padding: 72px 20px;
   background-color: var(--bg-primary);
-  color: var(--text-primary);
   border-bottom: 1px solid var(--border-color);
-
-  @media (max-width: $breakpoint-tablet) {
-    padding: 60px 20px;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 40px 16px;
-  }
 }
 
 .container {
@@ -23,62 +14,45 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-
-  @media (max-width: $breakpoint-tablet) {
-    gap: 30px;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    gap: 24px;
-  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   gap: 20px;
-
-  @media (max-width: $breakpoint-tablet) {
-    flex-wrap: wrap;
-  }
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 600;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
   margin: 0;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 24px;
-  }
+  color: var(--text-primary);
 
   @media (max-width: $breakpoint-mobile) {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 
 .viewAll {
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   border: none;
-  background-color: transparent;
-  color: var(--text-primary);
+  background: none;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color $transition-fast;
+  white-space: nowrap;
   text-decoration: underline;
+  text-underline-offset: 3px;
 
-  &:hover {
-    color: #c4a747;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 12px;
-  }
+  &:hover { color: $primary-color; }
 }
 
 .grid {
@@ -92,20 +66,21 @@
   }
 
   @media (max-width: $breakpoint-mobile) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 }
 
 .loading,
 .noProducts {
-  grid-column: 1 / -1;
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   color: var(--text-secondary);
 
   p {
-    font-size: 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
     margin: 0;
   }
 }

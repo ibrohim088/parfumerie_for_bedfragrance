@@ -1,8 +1,13 @@
 @import './variables';
 
 // ============================================
-// HEADING STYLES
+// HEADING STYLES — Cormorant Garamond (serif)
 // ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  letter-spacing: 0.03em;
+}
 
 h1 {
   font-size: $font-size-5xl;
@@ -13,7 +18,7 @@ h1 {
 
 h2 {
   font-size: $font-size-4xl;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-semibold;
   line-height: $line-height-tight;
   margin-bottom: $spacing-lg;
 }
@@ -34,25 +39,26 @@ h4 {
 
 h5 {
   font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-medium;
   line-height: $line-height-normal;
   margin-bottom: $spacing-sm;
 }
 
 h6 {
   font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-medium;
   line-height: $line-height-normal;
   margin-bottom: $spacing-sm;
 }
 
 // ============================================
-// PARAGRAPH STYLES
+// PARAGRAPH — Jost (sans-serif)
 // ============================================
 
 p {
+  font-family: $font-primary;
   font-size: $font-size-base;
-  line-height: $line-height-normal;
+  line-height: $line-height-relaxed;
   margin-bottom: $spacing-md;
 
   &:last-child {
@@ -60,150 +66,87 @@ p {
   }
 }
 
-.text-small {
-  font-size: $font-size-sm;
-  line-height: $line-height-normal;
-}
-
-.text-xsmall {
-  font-size: $font-size-xs;
-  line-height: $line-height-tight;
-}
-
-.text-large {
-  font-size: $font-size-lg;
-  line-height: $line-height-normal;
-}
-
-.text-xlarge {
-  font-size: $font-size-xl;
-  line-height: $line-height-normal;
-}
-
 // ============================================
-// TEXT VARIANTS
+// TEXT SIZE UTILITIES
 // ============================================
 
-.text-primary {
-  color: var(--text-primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.text-muted {
-  color: $color-gray-500;
-}
-
-.text-success {
-  color: $color-success;
-}
-
-.text-error {
-  color: $color-error;
-}
-
-.text-warning {
-  color: $color-warning;
-}
-
-.text-info {
-  color: $color-info;
-}
+.text-small   { font-size: $font-size-sm;  line-height: $line-height-normal; }
+.text-xsmall  { font-size: $font-size-xs;  line-height: $line-height-tight; }
+.text-large   { font-size: $font-size-lg;  line-height: $line-height-normal; }
+.text-xlarge  { font-size: $font-size-xl;  line-height: $line-height-normal; }
 
 // ============================================
-// TEXT WEIGHT
+// TEXT COLOR UTILITIES
 // ============================================
 
-.font-light {
-  font-weight: $font-weight-light;
-}
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: $color-gray-500; }
+.text-success   { color: $color-success; }
+.text-error     { color: $color-error; }
+.text-warning   { color: $color-warning; }
+.text-info      { color: $color-info; }
+.text-gold      { color: $primary-color; }
 
-.font-normal {
-  font-weight: $font-weight-normal;
-}
+// ============================================
+// FONT FAMILY
+// ============================================
 
-.font-medium {
-  font-weight: $font-weight-medium;
-}
+.font-display { font-family: $font-display; }
+.font-body    { font-family: $font-primary; }
 
-.font-semibold {
-  font-weight: $font-weight-semibold;
-}
+// ============================================
+// FONT WEIGHT
+// ============================================
 
-.font-bold {
-  font-weight: $font-weight-bold;
-}
+.font-light    { font-weight: $font-weight-light; }
+.font-normal   { font-weight: $font-weight-normal; }
+.font-medium   { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold     { font-weight: $font-weight-bold; }
 
 // ============================================
 // TEXT ALIGNMENT
 // ============================================
 
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-justify {
-  text-align: justify;
-}
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
 
 // ============================================
 // TEXT TRANSFORMATION
 // ============================================
 
-.text-uppercase {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.text-lowercase {
-  text-transform: lowercase;
-}
-
-.text-capitalize {
-  text-transform: capitalize;
-}
+.text-uppercase  { text-transform: uppercase; letter-spacing: 0.08em; }
+.text-lowercase  { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
 
 // ============================================
 // TEXT DECORATION
 // ============================================
 
-.text-underline {
-  text-decoration: underline;
-}
+.text-underline     { text-decoration: underline; }
+.text-line-through  { text-decoration: line-through; }
+.text-no-decoration { text-decoration: none; }
 
-.text-line-through {
-  text-decoration: line-through;
-}
+// ============================================
+// LETTER SPACING
+// ============================================
 
-.text-no-decoration {
-  text-decoration: none;
-}
+.tracking-tight  { letter-spacing: -0.02em; }
+.tracking-normal { letter-spacing: 0; }
+.tracking-wide   { letter-spacing: 0.05em; }
+.tracking-wider  { letter-spacing: 0.1em; }
+.tracking-widest { letter-spacing: 0.2em; }
 
 // ============================================
 // LINE HEIGHT
 // ============================================
 
-.leading-tight {
-  line-height: $line-height-tight;
-}
-
-.leading-normal {
-  line-height: $line-height-normal;
-}
-
-.leading-relaxed {
-  line-height: $line-height-relaxed;
-}
+.leading-tight   { line-height: $line-height-tight; }
+.leading-normal  { line-height: $line-height-normal; }
+.leading-relaxed { line-height: $line-height-relaxed; }
 
 // ============================================
 // TEXT TRUNCATION
@@ -237,27 +180,7 @@ p {
 }
 
 // ============================================
-// LETTER SPACING
-// ============================================
-
-.tracking-tight {
-  letter-spacing: -0.02em;
-}
-
-.tracking-normal {
-  letter-spacing: 0;
-}
-
-.tracking-wide {
-  letter-spacing: 0.02em;
-}
-
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
-// ============================================
-// CODE BLOCK
+// CODE
 // ============================================
 
 code {
@@ -287,7 +210,7 @@ pre {
 }
 
 // ============================================
-// LINK STYLES
+// LINKS
 // ============================================
 
 a {
@@ -319,7 +242,7 @@ a {
 }
 
 // ============================================
-// QUOTE STYLES
+// QUOTE
 // ============================================
 
 blockquote {
@@ -329,7 +252,5 @@ blockquote {
   font-style: italic;
   color: var(--text-secondary);
 
-  p {
-    margin: 0;
-  }
+  p { margin: 0; }
 }

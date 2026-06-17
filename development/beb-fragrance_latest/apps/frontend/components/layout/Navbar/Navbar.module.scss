@@ -2,97 +2,121 @@
 @import "breakpoints";
 
 .navbar {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: $z-fixed;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 68px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0 20px;
+    height: 60px;
+  }
 
   @media (max-width: $breakpoint-mobile) {
-    padding: 0 12px;
-    height: 60px;
+    padding: 0 16px;
+    height: 56px;
   }
 }
 
+// ============================================
+// LOGO
+// ============================================
+
 .logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: $primary-color;
   text-decoration: none;
   white-space: nowrap;
-  min-width: fit-content;
+  flex-shrink: 0;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.logoText {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $primary-color;
+  line-height: 1;
 
   @media (max-width: $breakpoint-mobile) {
     font-size: 18px;
   }
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
+
+// ============================================
+// NAV MENU
+// ============================================
 
 .menu {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 36px;
   margin: 0;
   padding: 0;
   flex: 1;
-  margin-left: 60px;
+  margin-left: 48px;
 
   @media (max-width: $breakpoint-tablet) {
     display: none;
   }
 
-  li {
-    a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      white-space: nowrap;
+  li a {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color $transition-fast;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
 
-      &:hover {
-        color: $primary-color;
-      }
+    &:hover {
+      color: $primary-color;
+      border-bottom-color: $primary-color;
+      text-decoration: none;
     }
   }
 }
 
+// ============================================
+// ACTIONS (right side icons)
+// ============================================
+
 .actions {
   display: flex;
-  gap: 20px;
+  gap: 4px;
   align-items: center;
-  min-width: fit-content;
-
-  @media (max-width: $breakpoint-tablet) {
-    gap: 10px;
-  }
 
   @media (max-width: $breakpoint-mobile) {
-    gap: 6px;
+    gap: 2px;
   }
 }
+
+// ============================================
+// LANGUAGE SWITCHER
+// ============================================
 
 .language {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background-color: var(--bg-secondary);
+  gap: 2px;
+  margin-right: 8px;
 
   @media (max-width: $breakpoint-mobile) {
     display: none;
@@ -102,126 +126,116 @@
 .langBtn {
   background: none;
   border: none;
-  color: var(--text-primary);
-  font-weight: 600;
+  font-family: 'Jost', sans-serif;
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
   cursor: pointer;
-  padding: 2px 6px;
-  transition: all 0.3s ease;
-  border-radius: 4px;
-  white-space: nowrap;
+  padding: 4px 6px;
+  transition: color $transition-fast;
+  border-radius: 2px;
 
   &:hover:not(.active) {
-    color: $primary-color;
+    color: var(--text-primary);
   }
 
   &.active {
     color: $primary-color;
-    background-color: var(--bg-primary);
   }
 }
 
 .separator {
-  color: var(--text-secondary);
-  font-size: 10px;
+  color: var(--border-color);
+  font-size: 12px;
+  font-weight: 300;
 }
 
-.themeToggle {
+// ============================================
+// ICON BUTTONS
+// ============================================
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
   background: none;
   border: none;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 4px;
-  transition: transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
-
-  &:hover {
-    transform: scale(1.15);
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 16px;
-    min-width: 28px;
-    min-height: 28px;
-  }
-}
-
-.icon {
-  font-size: 20px;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
   color: var(--text-primary);
+  cursor: pointer;
+  transition: color $transition-fast;
+  border-radius: 2px;
+  text-decoration: none;
+  flex-shrink: 0;
 
   &:hover {
-    transform: scale(1.1);
     color: $primary-color;
+    text-decoration: none;
   }
 
   @media (max-width: $breakpoint-mobile) {
-    font-size: 16px;
-    min-width: 28px;
-    min-height: 28px;
+    width: 32px;
+    height: 32px;
   }
 }
+
+// ============================================
+// USER MENU
+// ============================================
 
 .userMenu {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .logoutBtn {
-  background: $primary-color;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  padding: 5px 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  font-size: 12px;
+  transition: all $transition-fast;
 
   &:hover {
-    background: darken($primary-color, 10%);
+    background: $primary-color;
+    color: #000;
   }
 
   @media (max-width: $breakpoint-mobile) {
-    padding: 4px 8px;
-    font-size: 11px;
+    display: none;
   }
 }
+
+// ============================================
+// MOBILE TOGGLE
+// ============================================
 
 .mobileToggle {
   display: none;
   background: none;
   border: none;
-  font-size: 24px;
-  cursor: pointer;
   color: var(--text-primary);
+  cursor: pointer;
   padding: 4px;
-  min-width: 40px;
-  min-height: 40px;
-  display: flex;
+  width: 40px;
+  height: 40px;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+
+  &:hover {
+    color: $primary-color;
+  }
 
   @media (max-width: $breakpoint-tablet) {
     display: flex;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 20px;
-    min-width: 36px;
-    min-height: 36px;
   }
 }

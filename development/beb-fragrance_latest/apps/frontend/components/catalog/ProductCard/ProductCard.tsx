@@ -1,11 +1,12 @@
 'use client';
 
-import { Star, ShoppingCart } from 'lucide-react';
+import { Heart, ShoppingCart } from 'lucide-react';
 import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
   id: string;
   name: string;
+  brand?: string;
   image: string;
   price: number;
   rating?: number;
@@ -15,6 +16,7 @@ interface ProductCardProps {
 export default function ProductCard({
   id,
   name,
+  brand,
   image,
   price = 0,
   rating = 4.5,
@@ -26,22 +28,27 @@ export default function ProductCard({
     <div className={styles.card} onClick={onClick}>
       <div className={styles.image}>
         <img src={image} alt={name} loading="lazy" />
+        <button
+          className={styles.wishlist}
+          onClick={(e) => e.stopPropagation()}
+          aria-label="Add to wishlist"
+        >
+          <Heart size={16} />
+        </button>
         <div className={styles.overlay}>
-          <button className={styles.addToCart}>
-            <ShoppingCart size={16} style={{ marginRight: '6px' }} />
+          <button
+            className={styles.addToCart}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ShoppingCart size={15} />
             Add to Cart
           </button>
         </div>
       </div>
       <div className={styles.content}>
-        <h3>{name}</h3>
-        <div className={styles.footer}>
-          <span className={styles.price}>{formattedPrice} UZS</span>
-          <span className={styles.rating}>
-            <Star size={14} style={{ fill: '#ffc107', color: '#ffc107', marginRight: '4px' }} />
-            {rating}
-          </span>
-        </div>
+        {brand && <span className={styles.brand}>{brand}</span>}
+        <h3 className={styles.name}>{name}</h3>
+        <span className={styles.price}>{formattedPrice} UZS</span>
       </div>
     </div>
   );

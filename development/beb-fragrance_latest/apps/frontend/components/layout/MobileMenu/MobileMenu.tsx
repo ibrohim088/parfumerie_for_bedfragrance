@@ -1,83 +1,38 @@
 'use client';
 
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
+import { Moon, Sun } from 'lucide-react';
+import { useUIStore } from '@/store/uiStore';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import styles from './MobileMenu.module.scss';
 
 interface MobileMenuProps {
   onClose: () => void;
-  locale: string;
 }
 
-export default function MobileMenu({ onClose, locale }: MobileMenuProps) {
+export default function MobileMenu({ onClose }: MobileMenuProps) {
   const t = useTranslations('navigation');
+  const locale = useLocale();
+  const pathname = usePathname();
   const router = useRouter();
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-    const initial = saved || preferred;
-    setTheme(initial);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    const root = document.documentElement;
-    if (newTheme === 'dark') {
-      root.style.setProperty('--bg-primary', '#1f2937');
-      root.style.setProperty('--bg-secondary', '#111827');
-      root.style.setProperty('--text-primary', '#f3f4f6');
-      root.style.setProperty('--text-secondary', '#9ca3af');
-      root.style.setProperty('--border-color', '#374151');
-    } else {
-      root.style.setProperty('--bg-primary', '#ffffff');
-      root.style.setProperty('--bg-secondary', '#f9fafb');
-      root.style.setProperty('--text-primary', '#111827');
-      root.style.setProperty('--text-secondary', '#6b7280');
-      root.style.setProperty('--border-color', '#e5e7eb');
-    }
-  };
+  const theme = useUIStore((state) => state.theme);
+  const toggleTheme = useUIStore((state) => state.toggleTheme);
 
   const switchLanguage = (newLocale: 'uz' | 'ru') => {
-    const pathWithoutLocale = window.location.pathname.slice(3);
-    router.push(`/${newLocale}${pathWithoutLocale}`);
+    router.replace(pathname, { locale: newLocale });
     onClose();
   };
-
-  if (!mounted) return null;
 
   return (
     <div className={styles.mobileMenu}>
       <ul className={styles.menu}>
-        <li>
-          <Link href={`/${locale}`} onClick={onClose}>
-            {t('home')}
-          </Link>
-        </li>
-        <li>
-          <Link href={`/${locale}/catalog`} onClick={onClose}>
-            {t('catalog')}
-          </Link>
-        </li>
-        <li>
-          <Link href={`/${locale}/gift-box`} onClick={onClose}>
-            {t('giftBox')}
-          </Link>
-        </li>
-        <li>
-          <Link href={`/${locale}/about`} onClick={onClose}>
-            {t('about')}
-          </Link>
-        </li>
+        <li><Link href="/" onClick={onClose}>{t('home')}</Link></li>
+        <li><Link href="/catalog" onClick={onClose}>{t('catalog')}</Link></li>
+        <li><Link href="/brands" onClick={onClose}>{t('brands')}</Link></li>
+        <li><Link href="/decant" onClick={onClose}>{t('decant')}</Link></li>
+        <li><Link href="/gift-box" onClick={onClose}>{t('giftBox')}</Link></li>
+        <li><Link href="/blog" onClick={onClose}>{t('blog')}</Link></li>
+        <li><Link href="/about" onClick={onClose}>{t('about')}</Link></li>
       </ul>
 
       <div className={styles.divider} />
@@ -89,22 +44,18 @@ export default function MobileMenu({ onClose, locale }: MobileMenuProps) {
             <button
               className={`${styles.btn} ${locale === 'uz' ? styles.active : ''}`}
               onClick={() => switchLanguage('uz')}
-            >
-              UZ
-            </button>
+            >UZ</button>
             <button
               className={`${styles.btn} ${locale === 'ru' ? styles.active : ''}`}
               onClick={() => switchLanguage('ru')}
-            >
-              РУ
-            </button>
+            >РУ</button>
           </div>
         </div>
 
         <div className={styles.settingItem}>
           <span>{t('theme')}:</span>
           <button className={styles.themeBtn} onClick={toggleTheme}>
-            {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+            {theme === 'light' ? <><Moon size={14} /> Dark</> : <><Sun size={14} /> Light</>}
           </button>
         </div>
       </div>

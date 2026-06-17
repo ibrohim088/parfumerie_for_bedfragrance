@@ -1,22 +1,19 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
   const router = useRouter();
-  const pathname = usePathname();
-  const locale = pathname.split('/')[1];
 
   const handleShopClick = () => {
-    router.push(`/${locale}/catalog`);
+    router.push('/catalog');
   };
 
   const handleBrandsClick = () => {
-    router.push(`/${locale}/brands`);
+    router.push('/brands');
   };
 
   return (

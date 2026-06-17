@@ -3,18 +3,9 @@
 
 .section {
   width: 100%;
-  padding: 80px 20px;
+  padding: 72px 20px;
   background-color: var(--bg-primary);
-  color: var(--text-primary);
   border-bottom: 1px solid var(--border-color);
-
-  @media (max-width: $breakpoint-tablet) {
-    padding: 60px 20px;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 40px 16px;
-  }
 }
 
 .container {
@@ -22,70 +13,55 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-
-  @media (max-width: $breakpoint-tablet) {
-    gap: 30px;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    gap: 24px;
-  }
+  gap: 36px;
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 600;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
   margin: 0;
   text-align: center;
-  letter-spacing: 0.3px;
-
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 24px;
-  }
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
 
   @media (max-width: $breakpoint-mobile) {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 
 .brandsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: $breakpoint-mobile) {
-    gap: 10px;
-  }
 }
 
 .brandTag {
-  padding: 8px 20px;
-  font-size: 13px;
+  padding: 9px 22px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   border: 1px solid var(--border-color);
   background-color: transparent;
-  color: var(--text-primary);
-  border-radius: 0;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 
   &:hover {
-    background-color: #c4a747;
+    background-color: $primary-color;
     color: #000000;
-    border-color: #c4a747;
-    transform: translateY(-2px);
+    border-color: $primary-color;
   }
 
-  &:active {
-    transform: translateY(0);
-  }
+  &:active { transform: scale(0.98); }
 
   @media (max-width: $breakpoint-mobile) {
-    padding: 6px 16px;
-    font-size: 12px;
+    padding: 7px 16px;
+    font-size: 11px;
   }
 }

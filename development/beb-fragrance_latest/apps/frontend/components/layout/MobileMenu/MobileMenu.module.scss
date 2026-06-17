@@ -4,45 +4,33 @@
 .mobileMenu {
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 .menu {
   list-style: none;
-  padding: 10px 20px;
+  padding: 8px 20px;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2px;
 
-  @media (max-width: $breakpoint-mobile) {
-    padding: 8px 16px;
-    gap: 8px;
-  }
+  li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-height: 44px;
+    transition: color $transition-fast;
 
-  li {
-    a {
-      display: block;
-      padding: 10px;
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      font-size: 15px;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-
-      @media (max-width: $breakpoint-mobile) {
-        padding: 8px;
-        font-size: 14px;
-        min-height: 40px;
-      }
-
-      &:hover {
-        background-color: var(--bg-primary);
-      }
+    &:hover {
+      color: $primary-color;
     }
   }
 }
@@ -50,19 +38,14 @@
 .divider {
   height: 1px;
   background-color: var(--border-color);
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .settings {
-  padding: 10px 20px;
+  padding: 8px 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 8px 16px;
-    gap: 10px;
-  }
 }
 
 .settingItem {
@@ -71,81 +54,60 @@
   justify-content: space-between;
   gap: 10px;
 
-  @media (max-width: $breakpoint-mobile) {
-    gap: 8px;
-  }
-
   > span {
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
     font-weight: 500;
-    font-size: 14px;
-
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 13px;
-    }
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 }
 
 .buttonGroup {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .btn {
-  padding: 6px 12px;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  padding: 5px 12px;
+  background: none;
+  color: var(--text-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
   cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
   font-weight: 600;
-  font-size: 12px;
-  transition: all 0.3s ease;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  letter-spacing: 0.08em;
+  transition: all $transition-fast;
+  min-height: 30px;
 
-  @media (max-width: $breakpoint-mobile) {
-    padding: 4px 10px;
-    font-size: 11px;
-    min-height: 28px;
-  }
-
-  &:hover:not(.active) {
-    color: $primary-color;
-  }
+  &:hover:not(.active) { color: var(--text-primary); }
 
   &.active {
     color: $primary-color;
     border-color: $primary-color;
-    background-color: rgba($primary-color, 0.1);
   }
 }
 
 .themeBtn {
-  padding: 6px 12px;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 12px;
-  transition: all 0.3s ease;
-  min-height: 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 4px 10px;
-    font-size: 11px;
-    min-height: 28px;
-  }
+  gap: 6px;
+  padding: 5px 12px;
+  background: none;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all $transition-fast;
+  min-height: 30px;
 
   &:hover {
-    border-color: $primary-color;
     color: $primary-color;
+    border-color: $primary-color;
   }
 }

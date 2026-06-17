@@ -4,36 +4,23 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
-  @media (max-width: $breakpoint-mobile) {
-    gap: 6px;
-  }
+  gap: 6px;
 }
 
 .input {
-  padding: 12px;
+  padding: 11px 14px;
   border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 16px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: $font-primary;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
   transition: border-color 0.3s ease;
   min-height: 44px;
-  display: flex;
-  align-items: center;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 10px;
-    font-size: 14px;
-    min-height: 40px;
-  }
 
   &:focus {
     outline: none;
     border-color: $primary-color;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
   }
 
   &:disabled {
@@ -44,28 +31,23 @@
 
   &.hasError {
     border-color: #ef4444;
-
-    &:focus {
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
-    }
+    &:focus { box-shadow: 0 0 0 2px rgba(239,68,68,0.1); }
   }
+
+  &::placeholder { color: var(--text-secondary); }
 }
 
 .wrapper :global(label) {
-  font-weight: 500;
-  color: var(--text-primary);
-  font-size: 14px;
-
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 12px;
-  }
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .error {
   color: #ef4444;
-  font-size: 14px;
-
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 12px;
-  }
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
 }

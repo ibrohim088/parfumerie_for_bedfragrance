@@ -13,7 +13,6 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   const setTheme = useUIStore((state) => state.setTheme);
 
   useEffect(() => {
-    // Initialize theme from localStorage or system preference (client-only)
     if (typeof window !== 'undefined') {
       try {
         const saved = localStorage.getItem('ui-store');
@@ -29,17 +28,14 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   }, []);
 
   useEffect(() => {
-    if (mounted && typeof window !== 'undefined') {
-      const root = document.documentElement;
-      root.setAttribute('data-theme', theme);
-    }
-  }, [theme, mounted]);
+    // <div> emas, to'g'ridan-to'g'ri <html> ga — barcha elementlar oladi
+    const root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    root.style.colorScheme = theme;
+  }, [theme]);
 
   if (!mounted) return <>{children}</>;
 
-  return (
-    <div suppressHydrationWarning data-theme={theme} style={{ colorScheme: theme }}>
-      {children}
-    </div>
-  );
+  // <div> wrapper yo'q — faqat children
+  return <>{children}</>;
 }
