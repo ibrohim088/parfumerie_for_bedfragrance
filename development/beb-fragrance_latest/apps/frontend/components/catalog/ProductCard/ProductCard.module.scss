@@ -19,10 +19,37 @@
   }
 }
 
+.listCard {
+  flex-direction: row;
+
+  .image {
+    width: 220px;
+    flex: 0 0 220px;
+    padding-top: 0;
+    height: 260px;
+  }
+
+  .content {
+    flex: 1;
+    justify-content: center;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+
+    .image {
+      width: 100%;
+      flex: 0 0 auto;
+      height: auto;
+      padding-top: 125%;
+    }
+  }
+}
+
 .image {
   position: relative;
   width: 100%;
-  padding-top: 125%; /* 4:5 ratio */
+  padding-top: 125%; /* 4:5 nisbat */
   background-color: var(--bg-primary);
   overflow: hidden;
 
@@ -35,6 +62,42 @@
   }
 
   &:hover img { transform: scale(1.04); }
+}
+
+.typeBadge {
+  position: absolute;
+  top: 12px; left: 12px;
+  z-index: 2;
+  padding: 4px 9px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border-color);
+}
+
+.statusBadge {
+  position: absolute;
+  top: 40px; left: 12px;
+  z-index: 2;
+  padding: 4px 9px;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.bestseller {
+  background-color: $primary-color;
+}
+
+.newBadge {
+  background-color: var(--text-primary);
+  color: var(--bg-secondary);
 }
 
 .wishlist {
@@ -55,6 +118,10 @@
   &:hover {
     color: $primary-color;
     border-color: $primary-color;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    opacity: 1;
   }
 }
 
@@ -84,6 +151,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: background-color $transition-fast;
+  white-space: nowrap;
 
   &:hover { background-color: $primary-light; }
 }
@@ -106,7 +174,7 @@
 
 .name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--text-primary);
   margin: 0;
@@ -117,11 +185,28 @@
   overflow: hidden;
 }
 
+.bottomRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
 .price {
   font-family: 'Jost', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
-  margin-top: 4px;
   letter-spacing: 0.02em;
+}
+
+.notes {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-align: right;
 }
