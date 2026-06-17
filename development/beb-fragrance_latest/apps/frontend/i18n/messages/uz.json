@@ -344,5 +344,9 @@
     "deliveryDesc": "Toshkentning hamma nuqtalariga bepul yetkazib berish",
     "support": "24/7 Qo'llab-Quvvatlash",
     "supportDesc": "Har qanday savolga tez javob berish"
+  },
+  "giftBox": {
+    "title": "BEB Sovg'a Qutisi",
+    "description": "Eng nodir atirlardan o'zingiz tanlagan, sevgan insoningiz uchun maxsus tayyorlangan ekskluziv sovg'a to'plami."
   }
 }
