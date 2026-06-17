@@ -88,6 +88,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [resendTimer, setResendTimer] = useState(0);
+  const isSubmittingRef = useRef(false);
 
   const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -142,11 +143,14 @@ export default function LoginPage() {
 
   async function handleVerifyOtp(e: React.FormEvent) {
     e.preventDefault();
+    if (isSubmittingRef.current) return;   // ← qo'shildi: ikkinchi chaqiruvni bloklaydi
+    isSubmittingRef.current = true;
     setError('');
 
     const code = otp.join('');
     if (code.length < OTP_LENGTH) {
       setError("OTP kodni to'liq kiriting");
+      isSubmittingRef.current = false;
       return;
     }
 
@@ -158,6 +162,7 @@ export default function LoginPage() {
       if (result.user.role !== 'admin') {
         setError("Sizda admin huquqi yo'q. Iltimos, admin akkauntidan kiring.");
         setIsLoading(false);
+        isSubmittingRef.current = false;
         return;
       }
 
@@ -173,6 +178,7 @@ export default function LoginPage() {
         setOtp(Array(OTP_LENGTH).fill(''));
         setTimeout(() => otpRefs.current[0]?.focus(), 50);
       }
+      isSubmittingRef.current = false;
     } finally {
       setIsLoading(false);
     }
@@ -195,6 +201,7 @@ export default function LoginPage() {
     if (digit && next.every(d => d !== '')) {
       // small delay so state updates
       setTimeout(() => {
+        if (isSubmittingRef.current) return;
         const form = document.getElementById('otp-form') as HTMLFormElement;
         form?.requestSubmit();
       }, 50);
@@ -329,8 +336,8 @@ export default function LoginPage() {
                     borderColor: error
                       ? '#ef4444'
                       : digit
-                      ? 'var(--color-primary, #d4af37)'
-                      : 'var(--color-border, #2a2a2a)',
+                        ? 'var(--color-primary, #d4af37)'
+                        : 'var(--color-border, #2a2a2a)',
                     background: digit ? 'var(--color-primary-10, #d4af3715)' : 'var(--color-surface, #111)',
                     color: 'var(--color-text, #fff)',
                   }}

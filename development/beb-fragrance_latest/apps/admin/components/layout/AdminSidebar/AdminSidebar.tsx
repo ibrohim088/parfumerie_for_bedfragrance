@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import styles from "./AdminSidebar.module.scss";
 
 export interface NavItem {
@@ -20,7 +21,7 @@ export interface AdminSidebarProps {
 const defaultNavItems: NavItem[] = [
   {
     label: "Dashboard",
-    href: "/dashboard",
+    href: "/",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -101,7 +102,7 @@ const defaultNavItems: NavItem[] = [
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   isCollapsed = false,
-  activePath = "/dashboard",
+  activePath = "/",
   onCloseMobile,
 }) => {
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
@@ -114,8 +115,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   };
 
   const isActive = (href: string) => {
-    if (href === "/dashboard") {
-      return activePath === "/dashboard" || activePath === "/";
+    if (href === "/") {
+      return activePath === "/";
     }
     return activePath.startsWith(href);
   };
@@ -165,20 +166,20 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                       <ul className={styles.subNav}>
                         {item.children!.map((child) => (
                           <li key={child.href}>
-                            <a
+                            <Link
                               href={child.href}
                               className={`${styles.subNavLink} ${isActive(child.href) ? styles.subActive : ""}`}
                               onClick={onCloseMobile}
                             >
                               {child.label}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     )}
                   </>
                 ) : (
-                  <a
+                  <Link
                     href={item.href}
                     className={`${styles.navLink} ${active ? styles.active : ""}`}
                     onClick={onCloseMobile}
@@ -189,7 +190,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                     {!isCollapsed && item.badge ? (
                       <span className={styles.badge}>{item.badge}</span>
                     ) : null}
-                  </a>
+                  </Link>
                 )}
               </li>
             );

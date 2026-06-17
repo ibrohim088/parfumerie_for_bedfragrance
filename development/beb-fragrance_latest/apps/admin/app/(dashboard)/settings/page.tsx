@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminInput } from '@/components/ui/AdminInput/AdminInput';
+import { useTheme } from '@/providers/ThemeProvider';
 
 export default function SettingsPage() {
   const { admin, logout } = useAdminAuth();
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  // const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const { theme, setTheme } = useTheme();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '600px' }}>

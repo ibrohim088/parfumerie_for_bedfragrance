@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { AdminLayout } from '@/components/layout/AdminLayout/AdminLayout';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { Spinner } from '@/components/ui/Spinner/Spinner';
@@ -9,6 +9,7 @@ import { Spinner } from '@/components/ui/Spinner/Spinner';
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { admin, isLoading } = useAdminAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isLoading && !admin) {
@@ -26,5 +27,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (!admin) return null;
 
-  return <AdminLayout>{children}</AdminLayout>;
+  return (
+    <AdminLayout
+      activePath={pathname}
+      user={{
+        name: `${admin.firstName} ${admin.lastName}`.trim(),
+        email: admin.phone,
+        role: 'Super Admin',
+      }}
+    >
+      {children}
+    </AdminLayout>
+  );
 }
