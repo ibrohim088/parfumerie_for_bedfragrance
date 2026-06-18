@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./AdminHeader.module.scss";
 
 interface AdminHeaderProps {
@@ -27,10 +28,25 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
   },
   notifications = 3,
 }) => {
+  const router = useRouter();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
   const notificationsRef = useRef<HTMLDivElement>(null);
+
+  const handleLogout = () => {
+    // localStorage tozalaymiz
+    localStorage.removeItem('admin_access_token');
+    localStorage.removeItem('admin_refresh_token');
+    localStorage.removeItem('admin_user');
+    localStorage.removeItem('admin-auth');
+    
+    // Profil menu yopamiz
+    setIsProfileOpen(false);
+    
+    // Login sahifasiga yo'naltiraymiz
+    router.push('/login');
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -201,7 +217,11 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
                 Settings
               </a>
               <div className={styles.dropdownDivider} />
-              <button type="button" className={`${styles.dropdownItem} ${styles.logout}`}>
+              <button 
+                type="button" 
+                className={`${styles.dropdownItem} ${styles.logout}`}
+                onClick={handleLogout}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                   <polyline points="16 17 21 12 16 7" />
