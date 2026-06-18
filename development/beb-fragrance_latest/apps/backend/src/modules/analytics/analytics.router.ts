@@ -11,6 +11,7 @@ router.get('/overview', analyticsController.getOverview);
 router.get('/revenue', analyticsController.getRevenue);
 router.get('/orders', analyticsController.getOrderStats);
 router.get('/products', analyticsController.getTopProducts);
+router.get('/payment-methods', analyticsController.getPaymentMethods);
 router.get('/users', analyticsController.getUserStats);
 
 export default router;

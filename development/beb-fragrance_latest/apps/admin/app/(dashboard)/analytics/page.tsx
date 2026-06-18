@@ -19,7 +19,7 @@ function formatPrice(amount: number): string {
 
 export default function AnalyticsPage() {
   const [period, setPeriod] = useState<RevenuePeriod>('daily');
-  const { overview, revenue, orderStats, topProducts, userStats, isLoading } = useAnalytics(period);
+  const { overview, revenue, orderStats, topProducts, paymentMethods, userStats, isLoading } = useAnalytics(period);
 
   if (isLoading) {
     return (
@@ -63,7 +63,7 @@ export default function AnalyticsPage() {
       {/* Middle row */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <OrdersByStatusChart data={orderStats ?? []} />
-        <PaymentMethodChart />
+        <PaymentMethodChart data={paymentMethods ?? []} />
       </div>
 
       {/* Bottom row */}

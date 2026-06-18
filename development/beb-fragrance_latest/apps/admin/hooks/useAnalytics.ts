@@ -25,6 +25,11 @@ export function useAnalytics(period: RevenuePeriod = 'daily') {
     queryFn: () => api.get('/analytics/products').then(res => res.data.data),
   });
 
+  const paymentMethodsQuery = useQuery({
+    queryKey: ['analytics', 'payment-methods'],
+    queryFn: () => api.get('/analytics/payment-methods').then(res => res.data.data),
+  });
+
   const userStatsQuery = useQuery({
     queryKey: ['analytics', 'user-growth'],
     queryFn: () => api.get('/analytics/users').then(res => res.data.data),
@@ -35,6 +40,7 @@ export function useAnalytics(period: RevenuePeriod = 'daily') {
     revenue: revenueQuery.data,
     orderStats: orderStatsQuery.data,
     topProducts: topProductsQuery.data,
+    paymentMethods: paymentMethodsQuery.data,
     userStats: userStatsQuery.data,
     isLoading: overviewQuery.isLoading,
   };

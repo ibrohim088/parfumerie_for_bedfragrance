@@ -32,6 +32,13 @@ export async function getTopProducts(req: Request, res: Response, next: NextFunc
   } catch (err) { next(err); }
 }
 
+export async function getPaymentMethods(req: Request, res: Response, next: NextFunction) {
+  try {
+    const data = await analyticsService.getPaymentMethodStats();
+    res.json({ success: true, data });
+  } catch (err) { next(err); }
+}
+
 export async function getUserStats(req: Request, res: Response, next: NextFunction) {
   try {
     const data = await analyticsService.getUserStats();

@@ -117,6 +117,28 @@ export async function getTopProducts(limit = 10) {
   });
 }
 
+const PAYMENT_LABELS: Record<string, string> = {
+  payme: 'Payme',
+  click: 'Click',
+  cash: 'Naqd',
+};
+
+export async function getPaymentMethodStats() {
+  const grouped = await prisma.order.groupBy({
+    by: ['paymentMethod'],
+    where: { paymentStatus: 'paid' },
+    _count: { paymentMethod: true },
+    _sum: { total: true },
+  });
+
+  return grouped.map(g => ({
+    method: g.paymentMethod,
+    label: PAYMENT_LABELS[g.paymentMethod] ?? g.paymentMethod,
+    count: g._count.paymentMethod,
+    amount: g._sum.total ?? 0,
+  }));
+}
+
 export async function getUserStats() {
   const today = startOf('day');
   const week = startOf('week');
