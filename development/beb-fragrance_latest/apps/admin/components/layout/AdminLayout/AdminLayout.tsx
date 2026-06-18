@@ -36,6 +36,16 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     setIsMobileSidebarOpen((prev) => !prev);
   }, []);
 
+  // Header burger button: on desktop it collapses/expands the sidebar width,
+  // on mobile (<=1024px) it opens/closes the off-canvas sidebar instead.
+  const handleMenuToggle = useCallback(() => {
+    if (typeof window !== "undefined" && window.innerWidth <= 1024) {
+      toggleMobileSidebar();
+    } else {
+      toggleSidebar();
+    }
+  }, [toggleSidebar, toggleMobileSidebar]);
+
   return (
     <div className={styles.layout}>
       <aside
@@ -60,7 +70,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         <AdminHeader
           title={title}
           breadcrumbs={breadcrumbs}
-          onMenuToggle={toggleMobileSidebar}
+          onMenuToggle={handleMenuToggle}
           user={user}
         />
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Phone, Mail, MapPin, Instagram, Send, Youtube } from 'lucide-react';
+import { Phone, MapPin, Instagram, Send, Youtube } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import styles from './Footer.module.scss';
@@ -32,7 +32,6 @@ export default function Footer() {
           <div className={styles.section}>
             <h3>{t('contact')}</h3>
             <p><Phone size={14} /> +998 (99) 040 1771</p>
-            <p><Mail size={14} /> info@bebfragrance.uz</p>
             <p><MapPin size={14} /> Tashkent, Uzbekistan, Chorsu Turkuaz</p>
           </div>
 

@@ -21,7 +21,7 @@
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
+  gap: 2em;
   margin-bottom: 48px;
 
   @media (max-width: $breakpoint-tablet) {
