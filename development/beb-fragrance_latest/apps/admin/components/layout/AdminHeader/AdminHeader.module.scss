@@ -99,7 +99,7 @@
   padding: 0 12px 0 40px;
   border: 1px solid var(--header-border);
   border-radius: var(--radius);
-  background: #f9fafb;
+  background: var(--search-input-bg);
   font-size: 14px;
   color: var(--header-text);
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -278,7 +278,7 @@
   }
 
   &.unread {
-    background: #fffbeb;
+    background: var(--notification-unread-bg);
     border-left: 3px solid var(--accent);
   }
 }

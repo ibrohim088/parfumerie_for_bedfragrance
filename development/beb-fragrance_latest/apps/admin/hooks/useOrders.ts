@@ -1,4 +1,4 @@
-// apps/admin/components/hooks/useOrders.ts
+// apps/components/hooks/useOrders.ts
 'use client';
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -18,12 +18,12 @@ export function useOrders(params: OrdersParams = {}) {
 
   const { data, isLoading } = useQuery({
     queryKey: ['orders', params],
-    queryFn: () => api.get('/admin/orders', { params }).then(res => res.data),
+    queryFn: () => api.get('/orders', { params }).then(res => res.data),
   });
 
   const updateStatus = useMutation({
     mutationFn: ({ id, status }: { id: string; status: string }) =>
-      api.patch(`/admin/orders/${id}/status`, { status }),
+      api.patch(`/orders/${id}/status`, { status }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['orders'] }),
   });
 

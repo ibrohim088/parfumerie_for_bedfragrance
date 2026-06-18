@@ -7,6 +7,7 @@ interface AdminHeaderProps {
   title?: string;
   breadcrumbs?: { label: string; href?: string }[];
   onMenuToggle?: () => void;
+  onLogout?: () => void;
   user?: {
     name: string;
     email: string;
@@ -20,6 +21,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
   title = "Dashboard",
   breadcrumbs = [],
   onMenuToggle,
+  onLogout,
   user = {
     name: "Admin User",
     email: "admin@bebfragrance.uz",
@@ -201,7 +203,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
                 Settings
               </a>
               <div className={styles.dropdownDivider} />
-              <button type="button" className={`${styles.dropdownItem} ${styles.logout}`}>
+              <button type="button" className={`${styles.dropdownItem} ${styles.logout}`} onClick={onLogout}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                   <polyline points="16 17 21 12 16 7" />

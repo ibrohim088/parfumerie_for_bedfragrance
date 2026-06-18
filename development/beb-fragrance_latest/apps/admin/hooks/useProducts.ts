@@ -17,21 +17,21 @@ export function useProducts(params: ProductsParams = {}) {
 
   const { data, isLoading } = useQuery({
     queryKey: ['products', params],
-    queryFn: () => api.get('/admin/products', { params }).then(res => res.data),
+    queryFn: () => api.get('/products', { params }).then(res => res.data),
   });
 
   const createProduct = useMutation({
-    mutationFn: (data: any) => api.post('/admin/products', data),
+    mutationFn: (data: any) => api.post('/products', data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['products'] }),
   });
 
   const updateProduct = useMutation({
-    mutationFn: ({ id, ...data }: any) => api.put(`/admin/products/${id}`, data),
+    mutationFn: ({ id, ...data }: any) => api.put(`/products/${id}`, data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['products'] }),
   });
 
   const deleteProduct = useMutation({
-    mutationFn: (id: string) => api.delete(`/admin/products/${id}`),
+    mutationFn: (id: string) => api.delete(`/products/${id}`),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['products'] }),
   });
 

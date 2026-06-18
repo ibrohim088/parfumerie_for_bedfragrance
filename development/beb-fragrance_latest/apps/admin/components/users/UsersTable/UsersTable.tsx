@@ -3,6 +3,7 @@
 import React from 'react';
 import type { User } from '@/../../packages/shared/types/user';
 import styles from './UsersTable.module.scss';
+import { User } from 'lucide-react'
 
 interface UsersTableProps {
   users: User[];
@@ -31,8 +32,8 @@ function getInitials(firstName: string, lastName: string): string {
 }
 
 const ROLE_LABELS: Record<string, string> = {
-  customer:    'Mijoz',
-  admin:       'Admin',
+  customer: 'Mijoz',
+  admin: 'Admin',
   super_admin: 'Super Admin',
 };
 
@@ -40,7 +41,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onRowClick }) => {
   if (users.length === 0) {
     return (
       <div className={styles.empty}>
-        <span className={styles.emptyIcon}>👤</span>
+        <span className={styles.emptyIcon}><User size={24} /></span>
         <p>Foydalanuvchilar topilmadi</p>
       </div>
     );

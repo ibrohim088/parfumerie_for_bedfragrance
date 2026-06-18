@@ -1,9 +1,9 @@
 .card {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #eceff3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 20px 22px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -18,14 +18,14 @@
 .title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
   margin: 0;
 }
 
 .viewAll {
   background: transparent;
   border: none;
-  color: var(--primary, #6c4ef0);
+  color: var(--color-primary);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -33,7 +33,7 @@
   border-radius: 8px;
   transition: background 0.15s ease;
 
-  &:hover { background: rgba(108, 78, 240, 0.08); }
+  &:hover { background: var(--color-primary-10); }
 }
 
 .list {
@@ -57,13 +57,13 @@
 
 .clickable {
   cursor: pointer;
-  &:hover { background: var(--hover, #f9fafb); }
+  &:hover { background: var(--hover); }
 }
 
 .rank {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   text-align: center;
 }
 
@@ -72,7 +72,7 @@
   height: 48px;
   border-radius: 10px;
   overflow: hidden;
-  background: var(--muted, #f4f5f7);
+  background: var(--muted);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,7 @@
 
 .placeholder {
   font-weight: 600;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   font-size: 18px;
 }
 
@@ -107,7 +107,7 @@
 .name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -116,7 +116,7 @@
 .revenue {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
   white-space: nowrap;
 }
 
@@ -126,7 +126,7 @@
   justify-content: space-between;
   gap: 10px;
   font-size: 12px;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
 }
 
 .category { text-transform: capitalize; }
@@ -135,21 +135,21 @@
   margin-top: 4px;
   width: 100%;
   height: 6px;
-  background: var(--muted, #f1f2f4);
+  background: var(--muted);
   border-radius: 999px;
   overflow: hidden;
 }
 
 .barFill {
   height: 100%;
-  background: linear-gradient(90deg, #6c4ef0, #9a82ff);
+  background: linear-gradient(90deg, var(--color-primary), var(--primary-light));
   border-radius: 999px;
   transition: width 0.4s ease;
 }
 
 .empty {
   text-align: center;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   padding: 24px;
   font-size: 13px;
 }

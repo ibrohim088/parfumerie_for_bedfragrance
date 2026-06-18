@@ -1,7 +1,7 @@
 .card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   transition: box-shadow 0.2s;
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-md);
   }
 }
 
@@ -22,7 +22,7 @@
 .title {
   font-size: 13px;
   font-weight: 500;
-  color: #64748b;
+  color: var(--color-text-secondary);
 }
 
 .iconWrapper {
@@ -35,18 +35,18 @@
   font-size: 18px;
   flex-shrink: 0;
 
-  &.icon_default { background: #f1f5f9; color: #475569; }
-  &.icon_blue    { background: #dbeafe; color: #2563eb; }
-  &.icon_green   { background: #dcfce7; color: #16a34a; }
-  &.icon_red     { background: #fee2e2; color: #dc2626; }
-  &.icon_purple  { background: #ede9fe; color: #7c3aed; }
-  &.icon_orange  { background: #ffedd5; color: #ea580c; }
+  &.icon_default { background: var(--muted);          color: var(--color-text-secondary); }
+  &.icon_blue    { background: rgba(37, 99, 235, 0.12);  color: #3b82f6; }
+  &.icon_green   { background: rgba(22, 163, 74, 0.12);  color: #16a34a; }
+  &.icon_red     { background: rgba(220, 38, 38, 0.12);  color: #ef4444; }
+  &.icon_purple  { background: rgba(124, 58, 237, 0.12); color: #8b5cf6; }
+  &.icon_orange  { background: rgba(234, 88, 12, 0.12);  color: #f97316; }
 }
 
 .value {
   font-size: 28px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
   line-height: 1.2;
 }
 
@@ -57,38 +57,26 @@
   font-size: 12px;
   font-weight: 500;
 
-  &.up {
-    color: #16a34a;
-  }
-
-  &.down {
-    color: #dc2626;
-  }
-
-  &.neutral {
-    color: #64748b;
-  }
+  &.up      { color: #16a34a; }
+  &.down    { color: #dc2626; }
+  &.neutral { color: var(--color-text-muted); }
 }
 
-.trendArrow {
-  font-size: 12px;
-}
-
-.trendValue {
-  font-weight: 600;
-}
-
-.trendLabel {
-  color: #94a3b8;
-  font-weight: 400;
-}
+.trendArrow  { font-size: 12px; }
+.trendValue  { font-weight: 600; }
+.trendLabel  { color: var(--color-text-muted); font-weight: 400; }
 
 // Skeleton
 .skeletonTitle,
 .skeletonValue,
 .skeletonTrend {
   border-radius: 4px;
-  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    var(--color-border) 50%,
+    var(--muted) 75%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
 }

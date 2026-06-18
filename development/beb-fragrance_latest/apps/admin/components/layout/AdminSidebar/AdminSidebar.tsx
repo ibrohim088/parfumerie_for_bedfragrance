@@ -198,17 +198,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         </ul>
       </nav>
 
-      <div className={styles.sidebarFooter}>
-        {!isCollapsed && (
-          <div className={styles.footerBox}>
-            <p className={styles.footerTitle}>Need help?</p>
-            <p className={styles.footerText}>Contact our support team</p>
-            <a href="/support" className={styles.footerLink}>
-              Get Support
-            </a>
-          </div>
-        )}
-      </div>
+      <div className={styles.sidebarFooter} />
     </div>
   );
 };

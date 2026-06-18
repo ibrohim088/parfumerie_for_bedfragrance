@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { DollarSign, Package, Clock, Users, ClipboardList, Banknote } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { StatCard } from '@/components/ui/StatCard/StatCard';
 import { RevenueChart } from '@/components/dashboard/RevenueChart/RevenueChart';
@@ -38,21 +39,21 @@ export default function DashboardPage() {
           title="Jami daromad"
           value={formatPrice(overview?.totalRevenue ?? 0)}
           subtitle={`Bugun: ${formatPrice(overview?.todayRevenue ?? 0)}`}
-          icon="💰"
+          icon={<DollarSign size={20} />}
           color="green"
         />
         <StatCard
           title="Jami buyurtmalar"
           value={String(overview?.totalOrders ?? 0)}
           subtitle={`Bugun: ${overview?.todayOrders ?? 0} ta`}
-          icon="📦"
+          icon={<Package size={20} />}
           color="blue"
         />
         <StatCard
           title="Kutilayotgan buyurtmalar"
           value={String(overview?.pendingOrders ?? 0)}
           subtitle={`Naqd kutilmoqda: ${overview?.pendingCashOrders ?? 0}`}
-          icon="⏳"
+          icon={<Clock size={20} />}
           color="orange"
           href="/orders?status=pending"
         />
@@ -60,7 +61,7 @@ export default function DashboardPage() {
           title="Foydalanuvchilar"
           value={String(overview?.totalUsers ?? 0)}
           subtitle={`Mahsulotlar: ${overview?.totalProducts ?? 0} ta`}
-          icon="👥"
+          icon={<Users size={20} />}
           color="purple"
         />
       </div>
@@ -77,10 +78,10 @@ export default function DashboardPage() {
       {/* Quick links */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
         {[
-          { href: '/products/new', label: '+ Yangi mahsulot', color: '#10b981' },
-          { href: '/orders?status=pending', label: '📋 Kutilgan buyurtmalar', color: '#f59e0b' },
-          { href: '/payments?status=pending_cash', label: '💵 Naqd to\'lovlar', color: '#3b82f6' },
-          { href: '/users', label: '👥 Foydalanuvchilar', color: '#8b5cf6' },
+          { href: '/products/new', label: 'Yangi mahsulot', icon: null, color: '#10b981' },
+          { href: '/orders?status=pending', label: 'Kutilgan buyurtmalar', icon: <ClipboardList size={16} />, color: '#f59e0b' },
+          { href: '/payments?status=pending_cash', label: "Naqd to'lovlar", icon: <Banknote size={16} />, color: '#3b82f6' },
+          { href: '/users', label: 'Foydalanuvchilar', icon: <Users size={16} />, color: '#8b5cf6' },
         ].map(item => (
           <Link
             key={item.href}
@@ -89,6 +90,7 @@ export default function DashboardPage() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              gap: '8px',
               padding: '16px',
               borderRadius: '8px',
               border: `1px solid ${item.color}30`,
@@ -100,6 +102,7 @@ export default function DashboardPage() {
               transition: 'background 0.2s',
             }}
           >
+            {item.icon}
             {item.label}
           </Link>
         ))}

@@ -39,7 +39,7 @@ function formatDate(iso: string) {
   return d.toLocaleDateString('uz-UZ', { day: '2-digit', month: 'short' });
 }
 
-export default function UserGrowthChart({
+export function UserGrowthChart({
   data,
   loading,
   title = "Foydalanuvchilar o'sishi",

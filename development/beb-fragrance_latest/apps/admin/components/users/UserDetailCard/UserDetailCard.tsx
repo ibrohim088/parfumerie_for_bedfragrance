@@ -3,6 +3,7 @@
 import React from 'react';
 import type { User } from '@/../../packages/shared/types/user';
 import styles from './UserDetailCard.module.scss';
+import { Lock, CheckCircle2, Trash2 } from 'lucide-react'
 
 interface UserDetailCardProps {
   user: User;
@@ -34,8 +35,8 @@ function getInitials(firstName: string, lastName: string): string {
 }
 
 const ROLE_LABELS: Record<string, string> = {
-  customer:    'Mijoz',
-  admin:       'Admin',
+  customer: 'Mijoz',
+  admin: 'Admin',
   super_admin: 'Super Admin',
 };
 
@@ -131,9 +132,9 @@ const UserDetailCard: React.FC<UserDetailCardProps> = ({
           {isUpdating ? (
             <span className={styles.btnSpinner} />
           ) : user.isActive ? (
-            '🔒 Bloklash'
+            <Lock size={16} />
           ) : (
-            '✅ Faollashtirish'
+            <CheckCircle2 size={16} />
           )}
         </button>
       </div>
@@ -146,7 +147,8 @@ const UserDetailCard: React.FC<UserDetailCardProps> = ({
           Bu amalni qaytarib bo'lmaydi.
         </p>
         <button className={`${styles.actionBtn} ${styles.btnDelete}`} onClick={handleDelete}>
-          🗑 Foydalanuvchini o'chirish
+          <Trash2 size={16} />
+          Foydalanuvchini o'chirish
         </button>
       </div>
     </div>

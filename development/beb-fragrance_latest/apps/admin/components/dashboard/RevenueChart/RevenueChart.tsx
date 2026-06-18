@@ -54,7 +54,8 @@ export const RevenueChart: React.FC<RevenueChartProps> = ({
 
   const visible = useMemo(() => {
     const months = RANGES.find((r) => r.key === range)?.months ?? data.length;
-    return data.slice(-months);
+    // return data.slice(-months);
+    return Array.isArray(data) ? data.slice(-months) : [];
   }, [data, range]);
 
   const { max, total, growth } = useMemo(() => {

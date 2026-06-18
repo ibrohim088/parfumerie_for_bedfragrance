@@ -1,9 +1,9 @@
 .card {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #eceff3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 20px 22px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -21,7 +21,7 @@
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 8px;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
 }
 
 .summary {
@@ -33,13 +33,13 @@
 .total {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
 }
 
 .currency {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   margin-left: 4px;
 }
 
@@ -50,12 +50,12 @@
   border-radius: 999px;
 }
 
-.up   { color: #137d3f; background: #e7f8ee; }
-.down { color: #c13b3b; background: #fdecec; }
+.up   { color: #16a34a; background: rgba(22, 163, 74, 0.12); }
+.down { color: #dc2626; background: rgba(220, 38, 38, 0.12); }
 
 .tabs {
   display: inline-flex;
-  background: var(--muted, #f4f5f7);
+  background: var(--muted);
   border-radius: 10px;
   padding: 4px;
 }
@@ -66,23 +66,21 @@
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s ease;
 
-  &:hover { color: var(--text-primary, #101828); }
+  &:hover { color: var(--color-text); }
 }
 
 .tabActive {
-  background: #fff;
-  color: var(--text-primary, #101828);
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+  background: var(--tab-active-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
 }
 
-.chartWrap {
-  width: 100%;
-}
+.chartWrap { width: 100%; }
 
 .chart {
   width: 100%;
@@ -91,39 +89,39 @@
 }
 
 .grid {
-  stroke: var(--border-light, #f1f2f4);
+  stroke: var(--border-light);
   stroke-width: 1;
   stroke-dasharray: 3 4;
 }
 
 .axis {
   font-size: 10.5px;
-  fill: var(--text-muted, #98a2b3);
+  fill: var(--color-text-muted);
   font-family: inherit;
 }
 
 .line {
   fill: none;
-  stroke: #6c4ef0;
+  stroke: var(--color-primary);
   stroke-width: 2.25;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .dot {
-  fill: #fff;
-  stroke: #6c4ef0;
+  fill: var(--color-surface);
+  stroke: var(--color-primary);
   stroke-width: 2;
   transition: r 0.15s ease;
 }
 
 .tipBg {
-  fill: #101828;
+  fill: var(--color-text);
   opacity: 0.92;
 }
 
 .tipText {
-  fill: #fff;
+  fill: var(--color-bg);
   font-size: 11px;
   font-weight: 500;
 }

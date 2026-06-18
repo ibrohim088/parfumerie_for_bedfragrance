@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styles from './ProductsTable.module.scss';
 import { AdminBadge } from '@/components/ui/AdminBadge/AdminBadge';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
+import { Star } from 'lucide-react'
 
 export type ProductRow = {
   id: string;
@@ -106,7 +107,7 @@ export function ProductsTable({ products, onEdit, onDelete }: ProductsTableProps
                     <div className={styles.productInfo}>
                       <span className={styles.name}>
                         {p.name}
-                        {p.isFeatured && <span className={styles.featured}>★</span>}
+                        {p.isFeatured && <span className={styles.featured}><Star size={16} fill="currentColor" /></span>}
                       </span>
                     </div>
                   </div>

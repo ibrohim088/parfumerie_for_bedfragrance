@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { DollarSign, Package, Users, ShoppingBag, Calendar, CalendarRange, CalendarClock, CheckCircle2 } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { RevenueChart } from '@/components/dashboard/RevenueChart/RevenueChart';
 import { TopProducts } from '@/components/dashboard/TopProducts/TopProducts';
@@ -50,10 +51,10 @@ export default function AnalyticsPage() {
 
       {/* Overview stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
-        <StatCard title="Jami daromad" value={formatPrice(overview?.totalRevenue ?? 0)} icon="💰" color="green" />
-        <StatCard title="Jami buyurtmalar" value={String(overview?.totalOrders ?? 0)} icon="📦" color="blue" />
-        <StatCard title="Jami foydalanuvchilar" value={String(overview?.totalUsers ?? 0)} icon="👥" color="purple" />
-        <StatCard title="Faol mahsulotlar" value={String(overview?.totalProducts ?? 0)} icon="🛍️" color="orange" />
+        <StatCard title="Jami daromad" value={formatPrice(overview?.totalRevenue ?? 0)} icon={<DollarSign size={20} />} color="green" />
+        <StatCard title="Jami buyurtmalar" value={String(overview?.totalOrders ?? 0)} icon={<Package size={20} />} color="blue" />
+        <StatCard title="Jami foydalanuvchilar" value={String(overview?.totalUsers ?? 0)} icon={<Users size={20} />} color="purple" />
+        <StatCard title="Faol mahsulotlar" value={String(overview?.totalProducts ?? 0)} icon={<ShoppingBag size={20} />} color="orange" />
       </div>
 
       {/* Revenue chart */}
@@ -79,10 +80,10 @@ export default function AnalyticsPage() {
           <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>Foydalanuvchilar o'sishi</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              { label: 'Bugun qo\'shildi', value: userStats?.newUsersToday ?? 0, icon: '📅' },
-              { label: 'Bu hafta qo\'shildi', value: userStats?.newUsersThisWeek ?? 0, icon: '📆' },
-              { label: 'Bu oy qo\'shildi', value: userStats?.newUsersThisMonth ?? 0, icon: '🗓️' },
-              { label: 'Jami faol', value: userStats?.totalActive ?? 0, icon: '✅' },
+              { label: 'Bugun qo\'shildi', value: userStats?.newUsersToday ?? 0, icon: <Calendar size={16} /> },
+              { label: 'Bu hafta qo\'shildi', value: userStats?.newUsersThisWeek ?? 0, icon: <CalendarRange size={16} /> },
+              { label: 'Bu oy qo\'shildi', value: userStats?.newUsersThisMonth ?? 0, icon: <CalendarClock size={16} /> },
+              { label: 'Jami faol', value: userStats?.totalActive ?? 0, icon: <CheckCircle2 size={16} /> },
             ].map(item => (
               <div
                 key={item.label}
@@ -95,7 +96,7 @@ export default function AnalyticsPage() {
                   borderRadius: '8px',
                 }}
               >
-                <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
                   {item.icon} {item.label}
                 </span>
                 <span style={{ fontWeight: 700, fontSize: '18px' }}>{item.value}</span>

@@ -39,7 +39,7 @@ function formatUZS(value: number) {
   return new Intl.NumberFormat('uz-UZ').format(value) + " so'm";
 }
 
-export default function PaymentMethodChart({
+export function PaymentMethodChart({
   data,
   loading,
   title = "To'lov usullari bo'yicha",

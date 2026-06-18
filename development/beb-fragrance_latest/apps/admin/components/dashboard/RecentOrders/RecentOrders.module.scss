@@ -1,9 +1,9 @@
 .card {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #eceff3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 20px 22px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -18,14 +18,14 @@
 .title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-primary, #101828);
+  color: var(--color-text);
   margin: 0;
 }
 
 .viewAll {
   background: transparent;
   border: none;
-  color: var(--primary, #6c4ef0);
+  color: var(--color-primary);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -33,12 +33,10 @@
   border-radius: 8px;
   transition: background 0.15s ease;
 
-  &:hover { background: rgba(108, 78, 240, 0.08); }
+  &:hover { background: var(--color-primary-10); }
 }
 
-.tableWrap {
-  overflow-x: auto;
-}
+.tableWrap { overflow-x: auto; }
 
 .table {
   width: 100%;
@@ -47,19 +45,19 @@
 
   thead th {
     text-align: left;
-    color: var(--text-muted, #667085);
+    color: var(--color-text-muted);
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     padding: 10px 12px;
-    border-bottom: 1px solid var(--border, #eceff3);
+    border-bottom: 1px solid var(--color-border);
   }
 
   tbody td {
     padding: 14px 12px;
-    border-bottom: 1px solid var(--border-light, #f4f5f7);
-    color: var(--text-primary, #101828);
+    border-bottom: 1px solid var(--border-light);
+    color: var(--color-text);
     vertical-align: middle;
   }
 
@@ -69,12 +67,12 @@
 .clickable {
   cursor: pointer;
   transition: background 0.15s ease;
-  &:hover { background: var(--hover, #f9fafb); }
+  &:hover { background: var(--hover); }
 }
 
-.right { text-align: right; }
-.mono  { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; color: var(--text-muted, #667085); }
-.muted { color: var(--text-muted, #667085); }
+.right  { text-align: right; }
+.mono   { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; color: var(--color-text-muted); }
+.muted  { color: var(--color-text-muted); }
 .amount { font-weight: 600; }
 
 .customer {
@@ -83,7 +81,7 @@
   gap: 2px;
 
   .name  { font-weight: 500; }
-  .email { font-size: 12px; color: var(--text-muted, #667085); }
+  .email { font-size: 12px; color: var(--color-text-muted); }
 }
 
 .badge {
@@ -95,14 +93,15 @@
   line-height: 1.4;
 }
 
-.status_pending     { background: #fff7e6; color: #b76e00; }
-.status_processing  { background: #eef2ff; color: #4f46e5; }
-.status_shipped     { background: #e0f2fe; color: #0369a1; }
-.status_delivered   { background: #e7f8ee; color: #137d3f; }
-.status_cancelled   { background: #fdecec; color: #c13b3b; }
+// Status badge — dark modeda ham o'qilsin deb rgba ishlatildi
+.status_pending    { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+.status_processing { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
+.status_shipped    { background: rgba(14, 165, 233, 0.12); color: #0ea5e9; }
+.status_delivered  { background: rgba(34, 197, 94, 0.12);  color: #22c55e; }
+.status_cancelled  { background: rgba(239, 68, 68, 0.12);  color: #ef4444; }
 
 .empty {
   text-align: center;
-  color: var(--text-muted, #667085);
+  color: var(--color-text-muted);
   padding: 32px !important;
 }

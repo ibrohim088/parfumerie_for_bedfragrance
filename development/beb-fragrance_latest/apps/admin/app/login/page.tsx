@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -299,7 +300,7 @@ export default function LoginPage() {
               {isLoading ? (
                 <span style={styles.spinner} />
               ) : (
-                'OTP kod yuborish →'
+                <>OTP kod yuborish <ArrowRight size={16} /></>
               )}
             </button>
 
@@ -383,7 +384,9 @@ export default function LoginPage() {
                 }}
                 style={styles.ghostBtn}
               >
-                ← Raqamni o'zgartirish
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ArrowLeft size={16} /> Raqamni o'zgartirish
+                </div>
               </button>
             </div>
           </form>

@@ -1,111 +1,140 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 // ============================================
-// LIGHT THEME (default)
+// LIGHT THEME
 // ============================================
 
 :root,
-[data-theme='light'] {
-  // Brand
-  --primary-color:     #{$primary-color};
-  --primary-light:     #{$primary-light};
-  --primary-dark:      #{$primary-dark};
-  --primary-hover:     #{$primary-hover};
+[data-theme="light"] {
+  // ── Brand ──
+  --primary-color:        #D2AA32;
+  --primary-light:        #E6BE46;
+  --primary-dark:         #A08228;
+  --primary-hover:        #E6BE46;
 
-  // Semantic
-  --color-success:     #{$color-success};
-  --color-error:       #{$color-error};
-  --color-warning:     #{$color-warning};
-  --color-info:        #{$color-info};
-  --color-success-bg:  #{$color-success-bg};
-  --color-error-bg:    #{$color-error-bg};
-  --color-warning-bg:  #{$color-warning-bg};
-  --color-info-bg:     #{$color-info-bg};
+  // ── Semantic ──
+  --color-success:        #10b981;
+  --color-error:          #ef4444;
+  --color-warning:        #f59e0b;
+  --color-info:           #3b82f6;
+  --color-success-bg:     rgba(16, 185, 129, 0.08);
+  --color-error-bg:       rgba(239, 68, 68, 0.08);
+  --color-warning-bg:     rgba(245, 158, 11, 0.08);
+  --color-info-bg:        rgba(59, 130, 246, 0.08);
 
-  // Backgrounds
-  --bg-primary:        #ffffff;
-  --bg-secondary:      #{$color-gray-50};
-  --bg-card:           #ffffff;
-  --bg-input:          #ffffff;
-  --bg-hover:          #{$color-gray-50};
-  --bg-active:         rgba(#{$primary-color}, 0.08);
+  // ── Backgrounds (frontend ranglaridan) ──
+  --color-bg:             #F5F5F5;
+  --color-surface:        #FFFFFF;
+  --color-surface-muted:  #fafafa;
+  --color-surface-hover:  rgba(0, 0, 0, 0.025);
 
-  // Text
-  --text-primary:      #{$color-gray-900};
-  --text-secondary:    #{$color-gray-600};
-  --text-muted:        #{$color-gray-400};
-  --text-inverse:      #ffffff;
+  // ── Text (frontend ranglaridan) ──
+  --color-text:           #0A0A0A;
+  --color-text-secondary: #505050;
+  --color-text-muted:     #9ca3af;
+  --color-on-primary:     #0A0A0A;
 
-  // Borders
-  --border-color:      #{$color-gray-200};
-  --border-strong:     #{$color-gray-300};
+  // ── Border (frontend ranglaridan) ──
+  --color-border:         #D2C8B4;
+  --color-border-strong:  #b5aa96;
 
-  // Sidebar (always dark)
-  --sidebar-bg:        #{$sidebar-bg};
-  --sidebar-text:      #{$color-gray-300};
-  --sidebar-text-active: #ffffff;
-  --sidebar-item-hover:  rgba(255, 255, 255, 0.07);
-  --sidebar-item-active: rgba(#{$primary-color}, 0.25);
+  // ── Primary alias ──
+  --color-primary:        #D2AA32;
+  --color-primary-10:     rgba(210, 170, 50, 0.1);
 
-  // Shadows
-  --shadow-sm:         #{$shadow-sm};
-  --shadow-md:         #{$shadow-md};
-  --shadow-lg:         #{$shadow-lg};
-  --shadow-xl:         #{$shadow-xl};
+  // ── AdminHeader ──
+  --header-bg:            #FFFFFF;
+  --header-border:        #D2C8B4;
+  --header-text:          #0A0A0A;
+  --header-muted:         #505050;
+  --accent:               #D2AA32;
+  --accent-light:         rgba(210, 170, 50, 0.1);
+
+  // ── Dashboard component aliases ──
+  --surface:              #FFFFFF;
+  --border:               #D2C8B4;
+  --border-light:         #ece8df;
+  --hover:                #F5F5F5;
+  --muted:                #f0ede7;
+  --primary:              #D2AA32;
+
+  // ── Specific overrides ──
+  --search-input-bg:        #F5F5F5;
+  --notification-unread-bg: rgba(210, 170, 50, 0.07);
+  --tab-active-bg:          #FFFFFF;
+
+  // ── Shadows ──
+  --shadow-sm:  0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl:  0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 // ============================================
-// DARK THEME
+// DARK THEME (frontend: #191919 / #111111)
 // ============================================
 
-[data-theme='dark'] {
-  // Brand (same)
-  --primary-color:     #{$primary-color};
-  --primary-light:     #{$primary-light};
-  --primary-dark:      #{$primary-dark};
-  --primary-hover:     #{$primary-hover};
+[data-theme="dark"] {
+  // ── Brand (same) ──
+  --primary-color:        #D2AA32;
+  --primary-light:        #E6BE46;
+  --primary-dark:         #A08228;
+  --primary-hover:        #E6BE46;
 
-  // Semantic (same)
-  --color-success:     #{$color-success};
-  --color-error:       #{$color-error};
-  --color-warning:     #{$color-warning};
-  --color-info:        #{$color-info};
-  --color-success-bg:  rgba(34, 197, 94, 0.12);
-  --color-error-bg:    rgba(239, 68, 68, 0.12);
-  --color-warning-bg:  rgba(245, 158, 11, 0.12);
-  --color-info-bg:     rgba(59, 130, 246, 0.12);
+  // ── Semantic ──
+  --color-success:        #10b981;
+  --color-error:          #ef4444;
+  --color-warning:        #f59e0b;
+  --color-info:           #3b82f6;
+  --color-success-bg:     rgba(16, 185, 129, 0.12);
+  --color-error-bg:       rgba(239, 68, 68, 0.12);
+  --color-warning-bg:     rgba(245, 158, 11, 0.12);
+  --color-info-bg:        rgba(59, 130, 246, 0.12);
 
-  // Backgrounds
-  --bg-primary:        #{$color-gray-900};
-  --bg-secondary:      #{$color-gray-800};
-  --bg-card:           #{$color-gray-800};
-  --bg-input:          #{$color-gray-700};
-  --bg-hover:          #{$color-gray-700};
-  --bg-active:         rgba(99, 102, 241, 0.15);
+  // ── Backgrounds (frontend: $dark-bg-primary: #191919) ──
+  --color-bg:             #191919;
+  --color-surface:        #111111;
+  --color-surface-muted:  #1a1a1a;
+  --color-surface-hover:  rgba(255, 255, 255, 0.04);
 
-  // Text
-  --text-primary:      #{$color-gray-50};
-  --text-secondary:    #{$color-gray-400};
-  --text-muted:        #{$color-gray-500};
-  --text-inverse:      #{$color-gray-900};
+  // ── Text (frontend: $dark-text-primary: #F5F0E8) ──
+  --color-text:           #F5F0E8;
+  --color-text-secondary: #A0A0A0;
+  --color-text-muted:     #555555;
+  --color-on-primary:     #111111;
 
-  // Borders
-  --border-color:      #{$color-gray-700};
-  --border-strong:     #{$color-gray-600};
+  // ── Border (frontend: $dark-border-color: #2A2A2A) ──
+  --color-border:         #2A2A2A;
+  --color-border-strong:  #3a3a3a;
 
-  // Sidebar (always dark, slightly different)
-  --sidebar-bg:        #0d1117;
-  --sidebar-text:      #{$color-gray-400};
-  --sidebar-text-active: #ffffff;
-  --sidebar-item-hover:  rgba(255, 255, 255, 0.05);
-  --sidebar-item-active: rgba(99, 102, 241, 0.2);
+  // ── Primary alias ──
+  --color-primary:        #D2AA32;
+  --color-primary-10:     rgba(210, 170, 50, 0.1);
 
-  // Shadows (deeper)
-  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md:         0 4px 6px -1px rgba(0, 0, 0, 0.4),
-                       0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg:         0 10px 15px -3px rgba(0, 0, 0, 0.4),
-                       0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --shadow-xl:         0 20px 25px -5px rgba(0, 0, 0, 0.5),
-                       0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  // ── AdminHeader ──
+  --header-bg:            #111111;
+  --header-border:        #2A2A2A;
+  --header-text:          #F5F0E8;
+  --header-muted:         #A0A0A0;
+  --accent:               #D2AA32;
+  --accent-light:         rgba(210, 170, 50, 0.08);
+
+  // ── Dashboard component aliases ──
+  --surface:              #111111;
+  --border:               #2A2A2A;
+  --border-light:         #1e1e1e;
+  --hover:                #1a1a1a;
+  --muted:                #1e1e1e;
+  --primary:              #D2AA32;
+
+  // ── Specific overrides ──
+  --search-input-bg:        #1a1a1a;
+  --notification-unread-bg: rgba(210, 170, 50, 0.07);
+  --tab-active-bg:          #2A2A2A;
+
+  // ── Shadows (deeper) ──
+  --shadow-sm:  0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl:  0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
 }

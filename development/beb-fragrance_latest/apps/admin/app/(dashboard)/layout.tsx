@@ -7,7 +7,7 @@ import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { Spinner } from '@/components/ui/Spinner/Spinner';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { admin, isLoading } = useAdminAuth();
+  const { admin, isLoading, logout } = useAdminAuth();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -30,6 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <AdminLayout
       activePath={pathname}
+      onLogout={logout}
       user={{
         name: `${admin.firstName} ${admin.lastName}`.trim(),
         email: admin.phone,

@@ -6,33 +6,24 @@
 :root {
   color-scheme: light dark;
 
-  /* AdminLayout */
-  --sidebar-width: 260px;
-  --sidebar-collapsed: 72px;
-  --bg-main: #f8f7f5;
-  --transition-speed: 0.3s;
+  /* Layout */
+  --sidebar-width:      260px;
+  --sidebar-collapsed:  72px;
+  --header-height:      64px;
+  --radius:             8px;
+  --transition-speed:   0.3s;
 
-  /* AdminSidebar */
-  --sidebar-bg: #1a1a2e;
-  --sidebar-text: #a0a3bd;
+  /* AdminSidebar (always dark — theme dan tashqari) */
+  --sidebar-bg:         #1a1a2e;
+  --sidebar-text:       #a0a3bd;
   --sidebar-text-hover: #e4e6f1;
-  --sidebar-active: #d4a574;
-  --sidebar-active-bg: rgba(212, 165, 116, 0.12);
-  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-active:     #D2AA32;
+  --sidebar-active-bg:  rgba(210, 170, 50, 0.12);
+  --sidebar-border:     rgba(255, 255, 255, 0.06);
 
-  /* AdminHeader */
-  --header-height: 64px;
-  --header-bg: #ffffff;
-  --header-border: #e5e7eb;
-  --header-text: #111827;
-  --header-muted: #6b7280;
-  --accent: #d4a574;
-  --accent-light: #f5ebe0;
-  --badge-bg: #ef4444;
+  /* Badge */
+  --badge-bg:   #ef4444;
   --badge-text: #ffffff;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --radius: 8px;
 }
 
 html,
@@ -45,6 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #__next,
@@ -70,12 +62,12 @@ svg {
 
 ::selection {
   background-color: var(--color-primary);
-  color: var(--color-on-primary);
+  color: #000;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -84,7 +76,7 @@ svg {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
-  border-radius: 5px;
+  border-radius: 4px;
 
   &:hover {
     background: var(--color-text-muted);

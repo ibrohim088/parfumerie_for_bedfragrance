@@ -26,7 +26,7 @@ const COLORS: Record<string, string> = {
 
 const FALLBACK_COLORS = ['#7c3aed', '#22c55e', '#f59e0b', '#ef4444', '#3b82f6', '#64748b'];
 
-export default function OrdersByStatusChart({
+export function OrdersByStatusChart({
   data,
   loading,
   title = "Buyurtmalar statusi bo'yicha",

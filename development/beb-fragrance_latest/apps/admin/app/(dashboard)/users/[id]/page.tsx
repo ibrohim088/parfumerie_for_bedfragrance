@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { ArrowLeft, ArrowRight, Package, CreditCard } from 'lucide-react';
 import { useUser } from '@/hooks/useUser';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminBadge } from '@/components/ui/AdminBadge/AdminBadge';
@@ -31,7 +32,7 @@ export default function UserDetailPage() {
       <div style={{ textAlign: 'center', padding: '60px' }}>
         <p style={{ color: 'var(--color-text-secondary)' }}>Foydalanuvchi topilmadi</p>
         <AdminButton variant="ghost" onClick={() => router.push('/users')} style={{ marginTop: '12px' }}>
-          ← Foydalanuvchilarga qaytish
+          <ArrowLeft size={16} /> Foydalanuvchilarga qaytish
         </AdminButton>
       </div>
     );
@@ -42,7 +43,9 @@ export default function UserDetailPage() {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <AdminButton variant="ghost" onClick={() => router.back()}>← Orqaga</AdminButton>
+          <AdminButton variant="ghost" onClick={() => router.back()}>
+            <ArrowLeft size={16} /> Orqaga
+          </AdminButton>
           <div>
             <h1 style={{ fontSize: '22px', fontWeight: 700 }}>
               {user.firstName} {user.lastName}
@@ -107,7 +110,9 @@ export default function UserDetailPage() {
               <Link
                 href={`/orders?search=${user.phone}`}
                 style={{
-                  display: 'block',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
                   padding: '12px 16px',
                   background: 'var(--color-bg)',
                   borderRadius: '8px',
@@ -117,12 +122,17 @@ export default function UserDetailPage() {
                   transition: 'background 0.2s',
                 }}
               >
-                📦 Buyurtmalarini ko'rish →
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Package size={16} /> Buyurtmalarini ko'rish
+                </span>
+                <ArrowRight size={16} />
               </Link>
               <Link
                 href={`/payments?search=${user.phone}`}
                 style={{
-                  display: 'block',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
                   padding: '12px 16px',
                   background: 'var(--color-bg)',
                   borderRadius: '8px',
@@ -131,7 +141,10 @@ export default function UserDetailPage() {
                   fontSize: '14px',
                 }}
               >
-                💳 To'lovlarini ko'rish →
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CreditCard size={16} /> To'lovlarini ko'rish
+                </span>
+                <ArrowRight size={16} />
               </Link>
             </div>
           </div>

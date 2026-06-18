@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Sun, Moon, Info, CheckCircle2 } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminInput } from '@/components/ui/AdminInput/AdminInput';
@@ -8,7 +8,6 @@ import { useTheme } from '@/providers/ThemeProvider';
 
 export default function SettingsPage() {
   const { admin, logout } = useAdminAuth();
-  // const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const { theme, setTheme } = useTheme();
 
   return (
@@ -35,13 +34,17 @@ export default function SettingsPage() {
           </div>
           <AdminInput label="Telefon raqami" value={admin?.phone ?? ''} readOnly />
           <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
             padding: '12px 16px',
             background: 'var(--color-bg)',
             borderRadius: '8px',
             fontSize: '13px',
             color: 'var(--color-text-secondary)',
           }}>
-            ℹ️ Profilni o'zgartirish uchun backend orqali bajaring
+            <Info size={15} style={{ flexShrink: 0 }} />
+            Profilni o'zgartirish uchun backend orqali bajaring
           </div>
         </div>
       </div>
@@ -55,26 +58,40 @@ export default function SettingsPage() {
       }}>
         <h3 style={{ fontWeight: 600, marginBottom: '16px' }}>Interfeys</h3>
         <div style={{ display: 'flex', gap: '12px' }}>
-          {(['light', 'dark'] as const).map(t => (
-            <button
-              key={t}
-              onClick={() => setTheme(t)}
-              style={{
-                flex: 1,
-                padding: '12px',
-                borderRadius: '8px',
-                border: `2px solid ${theme === t ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                background: theme === t ? 'var(--color-primary)10' : 'var(--color-bg)',
-                cursor: 'pointer',
-                color: 'var(--color-text)',
-                fontWeight: theme === t ? 600 : 400,
-                fontSize: '14px',
-                transition: 'all 0.2s',
-              }}
-            >
-              {t === 'light' ? '☀️ Kunduzgi' : '🌙 Tungi'}
-            </button>
-          ))}
+          {(['light', 'dark'] as const).map(t => {
+            const isActive = theme === t;
+            const Icon = t === 'light' ? Sun : Moon;
+            return (
+              <button
+                key={t}
+                onClick={() => setTheme(t)}
+                style={{
+                  flex: 1,
+                  padding: '16px 12px',
+                  borderRadius: '10px',
+                  border: `2px solid ${isActive ? 'var(--color-primary)' : 'var(--color-border)'}`,
+                  background: isActive ? 'var(--color-primary-10)' : 'var(--color-bg)',
+                  cursor: 'pointer',
+                  color: 'var(--color-text)',
+                  fontWeight: isActive ? 600 : 400,
+                  fontSize: '14px',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <Icon
+                  size={24}
+                  style={{
+                    color: t === 'light' ? '#facc15' : isActive ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                    fill: t === 'light' ? '#facc15' : 'none',
+                  }}
+                />
+                <span>{t === 'light' ? 'Kunduzgi' : 'Tungi'}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 

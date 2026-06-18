@@ -10,6 +10,7 @@ export interface AdminLayoutProps {
   title?: string;
   breadcrumbs?: { label: string; href?: string }[];
   activePath?: string;
+  onLogout?: () => void;
   user?: {
     name: string;
     email: string;
@@ -23,6 +24,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   title = "Dashboard",
   breadcrumbs = [],
   activePath = "/dashboard",
+  onLogout,
   user,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -71,6 +73,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           title={title}
           breadcrumbs={breadcrumbs}
           onMenuToggle={handleMenuToggle}
+          onLogout={onLogout}
           user={user}
         />
 

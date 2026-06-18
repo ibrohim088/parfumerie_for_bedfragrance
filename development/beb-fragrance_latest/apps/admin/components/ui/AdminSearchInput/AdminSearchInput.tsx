@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import styles from './AdminSearchInput.module.scss';
+import {X} from 'lucide-react';
 
 interface AdminSearchInputProps {
   value: string;
@@ -44,7 +45,7 @@ const AdminSearchInput: React.FC<AdminSearchInputProps> = ({
       />
       {value && (
         <button className={styles.clearBtn} onClick={handleClear} aria-label="Clear search">
-          ✕
+          <X size={16} />
         </button>
       )}
     </div>
