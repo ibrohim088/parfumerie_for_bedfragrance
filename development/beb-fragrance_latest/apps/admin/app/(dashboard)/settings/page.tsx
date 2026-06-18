@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Info, Sun, Moon } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminInput } from '@/components/ui/AdminInput/AdminInput';
@@ -40,8 +41,12 @@ export default function SettingsPage() {
             borderRadius: '8px',
             fontSize: '13px',
             color: 'var(--color-text-secondary)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
           }}>
-            ℹ️ Profilni o'zgartirish uchun backend orqali bajaring
+            <Info size={16} />
+            Profilni o'zgartirish uchun backend orqali bajaring
           </div>
         </div>
       </div>
@@ -70,9 +75,13 @@ export default function SettingsPage() {
                 fontWeight: theme === t ? 600 : 400,
                 fontSize: '14px',
                 transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
               }}
             >
-              {t === 'light' ? '☀️ Kunduzgi' : '🌙 Tungi'}
+              {t === 'light' ? <><Sun size={16} /> Kunduzgi</> : <><Moon size={16} /> Tungi</>}
             </button>
           ))}
         </div>

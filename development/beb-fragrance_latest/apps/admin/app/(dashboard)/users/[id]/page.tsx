@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Package, CreditCard } from 'lucide-react';
 import { useUser } from '@/hooks/useUser';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminBadge } from '@/components/ui/AdminBadge/AdminBadge';
@@ -107,7 +108,9 @@ export default function UserDetailPage() {
               <Link
                 href={`/orders?search=${user.phone}`}
                 style={{
-                  display: 'block',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
                   padding: '12px 16px',
                   background: 'var(--color-bg)',
                   borderRadius: '8px',
@@ -117,12 +120,14 @@ export default function UserDetailPage() {
                   transition: 'background 0.2s',
                 }}
               >
-                📦 Buyurtmalarini ko'rish →
+                <Package size={16} /> Buyurtmalarini ko'rish →
               </Link>
               <Link
                 href={`/payments?search=${user.phone}`}
                 style={{
-                  display: 'block',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
                   padding: '12px 16px',
                   background: 'var(--color-bg)',
                   borderRadius: '8px',
@@ -131,7 +136,7 @@ export default function UserDetailPage() {
                   fontSize: '14px',
                 }}
               >
-                💳 To'lovlarini ko'rish →
+                <CreditCard size={16} /> To'lovlarini ko'rish →
               </Link>
             </div>
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
 import styles from './AdminModal.module.scss';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -63,7 +64,7 @@ const AdminModal: React.FC<AdminModalProps> = ({
         <div className={styles.header}>
           {title && <h2 className={styles.title}>{title}</h2>}
           <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
-            ✕
+            <X size={20} />
           </button>
         </div>
         <div className={styles.body}>{children}</div>

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { Camera } from 'lucide-react';
 import styles from './ProductImageUpload.module.scss';
 
 export type UploadImage = {
@@ -121,7 +122,7 @@ export function ProductImageUpload({
           onChange={(e) => handleFiles(e.target.files)}
         />
         <div className={styles.dropContent}>
-          <div className={styles.icon}>📷</div>
+          <div className={styles.icon}><Camera size={32} /></div>
           <p className={styles.text}>
             {uploading
               ? 'Yuklanmoqda...'
