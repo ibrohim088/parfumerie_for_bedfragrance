@@ -1,230 +1,238 @@
-@import "variables";
-@import "breakpoints";
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
 
-.register {
-  width: 100%;
-  max-width: 400px;
-
-  @media (max-width: $breakpoint-mobile) {
-    max-width: 100%;
-  }
-}
-
-.card {
-  background: var(--bg-secondary);
-  padding: 40px;
-  border-radius: 4px;
-  box-shadow: var(--shadow-xl);
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 24px;
-  }
-
-  h1 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-    color: var(--text-primary);
-
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-  }
-}
-
-.error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-.formGroup {
-  margin-bottom: 20px;
-
-  @media (max-width: $breakpoint-mobile) {
-    margin-bottom: 16px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-primary);
-    font-size: 14px;
-
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 12px;
-      margin-bottom: 6px;
-    }
-  }
-
-  input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-
-    @media (max-width: $breakpoint-mobile) {
-      padding: 10px;
-      font-size: 14px;
-      min-height: 44px;
-    }
-
-    &::placeholder {
-      color: var(--text-secondary);
-    }
-
-    &:focus {
-      border-color: $primary-color;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(210, 170, 50, 0.12);
-    }
-  }
-}
-
-// OTP step
-.otpHint {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin-bottom: 24px;
-
-  strong {
-    color: var(--text-primary);
-  }
-}
-
-.otpRow {
+.sidebar {
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 24px;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  gap: 4px;
+}
 
-  @media (max-width: $breakpoint-mobile) {
-    gap: 8px;
+.heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.clearAll {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $primary-color;
+  padding: 0;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-light;
   }
 }
 
-.otpInput {
-  width: 50px;
-  height: 56px;
-  text-align: center;
-  font-size: 24px;
+.subtitle {
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+}
+
+.section {
+  padding: 16px 0;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
   font-weight: 600;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  svg {
+    color: $primary-color;
+    flex-shrink: 0;
+  }
+
+}
+
+.sectionLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.sectionContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Jost", sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color $transition-fast;
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: $primary-color;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    outline: none;
+    border: none
+  }
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.showMore {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: -2px;
+  font-family: "Jost", sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: $primary-color;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.concentrationGroup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.concentrationBtn {
+  padding: 8px 4px;
+  font-family: "Jost", sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary-color;
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: #000;
+  }
+}
+
+.slider {
+  width: 100%;
+  accent-color: $primary-color;
+  cursor: pointer;
+}
+
+.priceInputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  span {
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+}
+
+.priceInput {
+  flex: 1;
+  width: 0;
+  padding: 9px 10px;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
+  border: 1px solid var(--border-color);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: all 0.2s ease;
-
-  @media (max-width: $breakpoint-mobile) {
-    width: 40px;
-    height: 46px;
-    font-size: 18px;
-  }
+  transition: border-color $transition-fast;
 
   &:focus {
     outline: none;
     border-color: $primary-color;
-    box-shadow: 0 0 0 3px rgba(210, 170, 50, 0.12);
+  }
+  &::placeholder {
+    color: var(--text-secondary);
   }
 }
 
-.resendRow {
-  text-align: center;
-  margin: 12px 0 8px;
-}
-
-.resendTimer {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.resendBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: $primary-color;
-  padding: 0;
-
-  &:hover { text-decoration: underline; }
-  &:disabled { opacity: 0.5; cursor: not-allowed; }
-}
-
-.back {
+// ✅ dark theme fix
+.select {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: transparent;
+  padding: 9px 12px;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
   border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 14px;
-  color: var(--text-secondary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color $transition-fast;
 
-  &:hover {
-    border-color: var(--text-secondary);
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+
+  option {
+    background-color: var(--bg-primary);
     color: var(--text-primary);
   }
 }
 
-.card :global(button[type="submit"]) {
-  width: 100%;
-  padding: 12px;
-  background-color: $primary-color;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 10px;
-    font-size: 14px;
-    min-height: 44px;
-  }
-
-  &:hover:not(:disabled) {
-    background-color: $primary-light;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
-.login {
-  text-align: center;
-  margin-top: 20px;
-  color: var(--text-secondary);
-  font-size: 14px;
-
-  @media (max-width: $breakpoint-mobile) {
-    margin-top: 16px;
-    font-size: 12px;
-  }
-
-  a {
-    color: $primary-color;
-    text-decoration: none;
-    font-weight: 600;
-
-    &:hover {
-      text-decoration: underline;
-    }
+@media (max-width: $breakpoint-tablet) {
+  .sidebar {
+    padding: 16px;
   }
 }

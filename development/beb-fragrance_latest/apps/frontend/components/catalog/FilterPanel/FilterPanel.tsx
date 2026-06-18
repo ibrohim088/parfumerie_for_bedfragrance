@@ -18,7 +18,7 @@ const CATEGORIES = [
   { id: 'men', label: 'Erkaklar uchun' },
   { id: 'women', label: 'Ayollar uchun' },
   { id: 'unisex', label: 'Uniseks' },
-  { id: 'gifts', label: 'Sovg'alar' },
+  { id: 'gifts', label: 'Sovg\'alar' },
 ];
 
 const CATEGORIES_RU = [

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { User, Tag, FlaskConical, Sparkles, Wallet, Search, ArrowUpDown } from 'lucide-react';
+import { User, Tag, FlaskConical, Sparkles, Wallet, Search, ArrowDown, ArrowDownUp } from 'lucide-react';
 import { MIN_PRICE, MAX_PRICE } from '@/lib/constants';
 import styles from './CatalogSidebar.module.scss';
 
@@ -130,11 +130,11 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
       {/* Search */}
       <div className={styles.section}>
         <button className={styles.sectionHeader} onClick={() => toggle('search')}>
-          <span className={styles.sectionLabel}>
+          <div className={styles.sectionLabel}>
             <Search size={13} />
             Search
-          </span>
-          <span className={`${styles.chevron} ${expanded.search ? styles.open : ''}`}>▼</span>
+          </div>
+          <span className={`${styles.chevron} ${expanded.search ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.search && (
           <div className={styles.content}>
@@ -156,7 +156,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <User size={13} />
             {t('gender')}
           </span>
-          <span className={`${styles.chevron} ${expanded.gender ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.gender ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.gender && (
           <div className={styles.content}>
@@ -188,7 +188,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <Tag size={13} />
             {t('brand')}
           </span>
-          <span className={`${styles.chevron} ${expanded.brand ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.brand ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.brand && (
           <div className={styles.content}>
@@ -223,7 +223,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <Sparkles size={13} />
             {t('fragranceFamily')}
           </span>
-          <span className={`${styles.chevron} ${expanded.family ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.family ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.family && (
           <div className={styles.content}>
@@ -250,7 +250,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <FlaskConical size={13} />
             {t('concentration')}
           </span>
-          <span className={`${styles.chevron} ${expanded.concentration ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.concentration ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.concentration && (
           <div className={styles.content}>
@@ -276,7 +276,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <Wallet size={13} />
             {t('priceRange')}
           </span>
-          <span className={`${styles.chevron} ${expanded.price ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.price ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.price && (
           <div className={styles.content}>
@@ -314,10 +314,10 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
       <div className={styles.section}>
         <button className={styles.sectionHeader} onClick={() => toggle('sort')}>
           <span className={styles.sectionLabel}>
-            <ArrowUpDown size={13} />
+            <ArrowDownUp size={13} />
             {t('sort')}
           </span>
-          <span className={`${styles.chevron} ${expanded.sort ? styles.open : ''}`}>▼</span>
+          <span className={`${styles.chevron} ${expanded.sort ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
         {expanded.sort && (
           <div className={styles.content}>
