@@ -73,6 +73,7 @@
 
   input {
     cursor: pointer;
+    accent-color: $primary-color;
   }
 
   span {
@@ -103,6 +104,7 @@
 .slider {
   width: 100%;
   cursor: pointer;
+  accent-color: $primary-color;
 }
 
 .priceDisplay {
@@ -112,6 +114,7 @@
   color: var(--text-secondary);
 }
 
+// ✅ TUZATISH — dark theme uchun native select fix
 .select {
   width: 100%;
   padding: 8px;
@@ -122,10 +125,21 @@
   font-family: inherit;
   cursor: pointer;
   font-size: 14px;
+  transition: border-color 0.2s;
 
   @media (max-width: $breakpoint-mobile) {
     font-size: 12px;
     padding: 6px;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+
+  option {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
   }
 }
 
@@ -138,7 +152,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.2s;
   font-size: 14px;
 
   @media (max-width: $breakpoint-mobile) {
@@ -147,6 +161,6 @@
   }
 
   &:hover {
-    background-color: darken(#e5e7eb, 10%);
+    opacity: 0.8;
   }
 }

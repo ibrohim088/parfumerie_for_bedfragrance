@@ -33,7 +33,7 @@
 
 .text {
   font-size: 14px;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   margin: 0;
   font-weight: 500;
 }
@@ -118,7 +118,7 @@
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   transition: background-color 0.15s ease;
 
   &:hover {
