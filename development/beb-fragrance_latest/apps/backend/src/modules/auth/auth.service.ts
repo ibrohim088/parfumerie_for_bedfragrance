@@ -1,6 +1,7 @@
 import { prisma } from '../../config/database';
 import { setOtp, getOtp, deleteOtp, setRefreshToken, getRefreshToken, deleteRefreshToken } from '../../config/redis';
 import { sendOtpSms } from '../../config/sms';
+import { sendOtpEmail } from '../../config/email';
 import { sendOtpTelegram } from '../../config/telegram';
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../../utils/jwt';
 import { generateOtp } from '../../utils/otp';
@@ -19,8 +20,7 @@ export async function sendOtp(phone: string, telegramId?: number | string): Prom
     await setOtp(phone, otp);
   }
 
-  // 1) Avval Telegram orqali yuborishga harakat qilamiz (bot foydalanuvchining
-  //    Telegram ID'sini yuborgan bo'lsa)
+  // 1) Telegram orqali yuborish (bot foydalanuvchining Telegram ID'sini yuborgan bo'lsa)
   if (telegramId) {
     const tgResult = await sendOtpTelegram(telegramId, otp);
     if (tgResult.success) {
@@ -32,14 +32,43 @@ export async function sendOtp(phone: string, telegramId?: number | string): Prom
     console.error(`Telegram orqali OTP yuborilmadi (${telegramId}):`, tgResult.error);
   }
 
-  // 2) Development rejimida — agar Telegram orqali yuborilmagan bo'lsa,
-  //    konsolga chiqaramiz (zaxira variant)
-  if (env.NODE_ENV === 'development') {
+  // 2) OTP yetkazib berish usulini aniqlash
+  //    OTP_DELIVERY .env da belgilansa — uni ishlatamiz
+  //    Aks holda: production → sms, development → email
+  const delivery =
+    env.OTP_DELIVERY ??
+    (env.NODE_ENV === 'production' ? 'sms' : 'email');
+
+  // 3a) Email orqali yuborish
+  if (delivery === 'email') {
+    // Foydalanuvchi emailini bazadan olamiz
+    const user = await prisma.user.findUnique({ where: { phone }, select: { email: true } });
+    const email = user?.email;
+
+    if (email) {
+      const result = await sendOtpEmail(email, otp, phone);
+      if (result.success) {
+        console.log(`📧 OTP [${phone}] email (${email}) orqali yuborildi`);
+        if (result.previewUrl) {
+          console.log(`   👁  Ko'rish: ${result.previewUrl}`);
+        }
+        return;
+      }
+      console.error('Email orqali OTP yuborilmadi:', result.error);
+    } else {
+      // Email yo'q — consolega chiqaramiz (development zaxirasi)
+      console.log(`📱 OTP [${phone}]: ${otp}  (email topilmadi, consolega chiqarildi)`);
+      return;
+    }
+  }
+
+  // 3b) Console (faqat development, email ham ishlamasa)
+  if (delivery === 'console' || env.NODE_ENV === 'development') {
     console.log(`📱 OTP [${phone}]: ${otp}`);
     return;
   }
 
-  // 3) Production — SMS orqali yuborish (Eskiz.uz)
+  // 3c) Production — SMS orqali yuborish (Eskiz.uz)
   const result = await sendOtpSms(phone, otp);
   if (!result.success) {
     throw new AppError(500, 'OTP kodini yuborishda xato yuz berdi. Keyinroq urinib ko\'ring.');
@@ -126,7 +155,3 @@ export async function refreshTokens(token: string): Promise<Pick<AuthResponse, '
 export async function logout(userId: string): Promise<void> {
   await deleteRefreshToken(userId);
 }
-
-
-
-// 91-92 satrlar:

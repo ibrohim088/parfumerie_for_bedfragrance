@@ -1,0 +1,3416 @@
+{
+    "_meta": {
+        "project": "BEB Fragrance — Parfum Exclusive Limited",
+        "description": "Backend uchun to'liq dataset. Barcha ma'lumotlar Prisma schemasi strukturasiga mos keladi.",
+        "currency": "UZS",
+        "exchange_rate_note": "1 USD ≈ 12,000 UZS (2026-yil iyun taxmini)",
+        "created": "2026-06-18",
+        "version": "1.0.0",
+        "totalProducts": 43,
+        "totalUsers": 6,
+        "totalBrands": 18
+    },
+    "company": {
+        "officialName": "PARFUM EXCLUSIVE LIMITED",
+        "brandName": "BEB Fragrance",
+        "instagram": "@bebfragrance",
+        "phone": "+998990401771",
+        "taplink": "taplink.cc/bebfragrance",
+        "address": {
+            "full": "Chorsu Turkuaz (Sobiq GUM), Toshkent, O'zbekiston",
+            "landmark": "Chorsu maydonidagi Turkuaz savdo markazi",
+            "city": "Toshkent",
+            "country": "Uzbekistan"
+        },
+        "workingHours": "10:00 - 21:00 (har kuni)",
+        "instagramStats": {
+            "followers": "776000+",
+            "posts": "365+",
+            "following": 7,
+            "verified": true
+        }
+    },
+    "users": [
+        {
+            "phone": "+998901234567",
+            "firstName": "Ibrohim",
+            "lastName": "Admin",
+            "email": "admin@bebfragrance.uz",
+            "role": "admin",
+            "isActive": true
+        },
+        {
+            "phone": "+998907654321",
+            "firstName": "Jasur",
+            "lastName": "Toshmatov",
+            "email": "jasur@test.uz",
+            "role": "user",
+            "isActive": true
+        },
+        {
+            "phone": "+998901112233",
+            "firstName": "Dilnoza",
+            "lastName": "Yusupova",
+            "email": "dilnoza@test.uz",
+            "role": "user",
+            "isActive": true
+        },
+        {
+            "phone": "+998905554433",
+            "firstName": "Otabek",
+            "lastName": "Karimov",
+            "email": null,
+            "role": "user",
+            "isActive": true
+        },
+        {
+            "phone": "+998903331122",
+            "firstName": "Malika",
+            "lastName": "Rahimova",
+            "email": "malika@test.uz",
+            "role": "user",
+            "isActive": true
+        },
+        {
+            "phone": "+998906667788",
+            "firstName": "Bobur",
+            "lastName": "Mirzayev",
+            "email": null,
+            "role": "user",
+            "isActive": true
+        }
+    ],
+    "addresses": [
+        {
+            "_userId_ref": "+998907654321",
+            "label": "Uy",
+            "fullName": "Jasur Toshmatov",
+            "phone": "+998907654321",
+            "region": "Toshkent shahri",
+            "district": "Chilonzor tumani",
+            "street": "Bunyodkor ko'chasi, 12-uy",
+            "apartment": "45",
+            "landmark": "Aloqa magazini yonida",
+            "isDefault": true
+        },
+        {
+            "_userId_ref": "+998901112233",
+            "label": "Uy",
+            "fullName": "Dilnoza Yusupova",
+            "phone": "+998901112233",
+            "region": "Toshkent shahri",
+            "district": "Yunusobod tumani",
+            "street": "Amir Temur shoh ko'chasi, 108-uy",
+            "apartment": "12",
+            "landmark": null,
+            "isDefault": true
+        },
+        {
+            "_userId_ref": "+998905554433",
+            "label": "Ish",
+            "fullName": "Otabek Karimov",
+            "phone": "+998905554433",
+            "region": "Toshkent shahri",
+            "district": "Mirzo Ulug'bek tumani",
+            "street": "Shahriston ko'chasi, 5-uy",
+            "apartment": null,
+            "landmark": "Next to Mega Planet",
+            "isDefault": true
+        },
+        {
+            "_userId_ref": "+998903331122",
+            "label": "Uy",
+            "fullName": "Malika Rahimova",
+            "phone": "+998903331122",
+            "region": "Toshkent shahri",
+            "district": "Yunusobod tumani",
+            "street": "Navruz ko'chasi, 34-uy",
+            "apartment": "8",
+            "landmark": null,
+            "isDefault": true
+        },
+        {
+            "_userId_ref": "+998906667788",
+            "label": "Uy",
+            "fullName": "Bobur Mirzayev",
+            "phone": "+998906667788",
+            "region": "Toshkent viloyati",
+            "district": "Chirchiq shahri",
+            "street": "Mustaqillik ko'chasi, 7-uy",
+            "apartment": null,
+            "landmark": "Bozor yonida",
+            "isDefault": true
+        }
+    ],
+    "products": [
+        {
+            "name": "Mancera Cedrat Boise",
+            "slug": "mancera-cedrat-boise",
+            "brand": "Mancera",
+            "description": "Dunyoning eng mashhur unisex atirlaridan biri. Limon va tsitrus bilan ochiluvchi, patchouli va amber bilan yakunlanuvchi uzoq davomli klassik. BEB Fragrance'ning eng ko'p sotiladigan atiri. Yangi, quruq va uzoq davomli 'beast mode' proyeksiyasi bilan mashhur.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "bergamot",
+                "grapefruit",
+                "blackcurrant"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "iris",
+                "rose"
+            ],
+            "baseNotes": [
+                "patchouli",
+                "amber",
+                "musk",
+                "cedarwood",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Woody Citrus",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "date"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Cedrat+Boise",
+                    "alt": "Mancera Cedrat Boise flakoni",
+                    "isPrimary": true
+                },
+                {
+                    "url": "https://placehold.co/600x800/1a1a1a/ffffff?text=Cedrat+Boise+Box",
+                    "alt": "Mancera Cedrat Boise qutisi",
+                    "isPrimary": false
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1450000,
+                    "stock": 25
+                },
+                {
+                    "volume": 120,
+                    "price": 2200000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "Mancera Silver Blue",
+            "slug": "mancera-silver-blue",
+            "brand": "Mancera",
+            "description": "Toza, yangi va dengiz ruhidagi unisex atir. Ofis va kundalik foydalanish uchun universal tanlov. Lavanda va yog'ochli baza bilan muvozanatlangan yangi, aromatic hid.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "bergamot",
+                "sea notes"
+            ],
+            "middleNotes": [
+                "lavender",
+                "aquatic notes",
+                "iris"
+            ],
+            "baseNotes": [
+                "cedarwood",
+                "sandalwood",
+                "musk",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Aromatic Aquatic",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "sport"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a1a3d/C9A84C?text=Silver+Blue",
+                    "alt": "Mancera Silver Blue",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1380000,
+                    "stock": 18
+                },
+                {
+                    "volume": 120,
+                    "price": 2100000,
+                    "stock": 8
+                }
+            ]
+        },
+        {
+            "name": "Mancera Instant Crush",
+            "slug": "mancera-instant-crush",
+            "brand": "Mancera",
+            "description": "Romantik va jozibali kechqurun atiri. Zafaron va jasmin kombinatsiyasi sensual va ekzotik xarakter beradi. Kechki tadbirlar va date uchun ideal tanlov.",
+            "concentration": "edp",
+            "topNotes": [
+                "saffron",
+                "bergamot",
+                "pink pepper"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "rose",
+                "labdanum"
+            ],
+            "baseNotes": [
+                "amber",
+                "musk",
+                "patchouli",
+                "vetiver"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Spicy",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2016,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d1a0a/C9A84C?text=Instant+Crush",
+                    "alt": "Mancera Instant Crush",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1420000,
+                    "stock": 15
+                },
+                {
+                    "volume": 120,
+                    "price": 2150000,
+                    "stock": 6
+                }
+            ]
+        },
+        {
+            "name": "Mancera Roses Vanille",
+            "slug": "mancera-roses-vanille",
+            "brand": "Mancera",
+            "description": "Atirgul va vanil uyg'unligidan yaratilgan romantik va shirin atir. 'Beast mode' proyeksiyasi bilan mashhur ayollar atirlari orasida bestseller. Floral-gourmand kategoriyasining eng yorqin vakili.",
+            "concentration": "edp",
+            "topNotes": [
+                "rose",
+                "bergamot",
+                "raspberry"
+            ],
+            "middleNotes": [
+                "rose",
+                "peony",
+                "jasmine"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "tonka bean",
+                "musk",
+                "white musk"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Gourmand",
+            "gender": "female",
+            "season": [
+                "spring",
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "daily"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d0a1a/C9A84C?text=Roses+Vanille",
+                    "alt": "Mancera Roses Vanille",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1380000,
+                    "stock": 22
+                },
+                {
+                    "volume": 120,
+                    "price": 2100000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Mancera Black Gold",
+            "slug": "mancera-black-gold",
+            "brand": "Mancera",
+            "description": "Kuchli va jiddiy erkaklar atiri. Oud, charm va ziravorlar kombinatsiyasi kuchli va mashhur sharq-yog'ochli hid yaratadi. Kechqurun va maxsus tadbirlar uchun ideal.",
+            "concentration": "edp",
+            "topNotes": [
+                "black pepper",
+                "cardamom",
+                "grapefruit"
+            ],
+            "middleNotes": [
+                "oud",
+                "leather",
+                "tobacco"
+            ],
+            "baseNotes": [
+                "amber",
+                "musk",
+                "rubber",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Woody",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "special_event"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2013,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=Black+Gold",
+                    "alt": "Mancera Black Gold",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1450000,
+                    "stock": 10
+                },
+                {
+                    "volume": 120,
+                    "price": 2200000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "name": "Mancera French Riviera",
+            "slug": "mancera-french-riviera",
+            "brand": "Mancera",
+            "description": "Fransuz Rivyerasi ilhomida yaratilgan yangi va dengiz ruhidagi unisex atir. Yoz faslining eng yaxshi hamrohlaridan biri. Limon va dengiz notalar bilan ochiladi.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "bergamot",
+                "mandarin"
+            ],
+            "middleNotes": [
+                "sea notes",
+                "jasmine",
+                "freesia"
+            ],
+            "baseNotes": [
+                "musk",
+                "cedarwood",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Aromatic Aquatic Citrus",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "sport",
+                "travel"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2015,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a2d2d/C9A84C?text=French+Riviera",
+                    "alt": "Mancera French Riviera",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1380000,
+                    "stock": 20
+                },
+                {
+                    "volume": 120,
+                    "price": 2050000,
+                    "stock": 9
+                }
+            ]
+        },
+        {
+            "name": "Sospiro Vibrato",
+            "slug": "sospiro-vibrato",
+            "brand": "Sospiro",
+            "description": "Sospiro kolleksiyasining eng mashhur va ko'p sotiladigan atiri. Tsitrus va dengiz notatalaridan boshlanib, amber va sedir bilan yakunlanadi. Musiqiy terminologiyada 'vibrato' kabi — tebranuvchi va jozibali. BEB Fragrance Instagram highlights'da alohida e'tirof etilgan.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "bergamot",
+                "blue citrus",
+                "mandarin"
+            ],
+            "middleNotes": [
+                "iris",
+                "jasmine",
+                "magnolia"
+            ],
+            "baseNotes": [
+                "cedarwood",
+                "amber",
+                "musk",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Citrus Aquatic Woody",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "date"
+            ],
+            "perfumer": "Xerjoff Group",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/3d0a5a/C9A84C?text=Sospiro+Vibrato",
+                    "alt": "Sospiro Vibrato binafsha flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 2450000,
+                    "stock": 15
+                }
+            ]
+        },
+        {
+            "name": "Sospiro Erba Gold",
+            "slug": "sospiro-erba-gold",
+            "brand": "Sospiro",
+            "description": "Oltin o't va gul notalaridan ilhomlangan romantik va boy atir. Amber bazasi unisex xarakter beradi. Italyan hunarmandligi va opera ruhida yaratilgan.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "grapefruit",
+                "lemon"
+            ],
+            "middleNotes": [
+                "gold grass",
+                "amber",
+                "rose",
+                "nutmeg"
+            ],
+            "baseNotes": [
+                "amber",
+                "musk",
+                "patchouli",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Oriental Floral",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "special_event"
+            ],
+            "perfumer": "Xerjoff Group",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/3d0a5a/C9A84C?text=Erba+Gold",
+                    "alt": "Sospiro Erba Gold",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 2550000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Sospiro Accento",
+            "slug": "sospiro-accento",
+            "brand": "Sospiro",
+            "description": "Ananas, jasmin va iris kombinatsiyasi bilan ochiluvchi fruity-woody atir. Vetiver va amber bazasi unga maskulin va chuqur xarakter beradi.",
+            "concentration": "edp",
+            "topNotes": [
+                "pineapple",
+                "blackcurrant",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "iris",
+                "peony"
+            ],
+            "baseNotes": [
+                "vetiver",
+                "amber",
+                "musk",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Woody Oriental Fruity",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office"
+            ],
+            "perfumer": "Xerjoff Group",
+            "launchYear": 2012,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/3d0a5a/C9A84C?text=Accento",
+                    "alt": "Sospiro Accento",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 2400000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "Sospiro Opera",
+            "slug": "sospiro-opera",
+            "brand": "Sospiro",
+            "description": "Opera kabi dramatik va boy atir. Oud, zafaron va atirgul kombinatsiyasi kuchli sharq-floral xarakter beradi. Maxsus kechqurun va tadbirlar uchun.",
+            "concentration": "edp",
+            "topNotes": [
+                "saffron",
+                "cardamom",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "oud",
+                "rose",
+                "jasmine"
+            ],
+            "baseNotes": [
+                "leather",
+                "amber",
+                "musk",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Spicy",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event"
+            ],
+            "perfumer": "Xerjoff Group",
+            "launchYear": 2013,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/3d0a5a/C9A84C?text=Opera",
+                    "alt": "Sospiro Opera",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 2600000,
+                    "stock": 8
+                }
+            ]
+        },
+        {
+            "name": "Louis Vuitton Imagination",
+            "slug": "louis-vuitton-imagination",
+            "brand": "Louis Vuitton",
+            "description": "LV parfumeriya kolleksiyasining eng mashhur atiri. Tsitrus va aromatik notalar uyg'unligidan yaratilgan zamonaviy va toza erkaklar atiri. 'Gen Z atiri' sifatida mashhur. BEB Fragrance'da Instagram highlights'da maxsus bo'lim.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "bergamot",
+                "yuzu"
+            ],
+            "middleNotes": [
+                "atlas cedar",
+                "vetiver"
+            ],
+            "baseNotes": [
+                "musk",
+                "amber",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Aromatic Citrus",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "sport"
+            ],
+            "perfumer": "Jacques Cavallier-Belletrud",
+            "launchYear": 2021,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=LV+Imagination",
+                    "alt": "Louis Vuitton Imagination",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 5500000,
+                    "stock": 6
+                }
+            ]
+        },
+        {
+            "name": "Louis Vuitton Meteore",
+            "slug": "louis-vuitton-meteore",
+            "brand": "Louis Vuitton",
+            "description": "Mandarin, zangir va sedir kombinatsiyasidan yaratilgan universal va yangi erkaklar atiri. Toza va engil — kundalik va ofis uchun ideal LV tanlov.",
+            "concentration": "edp",
+            "topNotes": [
+                "mandarin",
+                "bergamot",
+                "lemon"
+            ],
+            "middleNotes": [
+                "ginger",
+                "cardamom"
+            ],
+            "baseNotes": [
+                "cedarwood",
+                "musk",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Citrus Woody",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "office"
+            ],
+            "perfumer": "Jacques Cavallier-Belletrud",
+            "launchYear": 2020,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=LV+Meteore",
+                    "alt": "Louis Vuitton Meteore",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 5200000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "name": "Louis Vuitton Afternoon Swim",
+            "slug": "louis-vuitton-afternoon-swim",
+            "brand": "Louis Vuitton",
+            "description": "Tsitrus, dengiz va quyosh kremi notalaridan yaratilgan unisex atir. 'Eng yaxshi ta'm atiri' deb atalgan. Rivyera havosi va quyoshli tushlik kayfiyatini yetkazadi.",
+            "concentration": "edp",
+            "topNotes": [
+                "citrus",
+                "sea notes",
+                "sunscreen accord"
+            ],
+            "middleNotes": [
+                "ylang ylang",
+                "white flowers"
+            ],
+            "baseNotes": [
+                "musk",
+                "amber",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Marine Citrus",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "travel",
+                "sport"
+            ],
+            "perfumer": "Jacques Cavallier-Belletrud",
+            "launchYear": 2017,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Afternoon+Swim",
+                    "alt": "Louis Vuitton Afternoon Swim",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 5300000,
+                    "stock": 4
+                }
+            ]
+        },
+        {
+            "name": "Carolina Herrera 212 VIP Men",
+            "slug": "carolina-herrera-212-vip-men",
+            "brand": "Carolina Herrera",
+            "description": "Nyu-Yorkning eng eksklyuziv gechelik atiri. Limon, jin va vodka notalar bilan ochiluvchi partiya ruhidagi mashhur erkaklar atiri. 'Ro'yxatdamisiz?' konsepti bilan taqdim etilgan. O'zbekistonda eng ko'p sotiladigan designer atirlardan biri.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "gin",
+                "vodka accord",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "black pepper",
+                "ginger",
+                "vetiver"
+            ],
+            "baseNotes": [
+                "leather",
+                "amber",
+                "musk",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Aromatic Fougere",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter",
+                "spring"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "party"
+            ],
+            "perfumer": "Louise Turner",
+            "launchYear": 2011,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=212+VIP+Men",
+                    "alt": "212 VIP Men flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 750000,
+                    "stock": 30
+                },
+                {
+                    "volume": 100,
+                    "price": 1200000,
+                    "stock": 20
+                },
+                {
+                    "volume": 200,
+                    "price": 1850000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Carolina Herrera 212 VIP Rose",
+            "slug": "carolina-herrera-212-vip-rose",
+            "brand": "Carolina Herrera",
+            "description": "212 VIP Women'ning romantik va mevali versiyasi. Atirgul, shaftoli va litchi kombinatsiyasi yorqin va yangi floral xarakter yaratadi. Yosh va zamonaviy ayollar uchun ideal.",
+            "concentration": "edp",
+            "topNotes": [
+                "lychee",
+                "peach",
+                "lemon"
+            ],
+            "middleNotes": [
+                "rose",
+                "jasmine",
+                "freesia"
+            ],
+            "baseNotes": [
+                "musk",
+                "vanilla",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Floral Fruity",
+            "gender": "female",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "date",
+                "party"
+            ],
+            "perfumer": "Louise Turner",
+            "launchYear": 2013,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d0a1a/C9A84C?text=212+VIP+Rose",
+                    "alt": "212 VIP Rose",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 720000,
+                    "stock": 25
+                },
+                {
+                    "volume": 100,
+                    "price": 1150000,
+                    "stock": 15
+                }
+            ]
+        },
+        {
+            "name": "Carolina Herrera Good Girl",
+            "slug": "carolina-herrera-good-girl",
+            "brand": "Carolina Herrera",
+            "description": "Qora talponga o'xshash ikonik flakonli mashhur ayollar atiri. Kakao, jasmin va tuberose kombinatsiyasi yaxshi qiz/yomon qiz ikiligi ruhini ifodalaydi. Global bestseller, O'zbekistonda ham top 3 sotiladigan ayollar atiri.",
+            "concentration": "edp",
+            "topNotes": [
+                "coffee",
+                "almond",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "tuberose",
+                "jasmine",
+                "rose"
+            ],
+            "baseNotes": [
+                "tonka bean",
+                "cocoa",
+                "cedarwood",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Oriental",
+            "gender": "female",
+            "season": [
+                "autumn",
+                "winter",
+                "spring"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "daily"
+            ],
+            "perfumer": "Louise Turner, Loc Dong",
+            "launchYear": 2016,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=Good+Girl",
+                    "alt": "Good Girl qora talponga o'xshash flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 30,
+                    "price": 650000,
+                    "stock": 20
+                },
+                {
+                    "volume": 50,
+                    "price": 950000,
+                    "stock": 30
+                },
+                {
+                    "volume": 80,
+                    "price": 1350000,
+                    "stock": 15
+                },
+                {
+                    "volume": 100,
+                    "price": 1600000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "Carolina Herrera Bad Boy",
+            "slug": "carolina-herrera-bad-boy",
+            "brand": "Carolina Herrera",
+            "description": "Qora shayton figuri flakonida ifodalangan kuchli va maskulin erkaklar atiri. Qalampir, salvia va sedir kombinatsiyasi dark va jozibali xarakter yaratadi. Good Girl'ning erkaklar juftligi.",
+            "concentration": "edp",
+            "topNotes": [
+                "black pepper",
+                "bergamot",
+                "cardamom"
+            ],
+            "middleNotes": [
+                "sage",
+                "iris",
+                "cocoa"
+            ],
+            "baseNotes": [
+                "leather",
+                "cedarwood",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Woody Spicy",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date"
+            ],
+            "perfumer": "Quentin Bisch",
+            "launchYear": 2019,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=Bad+Boy",
+                    "alt": "Bad Boy shayton figuri flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 800000,
+                    "stock": 18
+                },
+                {
+                    "volume": 100,
+                    "price": 1250000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "Dior Sauvage EDP",
+            "slug": "dior-sauvage-edp",
+            "brand": "Dior",
+            "description": "Dunyoning eng ko'p sotiladigan erkaklar atirlaridan biri. Tosh qovoq va lavanda kombinatsiyasidan yaratilgan kuchli va toza hid. EDP versiyasi EDT'dan boyroq va uzoq davomli. O'zbekistonda ham yuqori talabga ega.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "pepper"
+            ],
+            "middleNotes": [
+                "sichuan pepper",
+                "lavender",
+                "pink pepper",
+                "vetiver"
+            ],
+            "baseNotes": [
+                "ambroxan",
+                "cedar",
+                "labdanum"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Aromatic Fougere",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "date"
+            ],
+            "perfumer": "François Demachy",
+            "launchYear": 2018,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a1a3d/C9A84C?text=Sauvage+EDP",
+                    "alt": "Dior Sauvage EDP",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 60,
+                    "price": 1200000,
+                    "stock": 25
+                },
+                {
+                    "volume": 100,
+                    "price": 1750000,
+                    "stock": 18
+                },
+                {
+                    "volume": 200,
+                    "price": 2800000,
+                    "stock": 8
+                }
+            ]
+        },
+        {
+            "name": "Dior Miss Dior EDP",
+            "slug": "dior-miss-dior-edp",
+            "brand": "Dior",
+            "description": "Diorning eng ikonik ayollar atiri. Atirgul va patchouli kombinatsiyasining yangilangan versiyasi. Romantik, elegant va timeless klassik. Natalie Portman'ning reklama atiri sifatida mashhur.",
+            "concentration": "edp",
+            "topNotes": [
+                "blood orange",
+                "bergamot",
+                "pink pepper"
+            ],
+            "middleNotes": [
+                "rose",
+                "peony",
+                "lily of the valley"
+            ],
+            "baseNotes": [
+                "patchouli",
+                "sandalwood",
+                "musk"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Chypre",
+            "gender": "female",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "date",
+                "evening"
+            ],
+            "perfumer": "François Demachy",
+            "launchYear": 2017,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/ffd6e7/111111?text=Miss+Dior",
+                    "alt": "Dior Miss Dior",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 1100000,
+                    "stock": 20
+                },
+                {
+                    "volume": 100,
+                    "price": 1700000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "Chanel Bleu de Chanel EDP",
+            "slug": "chanel-bleu-de-chanel-edp",
+            "brand": "Chanel",
+            "description": "Chanel'ning eng mashhur erkaklar atiri. Tsitrus va yog'ochli notalar uyg'unligida yaratilgan zamonaviy elegantlik. EDP versiyasi EDT'dan boyroq va uzoq davomli. O'zbekistonda eng top erkaklar atirlaridan biri.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "mint",
+                "pink pepper",
+                "grapefruit"
+            ],
+            "middleNotes": [
+                "ginger",
+                "nutmeg",
+                "jasmine",
+                "iso e super"
+            ],
+            "baseNotes": [
+                "incense",
+                "cedar",
+                "sandalwood",
+                "labdanum",
+                "white musk"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Aromatic Woody",
+            "gender": "male",
+            "season": [
+                "all_seasons"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "evening",
+                "date"
+            ],
+            "perfumer": "Jacques Polge, Olivier Polge",
+            "launchYear": 2014,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a1a3d/C9A84C?text=Bleu+de+Chanel",
+                    "alt": "Chanel Bleu de Chanel EDP",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 1350000,
+                    "stock": 15
+                },
+                {
+                    "volume": 100,
+                    "price": 2000000,
+                    "stock": 10
+                },
+                {
+                    "volume": 150,
+                    "price": 2750000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "name": "YSL Black Opium EDP",
+            "slug": "ysl-black-opium-edp",
+            "brand": "Yves Saint Laurent",
+            "description": "Dunyoning eng mashhur gourmand ayollar atirlaridan biri. Qora qahva va vanil kombinatsiyasi qorong'u va jozibali xarakter yaratadi. Toshkent parfumeriya bozorining permanent bestselleri.",
+            "concentration": "edp",
+            "topNotes": [
+                "pink pepper",
+                "coffee",
+                "orange blossom"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "bitter almond"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "patchouli",
+                "cedar",
+                "white musk"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Gourmand",
+            "gender": "female",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "party"
+            ],
+            "perfumer": "Marie Salamagne, Olivier Cresp",
+            "launchYear": 2014,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=Black+Opium",
+                    "alt": "YSL Black Opium",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 30,
+                    "price": 700000,
+                    "stock": 22
+                },
+                {
+                    "volume": 50,
+                    "price": 1050000,
+                    "stock": 30
+                },
+                {
+                    "volume": 90,
+                    "price": 1650000,
+                    "stock": 15
+                }
+            ]
+        },
+        {
+            "name": "Creed Aventus",
+            "slug": "creed-aventus",
+            "brand": "Creed",
+            "description": "Niche parfumeriya dunyosining eng mashhur va ikonik atiri. Ananas, qoraolcha va charm uyg'unligida yaratilgan. Muvaffaqiyat va kuch ramzi sifatida qaraladi. Ultra-premium segment — kuchli toifadagi atir.",
+            "concentration": "edp",
+            "topNotes": [
+                "pineapple",
+                "bergamot",
+                "blackcurrant",
+                "apple"
+            ],
+            "middleNotes": [
+                "birch",
+                "jasmine",
+                "patchouli",
+                "rose"
+            ],
+            "baseNotes": [
+                "musk",
+                "oakmoss",
+                "ambergris",
+                "vanille"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Chypre Fruity",
+            "gender": "male",
+            "season": [
+                "all_seasons"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "special_event",
+                "evening"
+            ],
+            "perfumer": "Olivier Creed, Erwin Creed",
+            "launchYear": 2010,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Aventus",
+                    "alt": "Creed Aventus ikonik flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 3200000,
+                    "stock": 8
+                },
+                {
+                    "volume": 100,
+                    "price": 5500000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "name": "Tom Ford Black Orchid",
+            "slug": "tom-ford-black-orchid",
+            "brand": "Tom Ford",
+            "description": "Tom Ford'ning eng ikonik unisex atiri. Qora trüfl, qora balsam va qizil apelsin kombinatsiyasidan yaratilgan sirli va luxurious hid. Dark florientali kategoriyasida birdan-bir.",
+            "concentration": "edp",
+            "topNotes": [
+                "black truffle",
+                "ylang ylang",
+                "blackcurrant",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "black orchid",
+                "lotus",
+                "fruity notes",
+                "gardenia"
+            ],
+            "baseNotes": [
+                "black musk",
+                "patchouli",
+                "sandalwood",
+                "vanilla"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Oriental",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event",
+                "date"
+            ],
+            "perfumer": "David Apel",
+            "launchYear": 2006,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a0a0a/C9A84C?text=Black+Orchid",
+                    "alt": "Tom Ford Black Orchid",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 2100000,
+                    "stock": 10
+                },
+                {
+                    "volume": 100,
+                    "price": 3400000,
+                    "stock": 6
+                }
+            ]
+        },
+        {
+            "name": "Tom Ford Oud Wood",
+            "slug": "tom-ford-oud-wood",
+            "brand": "Tom Ford",
+            "description": "Tom Ford Private Blend kolleksiyasining eng mashhur atiri. Sharqiy oud daraxti, sandal va vetiver kombinatsiyasi boy va hashamatli xarakter yaratadi. Unisex ammo asosan maskulin. O'zbekistonda ultra-luxury segment rahnamosi.",
+            "concentration": "edp",
+            "topNotes": [
+                "oud",
+                "rosewood",
+                "cardamom"
+            ],
+            "middleNotes": [
+                "sandalwood",
+                "vetiver",
+                "tonka bean"
+            ],
+            "baseNotes": [
+                "papyrus wood",
+                "amber",
+                "musk"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Woody Oriental",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event"
+            ],
+            "perfumer": "Harry Fremont",
+            "launchYear": 2007,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d1500/C9A84C?text=Oud+Wood",
+                    "alt": "Tom Ford Oud Wood",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 2800000,
+                    "stock": 7
+                },
+                {
+                    "volume": 100,
+                    "price": 4500000,
+                    "stock": 4
+                }
+            ]
+        },
+        {
+            "name": "Versace Eros EDP",
+            "slug": "versace-eros-edp",
+            "brand": "Versace",
+            "description": "Yunon sevgi xudosi Eros'ga bag'ishlangan kuchli va sensual erkaklar atiri. Yashil olma va nane kombinatsiyasidan boshlanib, vanil va amber bilan yakunlanadi. O'zbekiston yoshlari orasida eng mashhur atirlardan biri.",
+            "concentration": "edp",
+            "topNotes": [
+                "mint",
+                "green apple",
+                "lemon"
+            ],
+            "middleNotes": [
+                "ambroxan",
+                "geranium",
+                "tonka bean"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "vetiver",
+                "oakmoss",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Oriental Fougere",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "evening",
+                "date"
+            ],
+            "perfumer": "Aurelien Guichard",
+            "launchYear": 2012,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a1a3d/C9A84C?text=Eros+EDP",
+                    "alt": "Versace Eros EDP ko'k flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 850000,
+                    "stock": 25
+                },
+                {
+                    "volume": 100,
+                    "price": 1300000,
+                    "stock": 18
+                }
+            ]
+        },
+        {
+            "name": "Paco Rabanne Invictus",
+            "slug": "paco-rabanne-invictus",
+            "brand": "Paco Rabanne",
+            "description": "Sport va g'alaba ruhidagi yangi va aquatik erkaklar atiri. Trofey ko'rinishidagi ikonik flakon. Dengiz va yangi notalar uyg'unligida engil va yangi hid. Yoshlar va sportchilar orasida juda mashhur.",
+            "concentration": "edt",
+            "topNotes": [
+                "sea notes",
+                "green mandarin",
+                "grapefruit"
+            ],
+            "middleNotes": [
+                "bay laurel",
+                "jasmine",
+                "hedione"
+            ],
+            "baseNotes": [
+                "amber",
+                "musk",
+                "oakmoss",
+                "guaiac wood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Aromatic Aquatic",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "sport",
+                "daily"
+            ],
+            "perfumer": "Clement Gavarry",
+            "launchYear": 2013,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/c0c0c0/111111?text=Invictus",
+                    "alt": "Paco Rabanne Invictus trofey flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 700000,
+                    "stock": 30
+                },
+                {
+                    "volume": 100,
+                    "price": 1050000,
+                    "stock": 20
+                },
+                {
+                    "volume": 150,
+                    "price": 1450000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Lattafa Oud For Glory",
+            "slug": "lattafa-oud-for-glory",
+            "brand": "Lattafa",
+            "description": "Arab luxus atirlar brendining flagship mahsuloti. Oud, zafaron va atirgul kombinatsiyasida sharqiy an'analar ruhida yaratilgan kuchli va boy atir. Arzon narxda ultra-luxury sharqiy hid tajribasi.",
+            "concentration": "edp",
+            "topNotes": [
+                "saffron",
+                "aldehydes",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "oud",
+                "rose",
+                "geranium"
+            ],
+            "baseNotes": [
+                "amber",
+                "sandalwood",
+                "musk",
+                "civet"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Woody",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event"
+            ],
+            "perfumer": null,
+            "launchYear": 2018,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d1a00/C9A84C?text=Oud+For+Glory",
+                    "alt": "Lattafa Oud For Glory",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 650000,
+                    "stock": 30
+                }
+            ]
+        },
+        {
+            "name": "Armaf Club de Nuit Intense Man",
+            "slug": "armaf-club-de-nuit-intense-man",
+            "brand": "Armaf",
+            "description": "Creed Aventus'ga o'xshash, ancha arzon narxda taqdim etilgan mashhur atir. Ananas, qoraolcha va charm uyg'unligida. O'zbekistonda 'Aventus alter ego' sifatida mashhur — premium hid tejamli narxda.",
+            "concentration": "edp",
+            "topNotes": [
+                "pineapple",
+                "blackcurrant",
+                "apple",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "birch",
+                "jasmine",
+                "rose",
+                "patchouli"
+            ],
+            "baseNotes": [
+                "musk",
+                "vanilla",
+                "ambergris",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Chypre Fruity",
+            "gender": "male",
+            "season": [
+                "all_seasons"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "evening"
+            ],
+            "perfumer": null,
+            "launchYear": 2015,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Club+de+Nuit",
+                    "alt": "Armaf Club de Nuit",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 105,
+                    "price": 480000,
+                    "stock": 35
+                }
+            ]
+        },
+        {
+            "name": "Versace Dylan Blue Pour Homme",
+            "slug": "versace-dylan-blue-pour-homme",
+            "brand": "Versace",
+            "description": "Versace'ning eng mashhur erkaklar atirlaridan biri. Aquatik va aromatik notalar uyg'unligida zamonaviy va toza hid. Ofis va kundalik foydalanish uchun universal tanlov. Ko'k rangli ikonik flakon bilan mashhur.",
+            "concentration": "edt",
+            "topNotes": [
+                "grapefruit",
+                "fig leaves",
+                "aquatic notes",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "violet leaves",
+                "ambroxan",
+                "papyrus",
+                "geranium"
+            ],
+            "baseNotes": [
+                "musk",
+                "saffron",
+                "mineral notes",
+                "incense"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Aromatic Aquatic",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office"
+            ],
+            "perfumer": "Alberto Morillas",
+            "launchYear": 2016,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/0a1a4d/C9A84C?text=Dylan+Blue",
+                    "alt": "Versace Dylan Blue",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 800000,
+                    "stock": 20
+                },
+                {
+                    "volume": 100,
+                    "price": 1200000,
+                    "stock": 15
+                },
+                {
+                    "volume": 200,
+                    "price": 1850000,
+                    "stock": 7
+                }
+            ]
+        },
+        {
+            "name": "Giorgio Armani Acqua di Gio EDP",
+            "slug": "giorgio-armani-acqua-di-gio-edp",
+            "brand": "Giorgio Armani",
+            "description": "Dunyoning eng mashhur erkaklar atirlaridan biri. EDP versiyasi EDT'dan boyroq va uzoq davomli. Dengiz va mineral notalar uyg'unligida yaratilgan klassik. O'zbekiston erkaklar atir bozorida permanent bestseller.",
+            "concentration": "edp",
+            "topNotes": [
+                "aquatic notes",
+                "marine accord",
+                "bergamot",
+                "lemon"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "geranium",
+                "rosemary",
+                "patchouli"
+            ],
+            "baseNotes": [
+                "musk",
+                "cedarwood",
+                "labdanum",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Aromatic Aquatic",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "sport",
+                "office"
+            ],
+            "perfumer": "Alberto Morillas",
+            "launchYear": 2022,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/e8f4f8/111111?text=Acqua+di+Gio",
+                    "alt": "Acqua di Gio EDP",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 40,
+                    "price": 950000,
+                    "stock": 18
+                },
+                {
+                    "volume": 75,
+                    "price": 1400000,
+                    "stock": 12
+                },
+                {
+                    "volume": 125,
+                    "price": 2050000,
+                    "stock": 8
+                }
+            ]
+        },
+        {
+            "name": "Giorgio Armani Stronger With You Intensely",
+            "slug": "giorgio-armani-stronger-with-you-intensely",
+            "brand": "Giorgio Armani",
+            "description": "Tonka bean va salvia kombinatsiyasidagi romantik va sensual erkaklar atiri. Intensely versiyasi asl SWY'dan kuchliroq va uzoq davomli. Kuz va qish fasllarida eng yaxshi ishlaydi.",
+            "concentration": "edp",
+            "topNotes": [
+                "caramel",
+                "cardamom",
+                "violet"
+            ],
+            "middleNotes": [
+                "tonka bean",
+                "white sage",
+                "karo karounde"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "cedarwood",
+                "amber",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Woody",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date"
+            ],
+            "perfumer": "Antoine Maisondieu",
+            "launchYear": 2019,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/1a0a2d/C9A84C?text=SWY+Intensely",
+                    "alt": "Stronger With You Intensely",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 950000,
+                    "stock": 15
+                },
+                {
+                    "volume": 100,
+                    "price": 1500000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Parfums de Marly Layton",
+            "slug": "parfums-de-marly-layton",
+            "brand": "Parfums de Marly",
+            "description": "Parfums de Marly kolleksiyasining eng mashhur va ko'p sotiladigan atiri. Olma, jasmin va vanil kombinatsiyasi boy va zamonaviy floral-woody xarakter yaratadi. Ultra-premium segment — Versailles saroyining parfyum madaniyati ruhida.",
+            "concentration": "edp",
+            "topNotes": [
+                "apple",
+                "bergamot",
+                "lavender"
+            ],
+            "middleNotes": [
+                "jasmine",
+                "violet",
+                "pepper"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "sandalwood",
+                "guaiac wood",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Woody Musk",
+            "gender": "male",
+            "season": [
+                "all_seasons"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "evening"
+            ],
+            "perfumer": "Hamid Merati-Kashani",
+            "launchYear": 2016,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/f5e6c8/111111?text=Layton",
+                    "alt": "Parfums de Marly Layton",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 75,
+                    "price": 2800000,
+                    "stock": 8
+                },
+                {
+                    "volume": 125,
+                    "price": 4200000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "name": "Parfums de Marly Percival",
+            "slug": "parfums-de-marly-percival",
+            "brand": "Parfums de Marly",
+            "description": "Toza, yangi va modern erkaklar atiri. Bergamot va zangir uyg'unligida engil va quruq hid. Layton'ning yangi va salqin muqobili. Ofis va kunduzgi foydalanish uchun ideal Parfums de Marly tanlov.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "ginger",
+                "lavender"
+            ],
+            "middleNotes": [
+                "iris",
+                "ambroxan",
+                "green notes"
+            ],
+            "baseNotes": [
+                "cedarwood",
+                "musk",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Aromatic Woody",
+            "gender": "male",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office"
+            ],
+            "perfumer": "Hamid Merati-Kashani",
+            "launchYear": 2019,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/f5e6c8/111111?text=Percival",
+                    "alt": "Parfums de Marly Percival",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 75,
+                    "price": 2750000,
+                    "stock": 6
+                },
+                {
+                    "volume": 125,
+                    "price": 4100000,
+                    "stock": 3
+                }
+            ]
+        },
+        {
+            "name": "Montale Intense Cafe",
+            "slug": "montale-intense-cafe",
+            "brand": "Montale",
+            "description": "Qahva va atirgul kombinatsiyasidan yaratilgan noyob va jozibali unisex atir. Dunyoning eng mashhur gourmand-floral atirlaridan biri. Romantik kechqurun va maxsus tadbirlar uchun. BEB Fragrance niche bo'limining asosiy mahsuloti.",
+            "concentration": "edp",
+            "topNotes": [
+                "coffee",
+                "rum"
+            ],
+            "middleNotes": [
+                "rose",
+                "jasmine",
+                "oud"
+            ],
+            "baseNotes": [
+                "musk",
+                "vanilla",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Gourmand",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "special_event"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2012,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d1500/C9A84C?text=Intense+Cafe",
+                    "alt": "Montale Intense Cafe",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 1800000,
+                    "stock": 14
+                }
+            ]
+        },
+        {
+            "name": "Montale Roses Musk",
+            "slug": "montale-roses-musk",
+            "brand": "Montale",
+            "description": "Atirgul va musk uyg'unligida yaratilgan toza va romantik unisex atir. Engil va yumshoq — bahorda va yozda ajoyib tanlov. Montale kolleksiyasining eng yengil va keng auditoriyaga mo'ljallangan atiri.",
+            "concentration": "edp",
+            "topNotes": [
+                "lemon",
+                "green notes"
+            ],
+            "middleNotes": [
+                "rose",
+                "peony"
+            ],
+            "baseNotes": [
+                "white musk",
+                "sandalwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Floral Musk",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer"
+            ],
+            "occasion": [
+                "daily",
+                "date"
+            ],
+            "perfumer": "Pierre Montale",
+            "launchYear": 2005,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/ffd6e7/111111?text=Roses+Musk",
+                    "alt": "Montale Roses Musk",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 1750000,
+                    "stock": 18
+                }
+            ]
+        },
+        {
+            "name": "Xerjoff Erba Pura",
+            "slug": "xerjoff-erba-pura",
+            "brand": "Xerjoff",
+            "description": "Xerjoff'ning eng mashhur va ko'p sotiladigan atiri. Apelsin çiçekleri, jasmin va sandal uyg'unligida quyoshli va iliq hid. Italyan craftsmanship'ning eng yorqin namunasi. Global bestseller — O'zbekistonda ham yuqori talab.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "orange",
+                "mandarin",
+                "lemon"
+            ],
+            "middleNotes": [
+                "orange blossom",
+                "jasmine",
+                "ylang ylang"
+            ],
+            "baseNotes": [
+                "sandalwood",
+                "musk",
+                "vanilla",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Woody Musk",
+            "gender": "unisex",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "date",
+                "evening"
+            ],
+            "perfumer": "Sergio Momo",
+            "launchYear": 2016,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/f5e600/111111?text=Erba+Pura",
+                    "alt": "Xerjoff Erba Pura",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 2200000,
+                    "stock": 10
+                },
+                {
+                    "volume": 100,
+                    "price": 3500000,
+                    "stock": 6
+                }
+            ]
+        },
+        {
+            "name": "Xerjoff Alexandria II",
+            "slug": "xerjoff-alexandria-ii",
+            "brand": "Xerjoff",
+            "description": "Aleksandriya shahriga bag'ishlangan boy va kompleks atir. Zafaron, oud va atirgul kombinatsiyasida boy sharqiy-italyan uyg'unligi. Xerjoff'ning eng prestijli va qimmat atirlaridan biri.",
+            "concentration": "edp",
+            "topNotes": [
+                "saffron",
+                "bergamot",
+                "mandarin"
+            ],
+            "middleNotes": [
+                "oud",
+                "rose",
+                "jasmine",
+                "iris"
+            ],
+            "baseNotes": [
+                "amber",
+                "sandalwood",
+                "musk",
+                "vanilla"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Floral",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event"
+            ],
+            "perfumer": "Sergio Momo",
+            "launchYear": 2010,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/1a0a00/C9A84C?text=Alexandria+II",
+                    "alt": "Xerjoff Alexandria II",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 3800000,
+                    "stock": 5
+                },
+                {
+                    "volume": 100,
+                    "price": 6200000,
+                    "stock": 3
+                }
+            ]
+        },
+        {
+            "name": "Chanel Coco Mademoiselle EDP",
+            "slug": "chanel-coco-mademoiselle-edp",
+            "brand": "Chanel",
+            "description": "Chanel'ning eng mashhur zamonaviy ayollar atiri. Apelsin va patchouli uyg'unligida yaratilgan elegant va ozod ruhli hid. Keira Knightley reklama yuzisi sifatida mashhur. O'zbekistonda eng ko'p sotiladigan ayollar atirlaridan biri.",
+            "concentration": "edp",
+            "topNotes": [
+                "orange",
+                "bergamot",
+                "grapefruit"
+            ],
+            "middleNotes": [
+                "rose",
+                "jasmine",
+                "iris",
+                "ylang ylang"
+            ],
+            "baseNotes": [
+                "patchouli",
+                "musk",
+                "vetiver",
+                "amber"
+            ],
+            "status": "active",
+            "isFeatured": true,
+            "olfactiveFamily": "Floral Chypre",
+            "gender": "female",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "office",
+                "date"
+            ],
+            "perfumer": "Jacques Polge",
+            "launchYear": 2001,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Coco+Mademoiselle",
+                    "alt": "Chanel Coco Mademoiselle",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 35,
+                    "price": 1100000,
+                    "stock": 15
+                },
+                {
+                    "volume": 50,
+                    "price": 1500000,
+                    "stock": 20
+                },
+                {
+                    "volume": 100,
+                    "price": 2400000,
+                    "stock": 10
+                }
+            ]
+        },
+        {
+            "name": "Dior J'adore EDP",
+            "slug": "dior-jadore-edp",
+            "brand": "Dior",
+            "description": "Charlize Theron reklama yuzisi bilan mashhur Dior'ning ikonik oltin flakondagi ayollar atiri. Iliq va boy floral hid — jasmin, atirgul va mimoza kombinatsiyasi. Klassik va timeless — barcha avlodlar uchun.",
+            "concentration": "edp",
+            "topNotes": [
+                "ylang ylang",
+                "melon",
+                "peach",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "rose",
+                "jasmine",
+                "violet",
+                "orchid"
+            ],
+            "baseNotes": [
+                "musk",
+                "sandalwood",
+                "blackberry"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Floral",
+            "gender": "female",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "evening",
+                "special_event"
+            ],
+            "perfumer": "Calice Becker",
+            "launchYear": 1999,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/C9A84C/111111?text=J'adore",
+                    "alt": "Dior J'adore oltin flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 1150000,
+                    "stock": 18
+                },
+                {
+                    "volume": 100,
+                    "price": 1800000,
+                    "stock": 12
+                }
+            ]
+        },
+        {
+            "name": "YSL Libre EDP",
+            "slug": "ysl-libre-edp",
+            "brand": "Yves Saint Laurent",
+            "description": "Ozodlik va feminizm ruhida yaratilgan zamonaviy YSL atiri. Lavanda va apelsin çiçekleri kombinatsiyasi noyob va kuchli xarakter beradi. Kuchli proyeksiya va uzoq davomlilik bilan mashhur. Zamonaviy ayol uchun.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "mandarin",
+                "ginger"
+            ],
+            "middleNotes": [
+                "lavender",
+                "orange blossom",
+                "jasmine"
+            ],
+            "baseNotes": [
+                "vanilla",
+                "cedar",
+                "musk",
+                "ambergris"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Floral Oriental",
+            "gender": "female",
+            "season": [
+                "spring",
+                "summer",
+                "autumn"
+            ],
+            "occasion": [
+                "daily",
+                "evening",
+                "date"
+            ],
+            "perfumer": "Carlos Benaim, Domitille Michalon-Bertier",
+            "launchYear": 2019,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/111111/C9A84C?text=Libre",
+                    "alt": "YSL Libre EDP",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 30,
+                    "price": 850000,
+                    "stock": 15
+                },
+                {
+                    "volume": 50,
+                    "price": 1200000,
+                    "stock": 12
+                },
+                {
+                    "volume": 90,
+                    "price": 1900000,
+                    "stock": 8
+                }
+            ]
+        },
+        {
+            "name": "Paco Rabanne 1 Million EDP",
+            "slug": "paco-rabanne-1-million-edp",
+            "brand": "Paco Rabanne",
+            "description": "Oltin quyish ko'rinishidagi ikonik flakon bilan mashhur erkaklar atiri. Qizil apelsin, kanell va charm kombinatsiyasi boy va jozibali sharqiy-woody hid yaratadi. O'zbekistonda keng tarqalgan populyar erkaklar atiri.",
+            "concentration": "edp",
+            "topNotes": [
+                "blood orange",
+                "grapefruit",
+                "mint"
+            ],
+            "middleNotes": [
+                "cinnamon",
+                "rose",
+                "spices"
+            ],
+            "baseNotes": [
+                "leather",
+                "amber",
+                "patchouli",
+                "blond wood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Woody",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date",
+                "party"
+            ],
+            "perfumer": "Michel Girard, Christophe Raynaud",
+            "launchYear": 2006,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/C9A84C/111111?text=1+Million",
+                    "alt": "Paco Rabanne 1 Million oltin flakon",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 50,
+                    "price": 850000,
+                    "stock": 20
+                },
+                {
+                    "volume": 100,
+                    "price": 1300000,
+                    "stock": 15
+                }
+            ]
+        },
+        {
+            "name": "Lattafa Khamrah",
+            "slug": "lattafa-khamrah",
+            "brand": "Lattafa",
+            "description": "Arab sharobiga ('Khamrah' — sharobning arabcha nomi) bag'ishlangan boy va qiziq atir. Qoraolcha, vanil va charm uyg'unligida qiziqarli va noyob sharqiy hid. Arzon narxda premium sharqiy hid tajribasi.",
+            "concentration": "edp",
+            "topNotes": [
+                "blackberry",
+                "plum",
+                "bergamot"
+            ],
+            "middleNotes": [
+                "rose",
+                "jasmine",
+                "labdanum"
+            ],
+            "baseNotes": [
+                "leather",
+                "amber",
+                "musk",
+                "vanilla"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Fruity",
+            "gender": "unisex",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "date"
+            ],
+            "perfumer": null,
+            "launchYear": 2020,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/2d0a00/C9A84C?text=Khamrah",
+                    "alt": "Lattafa Khamrah",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 100,
+                    "price": 580000,
+                    "stock": 40
+                }
+            ]
+        },
+        {
+            "name": "Rasasi La Yuqawam Pour Homme",
+            "slug": "rasasi-la-yuqawam-pour-homme",
+            "brand": "Rasasi",
+            "description": "Rasasi'ning eng mashhur erkaklar atiri. Zafaron, oud va amber kombinatsiyasida sharqiy an'analar ruhida yaratilgan kuchli va uzoq davomli atir. 'La Yuqawam' arabcha 'tengsiz, mag'lubiyatsiz' degan ma'noni anglatadi.",
+            "concentration": "edp",
+            "topNotes": [
+                "bergamot",
+                "lemon",
+                "geranium"
+            ],
+            "middleNotes": [
+                "oud",
+                "saffron",
+                "rose"
+            ],
+            "baseNotes": [
+                "amber",
+                "musk",
+                "sandalwood",
+                "cedarwood"
+            ],
+            "status": "active",
+            "isFeatured": false,
+            "olfactiveFamily": "Oriental Woody",
+            "gender": "male",
+            "season": [
+                "autumn",
+                "winter"
+            ],
+            "occasion": [
+                "evening",
+                "special_event"
+            ],
+            "perfumer": null,
+            "launchYear": 2014,
+            "images": [
+                {
+                    "url": "https://placehold.co/600x800/1a0a00/C9A84C?text=La+Yuqawam",
+                    "alt": "Rasasi La Yuqawam",
+                    "isPrimary": true
+                }
+            ],
+            "variants": [
+                {
+                    "volume": 75,
+                    "price": 680000,
+                    "stock": 25
+                }
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "key": "designer",
+            "nameUz": "Designer Atirlar",
+            "nameRu": "Дизайнерские ароматы",
+            "description": "Dior, Chanel, Versace, Armani, YSL va boshqa mashhur luxury brendlar",
+            "brands": [
+                "Dior",
+                "Chanel",
+                "Versace",
+                "Giorgio Armani",
+                "Yves Saint Laurent",
+                "Paco Rabanne",
+                "Givenchy",
+                "Hugo Boss",
+                "Burberry",
+                "Gucci",
+                "Lancome",
+                "Carolina Herrera",
+                "Valentino",
+                "Prada"
+            ]
+        },
+        {
+            "key": "niche",
+            "nameUz": "Niche Atirlar",
+            "nameRu": "Нишевые ароматы",
+            "description": "Mancera, Sospiro, Montale, Creed, Parfums de Marly va boshqa niche brendlar",
+            "brands": [
+                "Mancera",
+                "Sospiro",
+                "Xerjoff",
+                "Montale",
+                "Creed",
+                "Tom Ford",
+                "Parfums de Marly",
+                "Maison Margiela",
+                "Nishane",
+                "Byredo"
+            ]
+        },
+        {
+            "key": "ultra_luxury",
+            "nameUz": "Ultra Luxury",
+            "nameRu": "Ультра люкс",
+            "description": "Louis Vuitton, Roja Parfums, Amouage, Clive Christian — eng prestiжli brendlar",
+            "brands": [
+                "Louis Vuitton",
+                "Roja Parfums",
+                "Amouage",
+                "Clive Christian"
+            ]
+        },
+        {
+            "key": "arab_oriental",
+            "nameUz": "Arab / Oriental Atirlar",
+            "nameRu": "Арабские / Восточные ароматы",
+            "description": "Lattafa, Rasasi, Ajmal, Swiss Arabian — Sharq an'analari ruhidagi atirlar",
+            "brands": [
+                "Lattafa",
+                "Rasasi",
+                "Ajmal",
+                "Armaf",
+                "Swiss Arabian"
+            ]
+        }
+    ],
+    "olfactiveFamilies": [
+        {
+            "key": "floral",
+            "nameUz": "Gullar (Floral)",
+            "nameRu": "Цветочный"
+        },
+        {
+            "key": "woody",
+            "nameUz": "Yog'ochli (Woody)",
+            "nameRu": "Древесный"
+        },
+        {
+            "key": "oriental",
+            "nameUz": "Sharqiy (Oriental)",
+            "nameRu": "Восточный"
+        },
+        {
+            "key": "fresh",
+            "nameUz": "Yangi (Fresh)",
+            "nameRu": "Свежий"
+        },
+        {
+            "key": "citrus",
+            "nameUz": "Tsitrus (Citrus)",
+            "nameRu": "Цитрусовый"
+        },
+        {
+            "key": "gourmand",
+            "nameUz": "Ta'mli (Gourmand)",
+            "nameRu": "Гурманский"
+        },
+        {
+            "key": "oud",
+            "nameUz": "Oud / Sharqiy",
+            "nameRu": "Уд / Восточный"
+        },
+        {
+            "key": "aquatic",
+            "nameUz": "Dengiz (Aquatic)",
+            "nameRu": "Морской"
+        },
+        {
+            "key": "chypre",
+            "nameUz": "Shypr (Chypre)",
+            "nameRu": "Шипровый"
+        },
+        {
+            "key": "fougere",
+            "nameUz": "Fougere (O'tloq)",
+            "nameRu": "Фужерный"
+        }
+    ],
+    "concentrations": [
+        {
+            "key": "parfum",
+            "label": "Parfum / Extrait",
+            "oilPercent": "20-40%",
+            "longevity": "12-24 soat"
+        },
+        {
+            "key": "edp",
+            "label": "Eau de Parfum (EDP)",
+            "oilPercent": "15-20%",
+            "longevity": "8-12 soat"
+        },
+        {
+            "key": "edt",
+            "label": "Eau de Toilette (EDT)",
+            "oilPercent": "5-15%",
+            "longevity": "4-8 soat"
+        },
+        {
+            "key": "edc",
+            "label": "Eau de Cologne (EDC)",
+            "oilPercent": "2-5%",
+            "longevity": "2-4 soat"
+        },
+        {
+            "key": "body_mist",
+            "label": "Body Mist",
+            "oilPercent": "1-3%",
+            "longevity": "1-3 soat"
+        }
+    ],
+    "orderStatuses": [
+        {
+            "key": "pending",
+            "labelUz": "Kutilmoqda",
+            "labelRu": "В ожидании"
+        },
+        {
+            "key": "confirmed",
+            "labelUz": "Tasdiqlandi",
+            "labelRu": "Подтверждён"
+        },
+        {
+            "key": "processing",
+            "labelUz": "Jarayonda",
+            "labelRu": "В обработке"
+        },
+        {
+            "key": "shipped",
+            "labelUz": "Yetkazilmoqda",
+            "labelRu": "Отправлен"
+        },
+        {
+            "key": "delivered",
+            "labelUz": "Yetkazildi",
+            "labelRu": "Доставлен"
+        },
+        {
+            "key": "cancelled",
+            "labelUz": "Bekor qilindi",
+            "labelRu": "Отменён"
+        },
+        {
+            "key": "refunded",
+            "labelUz": "Qaytarildi",
+            "labelRu": "Возвращён"
+        }
+    ],
+    "paymentStatuses": [
+        {
+            "key": "pending",
+            "labelUz": "Kutilmoqda",
+            "labelRu": "В ожидании"
+        },
+        {
+            "key": "pending_cash",
+            "labelUz": "Naqd — kutilmoqda",
+            "labelRu": "Наличные — ожидается"
+        },
+        {
+            "key": "paid",
+            "labelUz": "To'landi",
+            "labelRu": "Оплачено"
+        },
+        {
+            "key": "failed",
+            "labelUz": "Muvaffaqiyatsiz",
+            "labelRu": "Не удалось"
+        },
+        {
+            "key": "refunded",
+            "labelUz": "Qaytarildi",
+            "labelRu": "Возвращено"
+        }
+    ],
+    "paymentMethods": [
+        {
+            "key": "payme",
+            "label": "PayMe",
+            "type": "online",
+            "icon": "payme"
+        },
+        {
+            "key": "click",
+            "label": "Click",
+            "type": "online",
+            "icon": "click"
+        },
+        {
+            "key": "cash",
+            "label": "Naqd pul (COD)",
+            "type": "offline",
+            "icon": "cash"
+        }
+    ],
+    "deliveryConfig": {
+        "baseFeeUZS": 30000,
+        "freeFeeThresholdUZS": 500000,
+        "tashkentDeliveryHours": "2-4 soat",
+        "uzbekistanDeliveryDays": "1-3 kun",
+        "carriers": [
+            "Yandex Delivery",
+            "O'zPost",
+            "Exline",
+            "Express Post",
+            "O'z kuryer"
+        ]
+    },
+    "notificationTypes": [
+        {
+            "key": "order_confirmed",
+            "titleUz": "Buyurtma tasdiqlandi",
+            "titleRu": "Заказ подтверждён"
+        },
+        {
+            "key": "order_shipped",
+            "titleUz": "Buyurtma yo'lda",
+            "titleRu": "Заказ отправлен"
+        },
+        {
+            "key": "order_delivered",
+            "titleUz": "Buyurtma yetkazildi",
+            "titleRu": "Заказ доставлен"
+        },
+        {
+            "key": "order_cancelled",
+            "titleUz": "Buyurtma bekor qilindi",
+            "titleRu": "Заказ отменён"
+        },
+        {
+            "key": "order_paid",
+            "titleUz": "To'lov qabul qilindi",
+            "titleRu": "Оплата получена"
+        },
+        {
+            "key": "payment_failed",
+            "titleUz": "To'lov muvaffaqiyatsiz",
+            "titleRu": "Оплата не прошла"
+        },
+        {
+            "key": "promo",
+            "titleUz": "Aksiya va yangilik",
+            "titleRu": "Акция и новости"
+        }
+    ],
+    "scentProfileOptions": {
+        "families": [
+            "floral",
+            "woody",
+            "oriental",
+            "fresh",
+            "citrus",
+            "gourmand",
+            "oud",
+            "aquatic",
+            "chypre",
+            "fougere"
+        ],
+        "notes": [
+            "rose",
+            "jasmine",
+            "oud",
+            "sandalwood",
+            "vanilla",
+            "amber",
+            "musk",
+            "patchouli",
+            "bergamot",
+            "lavender",
+            "saffron",
+            "cedarwood",
+            "vetiver",
+            "iris",
+            "tonka bean",
+            "lemon",
+            "grapefruit",
+            "cardamom",
+            "leather",
+            "coffee"
+        ],
+        "intensities": [
+            "light",
+            "moderate",
+            "strong"
+        ],
+        "seasons": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+        ],
+        "occasions": [
+            "daily",
+            "evening",
+            "sport",
+            "office",
+            "date",
+            "special_event",
+            "travel"
+        ]
+    },
+    "uzbekistanRegions": [
+        "Toshkent shahri",
+        "Toshkent viloyati",
+        "Andijon viloyati",
+        "Farg'ona viloyati",
+        "Namangan viloyati",
+        "Samarqand viloyati",
+        "Buxoro viloyati",
+        "Navoiy viloyati",
+        "Qashqadaryo viloyati",
+        "Surxondaryo viloyati",
+        "Sirdaryo viloyati",
+        "Jizzax viloyati",
+        "Xorazm viloyati",
+        "Qoraqalpog'iston Respublikasi"
+    ],
+    "sampleOrders": [
+        {
+            "_note": "Bu namuna — seed uchun",
+            "orderNumber": "BEB-2026001",
+            "_userId_ref": "+998907654321",
+            "_addressRef": "Jasur uy manzili",
+            "status": "delivered",
+            "paymentMethod": "payme",
+            "paymentStatus": "paid",
+            "deliveryFee": 30000,
+            "notes": "Tez yetkazib bering",
+            "items": [
+                {
+                    "_productSlug": "mancera-cedrat-boise",
+                    "_volume": 60,
+                    "quantity": 1,
+                    "unitPrice": 1450000
+                }
+            ]
+        },
+        {
+            "orderNumber": "BEB-2026002",
+            "_userId_ref": "+998901112233",
+            "_addressRef": "Dilnoza uy manzili",
+            "status": "shipped",
+            "paymentMethod": "click",
+            "paymentStatus": "paid",
+            "deliveryFee": 30000,
+            "notes": null,
+            "items": [
+                {
+                    "_productSlug": "carolina-herrera-good-girl",
+                    "_volume": 50,
+                    "quantity": 1,
+                    "unitPrice": 950000
+                },
+                {
+                    "_productSlug": "ysl-black-opium-edp",
+                    "_volume": 30,
+                    "quantity": 1,
+                    "unitPrice": 700000
+                }
+            ]
+        },
+        {
+            "orderNumber": "BEB-2026003",
+            "_userId_ref": "+998905554433",
+            "_addressRef": "Otabek ish manzili",
+            "status": "pending",
+            "paymentMethod": "cash",
+            "paymentStatus": "pending_cash",
+            "deliveryFee": 30000,
+            "notes": "Qo'ng'iroq qiling kelmasdan oldin",
+            "items": [
+                {
+                    "_productSlug": "dior-sauvage-edp",
+                    "_volume": 100,
+                    "quantity": 1,
+                    "unitPrice": 1750000
+                }
+            ]
+        },
+        {
+            "orderNumber": "BEB-2026004",
+            "_userId_ref": "+998903331122",
+            "_addressRef": "Malika manzili (Yunusobod)",
+            "status": "confirmed",
+            "paymentMethod": "payme",
+            "paymentStatus": "paid",
+            "deliveryFee": 30000,
+            "notes": null,
+            "items": [
+                {
+                    "_productSlug": "chanel-coco-mademoiselle-edp",
+                    "_volume": 50,
+                    "quantity": 1,
+                    "unitPrice": 1500000
+                },
+                {
+                    "_productSlug": "mancera-roses-vanille",
+                    "_volume": 60,
+                    "quantity": 1,
+                    "unitPrice": 1380000
+                }
+            ]
+        },
+        {
+            "orderNumber": "BEB-2026005",
+            "_userId_ref": "+998906667788",
+            "_addressRef": "Bobur manzili",
+            "status": "delivered",
+            "paymentMethod": "click",
+            "paymentStatus": "paid",
+            "deliveryFee": 0,
+            "notes": "Sovg'a sifatida — chiroyli qadoqlang",
+            "items": [
+                {
+                    "_productSlug": "creed-aventus",
+                    "_volume": 50,
+                    "quantity": 1,
+                    "unitPrice": 3200000
+                }
+            ]
+        }
+    ],
+    "pricingSegments": [
+        {
+            "segment": "entry_designer",
+            "minUZS": 400000,
+            "maxUZS": 700000,
+            "approxUSD": "$35-60",
+            "brands": [
+                "Versace EDT",
+                "Hugo Boss",
+                "Davidoff",
+                "Armaf"
+            ]
+        },
+        {
+            "segment": "mid_designer",
+            "minUZS": 700000,
+            "maxUZS": 1400000,
+            "approxUSD": "$60-120",
+            "brands": [
+                "Dior",
+                "Chanel",
+                "Armani",
+                "YSL",
+                "Carolina Herrera"
+            ]
+        },
+        {
+            "segment": "premium_designer",
+            "minUZS": 1400000,
+            "maxUZS": 2500000,
+            "approxUSD": "$120-220",
+            "brands": [
+                "Tom Ford",
+                "Chanel Exclusif"
+            ]
+        },
+        {
+            "segment": "entry_niche",
+            "minUZS": 1200000,
+            "maxUZS": 2000000,
+            "approxUSD": "$100-170",
+            "brands": [
+                "Mancera",
+                "Montale",
+                "Lattafa Premium"
+            ]
+        },
+        {
+            "segment": "premium_niche",
+            "minUZS": 2000000,
+            "maxUZS": 4500000,
+            "approxUSD": "$170-380",
+            "brands": [
+                "Sospiro",
+                "Creed",
+                "Parfums de Marly",
+                "Nishane"
+            ]
+        },
+        {
+            "segment": "ultra_luxury",
+            "minUZS": 4500000,
+            "maxUZS": null,
+            "approxUSD": "$380+",
+            "brands": [
+                "Louis Vuitton",
+                "Roja Parfums",
+                "Clive Christian"
+            ]
+        }
+    ],
+    "scentProfiles": [
+        {
+            "_userId_ref": "+998907654321",
+            "families": [
+                "oriental",
+                "woody"
+            ],
+            "notes": [
+                "oud",
+                "rose",
+                "amber",
+                "sandalwood"
+            ],
+            "intensity": "strong",
+            "seasons": [
+                "autumn",
+                "winter"
+            ],
+            "occasions": [
+                "evening",
+                "date"
+            ]
+        },
+        {
+            "_userId_ref": "+998901112233",
+            "families": [
+                "floral",
+                "gourmand"
+            ],
+            "notes": [
+                "rose",
+                "jasmine",
+                "vanilla",
+                "coffee"
+            ],
+            "intensity": "moderate",
+            "seasons": [
+                "spring",
+                "autumn"
+            ],
+            "occasions": [
+                "daily",
+                "date",
+                "evening"
+            ]
+        },
+        {
+            "_userId_ref": "+998905554433",
+            "families": [
+                "woody",
+                "fresh"
+            ],
+            "notes": [
+                "cedarwood",
+                "bergamot",
+                "vetiver",
+                "amber"
+            ],
+            "intensity": "moderate",
+            "seasons": [
+                "spring",
+                "summer"
+            ],
+            "occasions": [
+                "daily",
+                "office"
+            ]
+        },
+        {
+            "_userId_ref": "+998903331122",
+            "families": [
+                "floral",
+                "citrus"
+            ],
+            "notes": [
+                "rose",
+                "jasmine",
+                "lemon",
+                "musk"
+            ],
+            "intensity": "light",
+            "seasons": [
+                "spring",
+                "summer"
+            ],
+            "occasions": [
+                "daily",
+                "date"
+            ]
+        }
+    ],
+    "sampleNotifications": [
+        {
+            "_userId_ref": "+998907654321",
+            "type": "order_paid",
+            "title": "To'lov qabul qilindi",
+            "message": "#BEB-2026001 buyurtmangiz uchun to'lov muvaffaqiyatli amalga oshirildi.",
+            "isRead": true,
+            "metadata": {
+                "orderNumber": "BEB-2026001"
+            }
+        },
+        {
+            "_userId_ref": "+998907654321",
+            "type": "order_delivered",
+            "title": "Buyurtma yetkazildi",
+            "message": "#BEB-2026001 buyurtmangiz muvaffaqiyatli yetkazildi. Xaridingizdan mamnun bo'lishingizni umid qilamiz!",
+            "isRead": false,
+            "metadata": {
+                "orderNumber": "BEB-2026001"
+            }
+        },
+        {
+            "_userId_ref": "+998901112233",
+            "type": "order_shipped",
+            "title": "Buyurtma yo'lda",
+            "message": "#BEB-2026002 buyurtmangiz kuryerga topshirildi va tez orada yetkaziladi.",
+            "isRead": false,
+            "metadata": {
+                "orderNumber": "BEB-2026002"
+            }
+        },
+        {
+            "_userId_ref": "+998905554433",
+            "type": "order_confirmed",
+            "title": "Buyurtma tasdiqlandi",
+            "message": "#BEB-2026003 buyurtmangiz tasdiqlandi. Kuryer tez orada siz bilan bog'lanadi.",
+            "isRead": false,
+            "metadata": {
+                "orderNumber": "BEB-2026003"
+            }
+        },
+        {
+            "_userId_ref": "+998907654321",
+            "type": "promo",
+            "title": "Yangi kelgan: Creed Aventus",
+            "message": "Endi do'konimizda Creed Aventus original mavjud! Miqdori cheklangan.",
+            "isRead": false,
+            "metadata": {
+                "productSlug": "creed-aventus"
+            }
+        }
+    ],
+    "brandReference": [
+        {
+            "name": "Mancera",
+            "country": "France",
+            "founded": 2008,
+            "founder": "Pierre Montale",
+            "category": "niche",
+            "priceRange": "$120-350"
+        },
+        {
+            "name": "Sospiro",
+            "country": "Italy",
+            "founded": 2011,
+            "founder": "Sergio Momo (Xerjoff)",
+            "category": "niche",
+            "priceRange": "$120-250"
+        },
+        {
+            "name": "Xerjoff",
+            "country": "Italy",
+            "founded": 2003,
+            "founder": "Sergio Momo",
+            "category": "niche",
+            "priceRange": "$150-500+"
+        },
+        {
+            "name": "Louis Vuitton",
+            "country": "France",
+            "founded": 1854,
+            "founder": "Louis Vuitton",
+            "category": "ultra_luxury",
+            "priceRange": "$350-800+"
+        },
+        {
+            "name": "Creed",
+            "country": "France/UK",
+            "founded": 1760,
+            "founder": "James Henry Creed",
+            "category": "niche",
+            "priceRange": "$250-600+"
+        },
+        {
+            "name": "Tom Ford",
+            "country": "USA",
+            "founded": 2006,
+            "founder": "Tom Ford",
+            "category": "niche",
+            "priceRange": "$150-400+"
+        },
+        {
+            "name": "Parfums de Marly",
+            "country": "France",
+            "founded": 2009,
+            "founder": "Julien Sprecher",
+            "category": "niche",
+            "priceRange": "$200-500+"
+        },
+        {
+            "name": "Montale",
+            "country": "France",
+            "founded": 2003,
+            "founder": "Pierre Montale",
+            "category": "niche",
+            "priceRange": "$100-250"
+        },
+        {
+            "name": "Carolina Herrera",
+            "country": "USA/Spain",
+            "founded": 1981,
+            "founder": "Carolina Herrera",
+            "category": "designer",
+            "priceRange": "$60-200"
+        },
+        {
+            "name": "Dior",
+            "country": "France",
+            "founded": 1946,
+            "founder": "Christian Dior",
+            "category": "designer",
+            "priceRange": "$80-300+"
+        },
+        {
+            "name": "Chanel",
+            "country": "France",
+            "founded": 1910,
+            "founder": "Coco Chanel",
+            "category": "designer",
+            "priceRange": "$100-400+"
+        },
+        {
+            "name": "Yves Saint Laurent",
+            "country": "France",
+            "founded": 1961,
+            "founder": "Yves Saint Laurent",
+            "category": "designer",
+            "priceRange": "$70-200"
+        },
+        {
+            "name": "Versace",
+            "country": "Italy",
+            "founded": 1978,
+            "founder": "Gianni Versace",
+            "category": "designer",
+            "priceRange": "$60-180"
+        },
+        {
+            "name": "Giorgio Armani",
+            "country": "Italy",
+            "founded": 1975,
+            "founder": "Giorgio Armani",
+            "category": "designer",
+            "priceRange": "$70-200"
+        },
+        {
+            "name": "Paco Rabanne",
+            "country": "France/Spain",
+            "founded": 1966,
+            "founder": "Paco Rabanne",
+            "category": "designer",
+            "priceRange": "$60-180"
+        },
+        {
+            "name": "Lattafa",
+            "country": "UAE",
+            "founded": 2002,
+            "founder": null,
+            "category": "arab_oriental",
+            "priceRange": "$30-100"
+        },
+        {
+            "name": "Rasasi",
+            "country": "UAE",
+            "founded": 1979,
+            "founder": null,
+            "category": "arab_oriental",
+            "priceRange": "$40-150"
+        },
+        {
+            "name": "Armaf",
+            "country": "UAE/India",
+            "founded": 2012,
+            "founder": null,
+            "category": "arab_oriental",
+            "priceRange": "$25-80"
+        }
+    ]
+}

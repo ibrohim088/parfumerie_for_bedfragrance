@@ -48,6 +48,17 @@ const envSchema = z.object({
   // Telegram
   TELEGRAM_BOT_TOKEN: z.string().min(1, 'TELEGRAM_BOT_TOKEN is required'),
   ADMIN_CHAT_ID: z.string().min(1, 'ADMIN_CHAT_ID is required'),
+
+  // Email (Nodemailer / SMTP) — ixtiyoriy, bo'lmasa Ethereal test ishlatiladi
+  SMTP_HOST: z.string().optional(),
+  SMTP_PORT: z.string().optional().transform((v) => (v ? Number(v) : 587)),
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
+  SMTP_FROM: z.string().optional(),
+
+  // OTP yetkazib berish usuli: 'sms' | 'email' | 'console'
+  // development default: 'email'  |  production default: 'sms'
+  OTP_DELIVERY: z.enum(['sms', 'email', 'console']).optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);

@@ -1,33 +1,41 @@
-import { useState, useCallback, useEffect } from 'react';
-
-interface User {
-  id: string;
-  phone: string;
-  fullName?: string;
-  email?: string;
-  role: 'user' | 'admin';
-  createdAt: string;
-}
+import { useCallback, useEffect, useRef } from 'react';
+import { useAuthStore } from '@/store/authStore';
 
 interface UseAuthReturn {
-  user: User | null;
+  user: ReturnType<typeof useAuthStore.getState>['user'];
   isLoading: boolean;
   isAuthenticated: boolean;
+  sendOtp: (phone: string) => Promise<void>;
   login: (credentials: { phone: string; otp: string }) => Promise<void>;
-  register: (data: any) => Promise<void>;
+  register: (data: { phone: string; otp: string; firstName: string; lastName?: string }) => Promise<void>;
   logout: () => void;
   updateProfile: (data: any) => Promise<void>;
 }
 
+// useAuth - authStore (Zustand) ustidagi qatlam (wrapper).
+// Bu butun ilova bo'ylab yagona haqiqat manbai (single source of truth)
+// hisoblanadi: Navbar, AccountSidebar va boshqa joylar ham xuddi shu
+// authStore'ni o'qiydi, shuning uchun login/register bo'lgandan keyin
+// barcha komponentlar bir vaqtda yangilanadi.
 export function useAuth(): UseAuthReturn {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const user = useAuthStore((state) => state.user);
+  const isLoading = useAuthStore((state) => state.isLoading);
+  const setUser = useAuthStore((state) => state.setUser);
+  const setTokens = useAuthStore((state) => state.setTokens);
+  const setIsLoading = useAuthStore((state) => state.setIsLoading);
+  const storeLogout = useAuthStore((state) => state.logout);
 
-  // Load user from localStorage on mount
+  const hasLoaded = useRef(false);
+
+  // Sahifa birinchi marta yuklanganda localStorage'dagi token orqali
+  // foydalanuvchini tiklaymiz (faqat bir marta, butun ilova bo'ylab)
   useEffect(() => {
+    if (hasLoaded.current) return;
+    hasLoaded.current = true;
+
     const loadUser = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('accessToken');
         if (!token) {
           setIsLoading(false);
           return;
@@ -43,7 +51,7 @@ export function useAuth(): UseAuthReturn {
         );
 
         if (!response.ok) {
-          localStorage.removeItem('token');
+          setTokens(null, null);
           setUser(null);
         } else {
           const data = await response.json();
@@ -51,13 +59,29 @@ export function useAuth(): UseAuthReturn {
         }
       } catch (error) {
         console.error('Failed to load user:', error);
-        localStorage.removeItem('token');
+        setTokens(null, null);
       } finally {
         setIsLoading(false);
       }
     };
 
     loadUser();
+  }, [setUser, setTokens, setIsLoading]);
+
+  const sendOtp = useCallback(async (phone: string) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone }),
+      }
+    );
+
+    if (!response.ok) {
+      const errBody = await response.json().catch(() => null);
+      throw new Error(errBody?.message || 'OTP yuborishda xatolik yuz berdi');
+    }
   }, []);
 
   const login = useCallback(
@@ -74,10 +98,13 @@ export function useAuth(): UseAuthReturn {
           }
         );
 
-        if (!response.ok) throw new Error('Login failed');
+        if (!response.ok) {
+          const errBody = await response.json().catch(() => null);
+          throw new Error(errBody?.message || 'Tizimga kirishda xatolik yuz berdi');
+        }
 
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
+        const { data } = await response.json();
+        setTokens(data.accessToken, data.refreshToken);
         setUser(data.user);
       } catch (error) {
         console.error('Login error:', error);
@@ -86,16 +113,16 @@ export function useAuth(): UseAuthReturn {
         setIsLoading(false);
       }
     },
-    []
+    [setIsLoading, setTokens, setUser]
   );
 
   const register = useCallback(
-    async (data: any) => {
+    async (data: { phone: string; otp: string; firstName: string; lastName?: string }) => {
       try {
         setIsLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/verify-otp`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -103,11 +130,14 @@ export function useAuth(): UseAuthReturn {
           }
         );
 
-        if (!response.ok) throw new Error('Registration failed');
+        if (!response.ok) {
+          const errBody = await response.json().catch(() => null);
+          throw new Error(errBody?.message || 'Ro\'yxatdan o\'tishda xatolik yuz berdi');
+        }
 
         const result = await response.json();
-        localStorage.setItem('token', result.token);
-        setUser(result.user);
+        setTokens(result.data.accessToken, result.data.refreshToken);
+        setUser(result.data.user);
       } catch (error) {
         console.error('Registration error:', error);
         throw error;
@@ -115,13 +145,12 @@ export function useAuth(): UseAuthReturn {
         setIsLoading(false);
       }
     },
-    []
+    [setIsLoading, setTokens, setUser]
   );
 
   const logout = useCallback(() => {
-    localStorage.removeItem('token');
-    setUser(null);
-  }, []);
+    storeLogout();
+  }, [storeLogout]);
 
   const updateProfile = useCallback(
     async (data: any) => {
@@ -132,7 +161,7 @@ export function useAuth(): UseAuthReturn {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(data),
           }
@@ -147,16 +176,19 @@ export function useAuth(): UseAuthReturn {
         throw error;
       }
     },
-    []
+    [setUser]
   );
 
   return {
     user,
     isLoading,
     isAuthenticated: !!user,
+    sendOtp,
     login,
     register,
     logout,
     updateProfile,
   };
 }
+
+export default useAuth;

@@ -27,7 +27,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
   }
 
   if (!user) {
-    router.push(`/${locale}/auth/login`);
+    router.push(`/${locale}/login`);
     return null;
   }
 

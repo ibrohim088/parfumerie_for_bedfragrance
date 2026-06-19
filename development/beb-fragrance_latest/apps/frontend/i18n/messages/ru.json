@@ -196,7 +196,9 @@
     "needHelp": "Нужна помощь?",
     "contactSupportMessage": "Если у вас есть проблемы, напишите нам на",
     "createNewAccount": "Создать новый аккаунт",
-    "loading": "Загрузка..."
+    "loading": "Загрузка...",
+    "registering": "Регистрация...",
+    "lastName": "Фамилия"
   },
   "account": {
     "title": "Мой Аккаунт",
@@ -250,7 +252,8 @@
     "items": "Товары",
     "total": "Итого",
     "viewDetails": "Просмотреть Детали",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "lastName": "Фамилия"
   },
   "orders": {
     "title": "Заказы",

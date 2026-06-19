@@ -9,18 +9,22 @@ import styles from './login.module.scss';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
-  const { login } = useAuth();
+  const { sendOtp, login } = useAuth();
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [step, setStep] = useState<'phone' | 'otp'>('phone');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     setLoading(true);
     try {
-      // TODO: API call to send OTP
+      await sendOtp(phone);
       setStep('otp');
+    } catch (err: any) {
+      setError(err.message || t('loginFailed'));
     } finally {
       setLoading(false);
     }
@@ -28,9 +32,12 @@ export default function LoginPage() {
 
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     setLoading(true);
     try {
       await login({ phone, otp });
+    } catch (err: any) {
+      setError(err.message || t('loginFailed'));
     } finally {
       setLoading(false);
     }
@@ -40,6 +47,8 @@ export default function LoginPage() {
     <div className={styles.login}>
       <div className={styles.card}>
         <h1>{t('login')}</h1>
+
+        {error && <div className={styles.error}>{error}</div>}
 
         {step === 'phone' ? (
           <form onSubmit={handleSendOtp}>

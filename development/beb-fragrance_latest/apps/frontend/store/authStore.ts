@@ -3,18 +3,19 @@ import { create } from 'zustand';
 interface User {
   id: string;
   phone: string;
-  fullName?: string;
+  firstName: string;
+  lastName: string;
   email?: string;
   role: 'user' | 'admin';
-  createdAt: string;
 }
 
 interface AuthState {
   user: User | null;
-  token: string | null;
+  accessToken: string | null;
+  refreshToken: string | null;
   isLoading: boolean;
   setUser: (user: User | null) => void;
-  setToken: (token: string | null) => void;
+  setTokens: (accessToken: string | null, refreshToken: string | null) => void;
   setIsLoading: (loading: boolean) => void;
   logout: () => void;
   updateUser: (updates: Partial<User>) => void;
@@ -24,25 +25,29 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
-  token: null,
+  accessToken: null,
+  refreshToken: null,
   isLoading: true,
 
   setUser: (user: User | null) => set({ user }),
 
-  setToken: (token: string | null) => {
-    set({ token });
-    if (token) {
-      localStorage.setItem('token', token);
+  setTokens: (accessToken: string | null, refreshToken: string | null) => {
+    set({ accessToken, refreshToken });
+    if (accessToken && refreshToken) {
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
     } else {
-      localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
     }
   },
 
   setIsLoading: (loading: boolean) => set({ isLoading: loading }),
 
   logout: () => {
-    set({ user: null, token: null });
-    localStorage.removeItem('token');
+    set({ user: null, accessToken: null, refreshToken: null });
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   },
 
   updateUser: (updates: Partial<User>) => {
@@ -52,8 +57,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   isAuthenticated: () => {
-    const { user, token } = get();
-    return !!user && !!token;
+    const { user, accessToken } = get();
+    return !!user && !!accessToken;
   },
 
   isAdmin: () => {

@@ -33,16 +33,6 @@
   }
 }
 
-.error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
 .formGroup {
   margin-bottom: 20px;
 
@@ -78,112 +68,18 @@
       min-height: 44px;
     }
 
-    &::placeholder {
-      color: var(--text-secondary);
-    }
-
     &:focus {
       border-color: $primary-color;
       outline: none;
-      box-shadow: 0 0 0 3px rgba(210, 170, 50, 0.12);
     }
   }
 }
 
-// OTP step
-.otpHint {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin-bottom: 24px;
-
-  strong {
-    color: var(--text-primary);
-  }
-}
-
-.otpRow {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 24px;
-
-  @media (max-width: $breakpoint-mobile) {
-    gap: 8px;
-  }
-}
-
-.otpInput {
-  width: 50px;
-  height: 56px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: all 0.2s ease;
-
-  @media (max-width: $breakpoint-mobile) {
-    width: 40px;
-    height: 46px;
-    font-size: 18px;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $primary-color;
-    box-shadow: 0 0 0 3px rgba(210, 170, 50, 0.12);
-  }
-}
-
-.resendRow {
-  text-align: center;
-  margin: 12px 0 8px;
-}
-
-.resendTimer {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.resendBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: $primary-color;
-  padding: 0;
-
-  &:hover { text-decoration: underline; }
-  &:disabled { opacity: 0.5; cursor: not-allowed; }
-}
-
-.back {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    border-color: var(--text-secondary);
-    color: var(--text-primary);
-  }
-}
-
-.card :global(button[type="submit"]) {
+.card :global(button) {
   width: 100%;
   padding: 12px;
   background-color: $primary-color;
-  color: #000;
+  color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -198,7 +94,7 @@
   }
 
   &:hover:not(:disabled) {
-    background-color: $primary-light;
+    background-color: darken($primary-color, 10%);
   }
 
   &:disabled {
@@ -226,5 +122,25 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  border-radius: 5px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.back {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+  margin-top: 8px;
+
+  &:hover:not(:disabled) {
+    background-color: darken(#e5e7eb, 10%);
   }
 }

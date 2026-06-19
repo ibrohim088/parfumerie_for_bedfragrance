@@ -9,7 +9,8 @@ export default function PersonalInfoPage() {
   const t = useTranslations('account');
   const { user, updateProfile } = useAuth();
   const [formData, setFormData] = useState({
-    fullName: user?.fullName || '',
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
     email: user?.email || '',
     phone: user?.phone || '',
   });
@@ -35,12 +36,23 @@ export default function PersonalInfoPage() {
       <h1>{t('personalInfo')}</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
-          <label htmlFor="fullName">{t('fullName')}</label>
+          <label htmlFor="firstName">{t('fullName')}</label>
           <input
-            id="fullName"
+            id="firstName"
             type="text"
-            name="fullName"
-            value={formData.fullName}
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="lastName">{t('lastName')}</label>
+          <input
+            id="lastName"
+            type="text"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
           />
         </div>

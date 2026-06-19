@@ -196,7 +196,9 @@
     "needHelp": "Yordam Kerakmi?",
     "contactSupportMessage": "Agar muammoga duch kelsangiz, quyidagi email orqali bizga yozing",
     "createNewAccount": "Yangi Akkaunt Yarating",
-    "loading": "Yuklanmoqda..."
+    "loading": "Yuklanmoqda...",
+    "registering": "Roʻyxatdan oʻtkazilmoqda...",
+    "lastName": "Familiya"
   },
   "account": {
     "title": "Mening Akkauntim",
@@ -250,7 +252,8 @@
     "items": "Mahsulotlar",
     "total": "Jami",
     "viewDetails": "Tafsilotlarni Ko'rish",
-    "logout": "Chiqish"
+    "logout": "Chiqish",
+    "lastName": "Familiya"
   },
   "orders": {
     "title": "Buyurtmalar",

@@ -12,7 +12,7 @@ export default function AccountPage() {
 
   return (
     <div className={styles.account}>
-      <h1>{t('welcome')}, {user.fullName}</h1>
+      <h1>{t('welcome')}, {user.firstName}</h1>
       <div className={styles.stats}>
         <div className={styles.stat}>
           <span className={styles.label}>{t('totalOrders')}</span>
