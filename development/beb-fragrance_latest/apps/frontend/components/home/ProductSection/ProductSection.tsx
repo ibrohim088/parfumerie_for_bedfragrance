@@ -2,9 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from '@/i18n/routing';
 import ProductCard from '@/components/catalog/ProductCard/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
 import styles from './ProductSection.module.scss';
@@ -16,41 +14,6 @@ interface ProductSectionProps {
   showViewAll?: boolean;
 }
 
-const mockProducts = [
-  {
-    id: '1',
-    name: 'Luxury Rose',
-    slug: 'luxury-rose',
-    image: 'https://via.placeholder.com/300x400?text=Luxury+Rose',
-    price: 250000,
-    rating: 4.8,
-  },
-  {
-    id: '2',
-    name: 'Ocean Breeze',
-    slug: 'ocean-breeze',
-    image: 'https://via.placeholder.com/300x400?text=Ocean+Breeze',
-    price: 320000,
-    rating: 4.6,
-  },
-  {
-    id: '3',
-    name: 'Midnight Charm',
-    slug: 'midnight-charm',
-    image: 'https://via.placeholder.com/300x400?text=Midnight+Charm',
-    price: 280000,
-    rating: 4.9,
-  },
-  {
-    id: '4',
-    name: 'Blossom Dreams',
-    slug: 'blossom-dreams',
-    image: 'https://via.placeholder.com/300x400?text=Blossom+Dreams',
-    price: 295000,
-    rating: 4.7,
-  },
-];
-
 export default function ProductSection({
   title,
   limit = 4,
@@ -59,18 +22,16 @@ export default function ProductSection({
 }: ProductSectionProps) {
   const t = useTranslations();
   const router = useRouter();
-  const pathname = usePathname();
-  const locale = pathname.split('/')[1];
 
   const { data, isLoading } = useProducts({ ...filters, limit });
-  const products = data?.data || mockProducts.slice(0, limit);
+  const products = data?.data || [];
 
   const handleProductClick = (slug: string) => {
-    router.push(`/${locale}/catalog/${slug}`);
+    router.push(`/catalog/${slug}`);
   };
 
   const handleViewAll = () => {
-    router.push(`/${locale}/catalog`);
+    router.push('/catalog');
   };
 
   return (
@@ -80,7 +41,7 @@ export default function ProductSection({
           <h2 className={styles.title}>{title}</h2>
           {showViewAll && (
             <button className={styles.viewAll} onClick={handleViewAll}>
-              {t('common.viewAll') || 'View All'}{' '}
+              {t('common.viewAll')}{' '}
               <ArrowRight size={16} style={{ verticalAlign: 'middle' }} />
             </button>
           )}

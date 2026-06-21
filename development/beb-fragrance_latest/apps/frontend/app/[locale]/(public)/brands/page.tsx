@@ -6,6 +6,7 @@ import styles from './page.module.scss';
 
 export default function BrandsPage() {
   const t = useTranslations('navigation');
+  const tc = useTranslations('common');
   const { data: brands, isLoading, error } = useBrands();
 
   if (isLoading) {
@@ -15,7 +16,7 @@ export default function BrandsPage() {
           <h1 className={styles.title}>{t('brands')}</h1>
           <div className={styles.loading}>
             <div className={styles.spinner} />
-            <p>Loading brands...</p>
+            <p>{tc('loading')}</p>
           </div>
         </div>
       </div>
@@ -28,7 +29,7 @@ export default function BrandsPage() {
         <div className={styles.container}>
           <h1 className={styles.title}>{t('brands')}</h1>
           <div className={styles.error}>
-            <p>Failed to load brands. Please try again later.</p>
+            <p>{tc('loadErrorBrands')} {tc('tryAgainLater')}</p>
           </div>
         </div>
       </div>
@@ -39,7 +40,7 @@ export default function BrandsPage() {
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
         <h1 className={styles.title}>{t('brands')}</h1>
-        <p className={styles.subtitle}>Discover our curated collection of premium fragrance brands</p>
+        <p className={styles.subtitle}>{tc('brandsSubtitle')}</p>
 
         {brands && brands.length > 0 ? (
           <div className={styles.grid}>
@@ -51,13 +52,12 @@ export default function BrandsPage() {
                 <div className={styles.placeholder} />
                 <h3 className={styles.cardTitle}>{brand.name}</h3>
                 {brand.category && <p className={styles.cardDescription}>{brand.category}</p>}
-                <button className={styles.btn}>Explore</button>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>No brands available</p>
+            <p>{tc('noBrands')}</p>
           </div>
         )}
       </div>

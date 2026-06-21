@@ -6,6 +6,7 @@ import styles from './page.module.scss';
 
 export default function DecantsPage() {
   const t = useTranslations('navigation');
+  const tc = useTranslations('common');
   const { data: decants, isLoading, error } = useDecants();
 
   if (isLoading) {
@@ -15,7 +16,7 @@ export default function DecantsPage() {
           <h1 className={styles.title}>{t('decant')}</h1>
           <div className={styles.loading}>
             <div className={styles.spinner} />
-            <p>Loading decants...</p>
+            <p>{tc('loading')}</p>
           </div>
         </div>
       </div>
@@ -28,7 +29,7 @@ export default function DecantsPage() {
         <div className={styles.container}>
           <h1 className={styles.title}>{t('decant')}</h1>
           <div className={styles.error}>
-            <p>Failed to load decants. Please try again later.</p>
+            <p>{tc('loadErrorDecants')} {tc('tryAgainLater')}</p>
           </div>
         </div>
       </div>
@@ -39,7 +40,7 @@ export default function DecantsPage() {
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
         <h1 className={styles.title}>{t('decant')}</h1>
-        <p className={styles.subtitle}>Try our premium fragrances in small quantities</p>
+        <p className={styles.subtitle}>{tc('decantSubtitle')}</p>
 
         {decants && decants.length > 0 ? (
           <div className={styles.grid}>
@@ -52,13 +53,12 @@ export default function DecantsPage() {
                 <h3 className={styles.cardTitle}>{decant.name}</h3>
                 {decant.volume && <p className={styles.cardDescription}>{decant.volume}</p>}
                 {decant.price && <span className={styles.price}>{decant.price.toLocaleString()} UZS</span>}
-                <button className={styles.btn}>Add to Cart</button>
               </div>
             ))}
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>No decants available</p>
+            <p>{tc('noDecants')}</p>
           </div>
         )}
       </div>

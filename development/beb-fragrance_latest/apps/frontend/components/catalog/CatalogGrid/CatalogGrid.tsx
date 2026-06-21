@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { LayoutGrid, List, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import ProductCard from '@/components/catalog/ProductCard/ProductCard';
 import { useProducts, getMinPrice, type Product } from '@/hooks/useProducts';
@@ -41,8 +41,6 @@ function sortProducts(products: Product[], sort: string): Product[] {
 export default function CatalogGrid({ filters, onChange }: CatalogGridProps) {
   const t = useTranslations('products');
   const router = useRouter();
-  const pathname = usePathname();
-  const locale = pathname.split('/')[1];
 
   const [view, setView] = useState<'grid' | 'list'>('grid');
   const [page, setPage] = useState(1);
@@ -75,11 +73,7 @@ export default function CatalogGrid({ filters, onChange }: CatalogGridProps) {
   const meta = data?.meta;
 
   const handleProductClick = (slug: string) => {
-    router.push(`/${locale}/catalog/${slug}`);
-  };
-
-  const handleSortChange = (value: string) => {
-    onChange({ ...filters, sort: value });
+    router.push(`/catalog/${slug}`);
   };
 
   // ── Faol filtr chiplari ──────────────────────────────────────
@@ -113,13 +107,6 @@ export default function CatalogGrid({ filters, onChange }: CatalogGridProps) {
     });
   });
 
-  const sortOptions = [
-    { value: SORT_OPTIONS.NEWEST, label: t('sortNewest') },
-    { value: SORT_OPTIONS.POPULAR, label: t('sortBestsellers') },
-    { value: SORT_OPTIONS.PRICE_LOW, label: t('sortPriceAsc') },
-    { value: SORT_OPTIONS.PRICE_HIGH, label: t('sortPriceDesc') },
-  ];
-
   return (
     <div className={styles.grid}>
       <div className={styles.toolbar}>
@@ -151,20 +138,6 @@ export default function CatalogGrid({ filters, onChange }: CatalogGridProps) {
           </div>
         )}
 
-        <div className={styles.sortWrap}>
-          <span className={styles.sortLabel}>{t('sortBy')}</span>
-          <select
-            value={filters.sort}
-            onChange={(e) => handleSortChange(e.target.value)}
-            className={styles.sortSelect}
-          >
-            {sortOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
 
       <div className={styles.header}>

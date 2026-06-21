@@ -7,6 +7,7 @@ import styles from './page.module.scss';
 
 export default function BlogPage() {
   const t = useTranslations('navigation');
+  const tc = useTranslations('common');
   const { data: posts, isLoading, error } = useBlog();
 
   if (isLoading) {
@@ -16,7 +17,7 @@ export default function BlogPage() {
           <h1 className={styles.title}>{t('blog')}</h1>
           <div className={styles.loading}>
             <div className={styles.spinner} />
-            <p>Loading blog posts...</p>
+            <p>{tc('loading')}</p>
           </div>
         </div>
       </div>
@@ -29,7 +30,7 @@ export default function BlogPage() {
         <div className={styles.container}>
           <h1 className={styles.title}>{t('blog')}</h1>
           <div className={styles.error}>
-            <p>Failed to load blog posts. Please try again later.</p>
+            <p>{tc('loadErrorBlog')} {tc('tryAgainLater')}</p>
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@ export default function BlogPage() {
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
         <h1 className={styles.title}>{t('blog')}</h1>
-        <p className={styles.subtitle}>Fragrance Stories, Tips & Insights</p>
+        <p className={styles.subtitle}>{tc('blogSubtitle')}</p>
 
         {posts && posts.length > 0 ? (
           <div className={styles.grid}>
@@ -69,7 +70,7 @@ export default function BlogPage() {
                     )}
                   </div>
                   <button className={styles.readMore}>
-                    Read More
+                    {tc('readMore')}
                     <ArrowRight size={16} />
                   </button>
                 </div>
@@ -78,7 +79,7 @@ export default function BlogPage() {
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>No blog posts available</p>
+            <p>{tc('noBlogPosts')}</p>
           </div>
         )}
       </div>

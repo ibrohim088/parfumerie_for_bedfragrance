@@ -132,7 +132,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
         <button className={styles.sectionHeader} onClick={() => toggle('search')}>
           <div className={styles.sectionLabel}>
             <Search size={13} />
-            Search
+            {t('search')}
           </div>
           <span className={`${styles.chevron} ${expanded.search ? styles.open : ''}`}><ArrowDown size={13} /></span>
         </button>
@@ -140,7 +140,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
           <div className={styles.content}>
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder={t('searchPlaceholder')}
               value={filters.search}
               onChange={(e) => onChange({ ...filters, search: e.target.value })}
               className={styles.input}
@@ -292,7 +292,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
             <div className={styles.priceInputs}>
               <input
                 type="number"
-                placeholder="Min"
+                placeholder={t('minPrice')}
                 value={filters.minPrice}
                 onChange={(e) => handlePriceChange('min', e.target.value)}
                 className={styles.priceInput}
@@ -300,7 +300,7 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
               <span>—</span>
               <input
                 type="number"
-                placeholder="Max"
+                placeholder={t('maxPrice')}
                 value={filters.maxPrice}
                 onChange={(e) => handlePriceChange('max', e.target.value)}
                 className={styles.priceInput}
@@ -326,11 +326,11 @@ export default function CatalogSidebar({ filters, onChange }: CatalogSidebarProp
               onChange={(e) => handleSortChange(e.target.value)}
               className={styles.select}
             >
-              <option value="newest">Newest</option>
-              <option value="popular">Most Popular</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Top Rated</option>
+              <option value="newest">{t('sortNewest')}</option>
+              <option value="popular">{t('sortBestsellers')}</option>
+              <option value="price-asc">{t('sortPriceAsc')}</option>
+              <option value="price-desc">{t('sortPriceDesc')}</option>
+              <option value="rating">{t('sortRating')}</option>
             </select>
           </div>
         )}
