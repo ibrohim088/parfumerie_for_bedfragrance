@@ -27,7 +27,7 @@ export class CookieUtils {
     for (const cookie of cookies) {
       const [key, value] = cookie.split('=');
 
-      if (key && decodeURIComponent(key) === name) {
+      if (key && value && decodeURIComponent(key) === name) {
         return decodeURIComponent(value);
       }
     }
