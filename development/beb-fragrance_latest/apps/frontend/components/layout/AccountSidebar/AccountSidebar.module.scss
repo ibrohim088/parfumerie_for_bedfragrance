@@ -173,22 +173,3 @@
     flex-shrink: 0;
   }
 }
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  min-height: 44px;
-  font-size: 14px;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: 10px;
-    min-height: 40px;
-    font-size: 13px;
-  }
-
-  &:hover {
-    background-color: #dc2626;
-  }
-}
