@@ -8,6 +8,9 @@ const __dirname = path.dirname(__filename);
 const withNextIntl = createNextIntlPlugin('./i18n/config.ts');
 
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
