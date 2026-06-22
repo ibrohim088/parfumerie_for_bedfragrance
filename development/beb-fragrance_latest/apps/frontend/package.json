@@ -10,34 +10,36 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "next-auth": "^4.24.7",
-    "next-intl": "^3.17.2",
-    "axios": "^1.7.2",
+    "@hookform/resolvers": "^3.9.0",
     "@tanstack/react-query": "^5.51.1",
     "@tanstack/react-query-devtools": "^5.51.1",
-    "zustand": "^4.5.4",
-    "zod": "^3.23.8",
+    "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.408.0",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "next-intl": "^3.17.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
-    "@hookform/resolvers": "^3.9.0",
     "sass": "^1.77.8",
-    "lucide-react": "^0.408.0"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "typescript": "^5.5.3",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
-    "prettier": "^3.3.3",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "^3.8.4",
     "sass": "^1.77.8",
-    "@svgr/webpack": "^8.1.0"
+    "typescript": "^5.5.3"
   }
 }
