@@ -6,19 +6,10 @@ import InstagramSection from '@/components/home/InstagramSection/InstagramSectio
 import GiftBoxSection from '@/components/home/GiftBoxSection/GiftBoxSection';
 import JournalSection from '@/components/home/JournalSection/JournalSection';
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({ locale, namespace: 'home' });
-  return {
-    title: 'BEB Fragrance — Premium Atirlar | Toshkent',
-    description: t('metaDescription', {
-      defaultValue: 'Original va eksklyuziv atirlar. Payme, Click, Naqt to\'lov.',
-    }),
-  };
-}
+export const metadata = {
+  title: 'BEB Fragrance — Premium Atirlar | Toshkent',
+  description: "Original va eksklyuziv atirlar. Payme, Click, Naqt to'lov qabul qilinadi.",
+};
 
 export default async function HomePage() {
   const t = await getTranslations('home');
