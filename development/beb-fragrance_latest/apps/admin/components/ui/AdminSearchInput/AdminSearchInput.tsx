@@ -10,6 +10,7 @@ interface AdminSearchInputProps {
   placeholder?: string;
   className?: string;
   autoFocus?: boolean;
+  style?: React.CSSProperties;
 }
 
 const AdminSearchInput: React.FC<AdminSearchInputProps> = ({
@@ -18,6 +19,7 @@ const AdminSearchInput: React.FC<AdminSearchInputProps> = ({
   placeholder = 'Qidirish...',
   className = '',
   autoFocus = false,
+  style,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,7 +29,7 @@ const AdminSearchInput: React.FC<AdminSearchInputProps> = ({
   };
 
   return (
-    <div className={`${styles.wrapper} ${className}`}>
+    <div className={`${styles.wrapper} ${className}`} style={style}>
       <span className={styles.searchIcon} aria-hidden="true">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="11" cy="11" r="8" />
