@@ -40,7 +40,7 @@ export default function AnalyticsPage() {
         </div>
         <AdminSelect
           value={period}
-          onChange={(v) => setPeriod(v as RevenuePeriod)}
+          onChange={(e) => setPeriod(e.target.value as RevenuePeriod)}
           options={[
             { value: 'daily', label: 'Kunlik' },
             { value: 'weekly', label: 'Haftalik' },
