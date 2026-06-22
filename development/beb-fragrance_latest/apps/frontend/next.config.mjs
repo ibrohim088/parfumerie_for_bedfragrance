@@ -1,10 +1,15 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const withNextIntl = createNextIntlPlugin('./i18n/config.ts');
 
 const nextConfig = {
   sassOptions: {
-    includePaths: ['./styles'],
+    includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
     remotePatterns: [
@@ -36,6 +41,10 @@ const nextConfig = {
     ];
   },
   webpack(config) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '.'),
+    };
     config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] });
     return config;
   },
