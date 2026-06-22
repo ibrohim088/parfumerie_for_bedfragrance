@@ -13,10 +13,12 @@ import queryClient from './queryClient';
 import { AuthUtils } from './auth';
 import { CookieUtils } from './cookies';
 
-export default {
+const lib = {
   api,
   apiClient,
   queryClient,
   AuthUtils,
   CookieUtils,
 };
+
+export default lib;
