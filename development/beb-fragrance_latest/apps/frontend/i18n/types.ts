@@ -268,6 +268,9 @@ export interface LocalizationStrings {
 }
 
 export type LocaleKey = keyof LocalizationStrings;
+// export type NestedKey<T> = {
+//   [K in keyof T]: T[K] extends object ? K | `${K & string}.${NestedKey<T[K]>}` : K;
+// }[keyof T];
 export type NestedKey<T> = {
-  [K in keyof T]: T[K] extends object ? K | `${K & string}.${NestedKey<T[K]>}` : K;
-}[keyof T];
+  [K in keyof T & string]: T[K] extends object ? K | `${K}.${NestedKey<T[K]>}` : K;
+}[keyof T & string];
