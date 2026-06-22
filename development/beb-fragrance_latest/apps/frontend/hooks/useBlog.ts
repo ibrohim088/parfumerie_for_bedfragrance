@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/lib/api';
+import { apiClient } from '@/lib/api';
 
 export interface BlogPost {
   id: string;
@@ -19,7 +19,7 @@ export function useBlog() {
     queryKey: ['blog'],
     queryFn: async () => {
       // Fetch blog posts from API
-      const response = await api.get('/blog', { params: { limit: 100 } });
+      const response = await apiClient.get('/blog', { params: { limit: 100 } });
       return response;
     },
     staleTime: 1000 * 60 * 15, // 15 minutes
@@ -30,7 +30,7 @@ export function useBlogPost(slug: string) {
   return useQuery({
     queryKey: ['blog', slug],
     queryFn: async () => {
-      const response = await api.get(`/blog/${slug}`);
+      const response = await apiClient.get(`/blog/${slug}`);
       return response;
     },
     staleTime: 1000 * 60 * 30, // 30 minutes
