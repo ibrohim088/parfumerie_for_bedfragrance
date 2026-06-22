@@ -21,7 +21,7 @@ export interface Product {
   slug: string;
   brand: string;
   description?: string;
-  concentration: string; // "parfum" | "edp" | "edt" | "edc" | "body_mist"
+  concentration: string;
   category?: string;
   topNotes?: string[];
   middleNotes?: string[];
@@ -68,18 +68,17 @@ export function useProducts(params?: UseProductsParams) {
   return useQuery<ProductsResponse>({
     queryKey: ['products', params],
     queryFn: () => api.products.getAll(params),
-    staleTime: 1000 * 60 * 5, // 5 daqiqa
+    staleTime: 1000 * 60 * 5,
   });
 }
-
-// ── Yordamchi funksiyalar ──────────────────────────────────────
 
 const FALLBACK_IMAGE = '/images/placeholder.png';
 
 export function getPrimaryImage(product: Pick<Product, 'images'>): string {
   if (!product.images || product.images.length === 0) return FALLBACK_IMAGE;
   const primary = product.images.find((img) => img.isPrimary);
-  return (primary || product.images[0]).url || FALLBACK_IMAGE;
+  const image = primary ?? product.images[0];
+  return image?.url ?? FALLBACK_IMAGE;
 }
 
 export function getMinPrice(product: Pick<Product, 'variants'>): number {
