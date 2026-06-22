@@ -58,7 +58,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Revenue chart */}
-      <RevenueChart data={revenue ?? []} period={period} />
+      <RevenueChart data={revenue ?? []} />
 
       {/* Middle row */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
