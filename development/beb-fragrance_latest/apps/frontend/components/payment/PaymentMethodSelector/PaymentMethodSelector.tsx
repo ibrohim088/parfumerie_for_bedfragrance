@@ -3,9 +3,11 @@
 import { CreditCard, Link2, Banknote } from 'lucide-react';
 import styles from './PaymentMethodSelector.module.scss';
 
+type PaymentMethod = 'payme' | 'click' | 'cash';
+
 interface PaymentMethodSelectorProps {
-  selected: string;
-  onChange: (method: string) => void;
+  selected: PaymentMethod;
+  onChange: (method: PaymentMethod) => void;
 }
 
 export default function PaymentMethodSelector({
@@ -13,9 +15,9 @@ export default function PaymentMethodSelector({
   onChange,
 }: PaymentMethodSelectorProps) {
   const methods = [
-    { id: 'payme', name: 'Payme', icon: CreditCard },
-    { id: 'click', name: 'Click', icon: Link2 },
-    { id: 'cash', name: 'Naqt pul', icon: Banknote },
+    { id: 'payme' as PaymentMethod, name: 'Payme', icon: CreditCard },
+    { id: 'click' as PaymentMethod, name: 'Click', icon: Link2 },
+    { id: 'cash' as PaymentMethod, name: 'Naqt pul', icon: Banknote },
   ];
 
   return (

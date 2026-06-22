@@ -29,12 +29,12 @@
     "node": true
   },
   "rules": {
-    "react/react-in-jsx-scope": "off",`n    "no-useless-catch": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-useless-catch": "off",
     "react/display-name": "warn",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-useless-catch": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
