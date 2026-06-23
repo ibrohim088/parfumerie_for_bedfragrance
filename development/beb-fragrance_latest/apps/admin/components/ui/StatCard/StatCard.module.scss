@@ -89,3 +89,17 @@
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+.subtitle {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.clickable {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}

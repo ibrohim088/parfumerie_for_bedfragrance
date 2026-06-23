@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './StatCard.module.scss';
 
 export type StatTrend = 'up' | 'down' | 'neutral';
@@ -6,6 +7,8 @@ export type StatTrend = 'up' | 'down' | 'neutral';
 interface StatCardProps {
   title: string;
   value: string | number;
+  subtitle?: string;
+  href?: string;
   icon?: React.ReactNode;
   trend?: StatTrend;
   trendValue?: string;
@@ -18,6 +21,8 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({
   title,
   value,
+  subtitle,
+  href,
   icon,
   trend,
   trendValue,
@@ -36,8 +41,8 @@ const StatCard: React.FC<StatCardProps> = ({
     );
   }
 
-  return (
-    <div className={`${styles.card} ${className}`}>
+  const content = (
+    <>
       <div className={styles.header}>
         <span className={styles.title}>{title}</span>
         {icon && (
@@ -47,6 +52,9 @@ const StatCard: React.FC<StatCardProps> = ({
         )}
       </div>
       <div className={styles.value}>{value}</div>
+      {subtitle && (
+        <p className={styles.subtitle}>{subtitle}</p>
+      )}
       {trend && trendValue && (
         <div className={`${styles.trend} ${styles[trend]}`}>
           <span className={styles.trendArrow}>
@@ -56,6 +64,20 @@ const StatCard: React.FC<StatCardProps> = ({
           {trendLabel && <span className={styles.trendLabel}>{trendLabel}</span>}
         </div>
       )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={`${styles.card} ${styles.clickable} ${className}`}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={`${styles.card} ${className}`}>
+      {content}
     </div>
   );
 };
