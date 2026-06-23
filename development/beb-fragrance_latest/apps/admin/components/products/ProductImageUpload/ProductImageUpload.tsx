@@ -71,9 +71,15 @@ export function ProductImageUpload({
 
       const next = [...images, ...uploaded];
       // ensure at least one primary
-      if (!next.some((i) => i.isPrimary) && next.length > 0) {
-        next[0]!.isPrimary = true;
+      // if (!next.some((i) => i.isPrimary) && next.length > 0) {
+      //   next[0]!.isPrimary = true;
+      // }
+
+      const firstNew = next[0];
+      if (firstNew && !next.some((i) => i.isPrimary)) {
+        firstNew.isPrimary = true;
       }
+
       onChange(next);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Yuklashda xatolik');
@@ -85,9 +91,16 @@ export function ProductImageUpload({
 
   const removeImage = (index: number) => {
     const next = images.filter((_, i) => i !== index);
-    if (!next.some((i) => i.isPrimary) && next.length > 0) {
-      next[0]!.isPrimary = true;
+    
+    // if (!next.some((i) => i.isPrimary) && next.length > 0) {
+    //   next[0]!.isPrimary = true;
+    // }
+
+    const firstRemaining = next[0];
+    if (firstRemaining && !next.some((i) => i.isPrimary)) {
+      firstRemaining.isPrimary = true;
     }
+    
     onChange(next);
   };
 

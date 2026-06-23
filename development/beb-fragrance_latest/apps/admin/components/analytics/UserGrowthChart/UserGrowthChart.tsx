@@ -53,7 +53,9 @@ export function UserGrowthChart({
   }, [data, range]);
 
   const totalNew = filtered.reduce((s, d) => s + d.newUsers, 0);
-  const lastTotal = filtered.length ? filtered[filtered.length - 1]!.totalUsers : 0;
+  // const lastTotal = filtered.length ? filtered[filtered.length - 1]!.totalUsers : 0;
+  const lastItem = filtered[filtered.length - 1];
+  const lastTotal = lastItem ? lastItem.totalUsers : 0;
 
   if (loading) {
     return (
