@@ -20,7 +20,7 @@ const STATUS_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'refunded', label: 'Qaytarilgan' },
 ];
 
-const STATUS_CLASS: Record<string, string> = {
+const STATUS_CLASS: Record<string, string | undefined> = {
   pending: styles.pending,
   confirmed: styles.info,
   processing: styles.info,

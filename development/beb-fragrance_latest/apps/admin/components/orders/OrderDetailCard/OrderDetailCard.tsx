@@ -52,11 +52,11 @@ interface OrderDetailCardProps {
   order: OrderDetail;
 }
 
-const PAYMENT_STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const PAYMENT_STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
   pending: 'warning',
   pending_cash: 'warning',
   paid: 'success',
-  failed: 'error',
+  failed: 'danger',
   refunded: 'default',
 };
 

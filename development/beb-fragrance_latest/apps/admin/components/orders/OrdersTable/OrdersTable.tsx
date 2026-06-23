@@ -30,13 +30,13 @@ interface OrdersTableProps {
   onRowClick: (id: string) => void;
 }
 
-const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
   pending: 'warning',
   confirmed: 'info',
   processing: 'info',
   shipped: 'info',
   delivered: 'success',
-  cancelled: 'error',
+  cancelled: 'danger',
   refunded: 'default',
 };
 
@@ -50,11 +50,11 @@ const STATUS_LABEL: Record<string, string> = {
   refunded: 'Qaytarilgan',
 };
 
-const PAYMENT_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const PAYMENT_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
   pending: 'warning',
   pending_cash: 'warning',
   paid: 'success',
-  failed: 'error',
+  failed: 'danger',
   refunded: 'default',
 };
 

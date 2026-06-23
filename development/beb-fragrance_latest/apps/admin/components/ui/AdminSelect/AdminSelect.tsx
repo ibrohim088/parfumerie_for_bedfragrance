@@ -7,13 +7,14 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-interface AdminSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface AdminSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   label?: string;
   options: SelectOption[];
   error?: string;
   hint?: string;
   placeholder?: string;
   fullWidth?: boolean;
+  onChange?: (value: string) => void;
 }
 
 const AdminSelect = forwardRef<HTMLSelectElement, AdminSelectProps>(
@@ -27,6 +28,7 @@ const AdminSelect = forwardRef<HTMLSelectElement, AdminSelectProps>(
       fullWidth = false,
       className = '',
       id,
+      onChange,
       ...rest
     },
     ref
@@ -46,6 +48,7 @@ const AdminSelect = forwardRef<HTMLSelectElement, AdminSelectProps>(
             ref={ref}
             id={selectId}
             className={`${styles.select} ${className}`}
+            onChange={(e) => onChange?.(e.target.value)}
             {...rest}
           >
             {placeholder && (

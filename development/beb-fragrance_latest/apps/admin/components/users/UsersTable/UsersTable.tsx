@@ -3,7 +3,7 @@
 import React from 'react';
 import type { User } from '@/../../packages/shared/types/user';
 import styles from './UsersTable.module.scss';
-import { User } from 'lucide-react'
+import { User as UserIcon } from 'lucide-react'
 
 interface UsersTableProps {
   users: User[];
@@ -41,7 +41,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onRowClick }) => {
   if (users.length === 0) {
     return (
       <div className={styles.empty}>
-        <span className={styles.emptyIcon}><User size={24} /></span>
+        <span className={styles.emptyIcon}><UserIcon size={24} /></span>
         <p>Foydalanuvchilar topilmadi</p>
       </div>
     );

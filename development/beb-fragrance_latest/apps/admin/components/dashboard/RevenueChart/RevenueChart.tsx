@@ -84,7 +84,7 @@ export const RevenueChart: React.FC<RevenueChartProps> = ({
 
   const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
   const areaPath = points.length
-    ? `${linePath} L${points[points.length - 1].x},${PAD_Y + innerH} L${points[0].x},${PAD_Y + innerH} Z`
+    ? `${linePath} L${points[points.length - 1]!.x},${PAD_Y + innerH} L${points[0]!.x},${PAD_Y + innerH} Z`
     : "";
 
   const gridLines = [0, 0.25, 0.5, 0.75, 1];

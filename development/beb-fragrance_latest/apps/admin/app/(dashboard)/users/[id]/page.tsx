@@ -57,13 +57,13 @@ export default function UserDetailPage() {
           <AdminBadge variant={user.role === 'admin' ? 'info' : 'default'}>
             {user.role === 'admin' ? 'Admin' : 'Foydalanuvchi'}
           </AdminBadge>
-          <AdminBadge variant={user.isActive ? 'success' : 'error'}>
+          <AdminBadge variant={user.isActive ? 'success' : 'danger'}>
             {user.isActive ? 'Faol' : 'Bloklangan'}
           </AdminBadge>
           <AdminButton
             variant={user.isActive ? 'danger' : 'primary'}
             onClick={() => toggleActive(!user.isActive)}
-            isLoading={isUpdating}
+            loading={isUpdating}
           >
             {user.isActive ? 'Bloklash' : 'Faollashtirish'}
           </AdminButton>

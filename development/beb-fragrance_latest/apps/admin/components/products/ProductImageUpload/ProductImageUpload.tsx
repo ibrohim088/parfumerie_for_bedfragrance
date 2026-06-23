@@ -72,7 +72,7 @@ export function ProductImageUpload({
       const next = [...images, ...uploaded];
       // ensure at least one primary
       if (!next.some((i) => i.isPrimary) && next.length > 0) {
-        next[0].isPrimary = true;
+        next[0]!.isPrimary = true;
       }
       onChange(next);
     } catch (err) {
@@ -86,7 +86,7 @@ export function ProductImageUpload({
   const removeImage = (index: number) => {
     const next = images.filter((_, i) => i !== index);
     if (!next.some((i) => i.isPrimary) && next.length > 0) {
-      next[0].isPrimary = true;
+      next[0]!.isPrimary = true;
     }
     onChange(next);
   };

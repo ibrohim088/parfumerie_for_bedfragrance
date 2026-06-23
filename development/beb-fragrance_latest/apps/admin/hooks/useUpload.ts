@@ -39,6 +39,7 @@ export function useUpload(options: UseUploadOptions = {}) {
 
       for (let i = 0; i < fileArray.length; i++) {
         const file = fileArray[i];
+        if (!file) continue;
 
         // Validation
         if (!acceptedTypes.includes(file.type)) {

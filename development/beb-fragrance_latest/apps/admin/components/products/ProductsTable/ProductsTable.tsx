@@ -25,7 +25,7 @@ interface ProductsTableProps {
   onDelete: (id: string) => void;
 }
 
-const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
   active: 'success',
   inactive: 'default',
   out_of_stock: 'warning',

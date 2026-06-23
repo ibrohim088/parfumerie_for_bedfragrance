@@ -32,11 +32,11 @@ interface PaymentsTableProps {
   onRefund: (id: string) => void;
 }
 
-const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const STATUS_VARIANT: Record<string, 'default' | 'success' | 'warning' | 'danger' | 'info'> = {
   pending: 'info',
   pending_cash: 'warning',
   paid: 'success',
-  failed: 'error',
+  failed: 'danger',
   refunded: 'default',
 };
 
