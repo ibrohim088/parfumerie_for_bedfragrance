@@ -7,14 +7,15 @@ import { OrderStatusSelect } from '@/components/orders/OrderStatusSelect/OrderSt
 import { AdminBadge } from '@/components/ui/AdminBadge/AdminBadge';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { Spinner } from '@/components/ui/Spinner/Spinner';
+import type { BadgeVariant } from '@/components/ui/AdminBadge/AdminBadge';
 
 // STATUS_COLORS olib tashlandi (ishlatilmasdi) — AdminBadge variant to'g'ridanga map qilindi
 
-const PAYMENT_STATUS_COLORS: Record<string, 'warning' | 'success' | 'error' | 'default'> = {
+const PAYMENT_STATUS_COLORS: Record<string, BadgeVariant> = {
   pending: 'warning',
   pending_cash: 'warning',
   paid: 'success',
-  failed: 'error',
+  failed: 'danger',
   refunded: 'default',
 };
 
@@ -74,7 +75,7 @@ export default function OrderDetailPage() {
           </div>
         </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <AdminBadge variant={PAYMENT_STATUS_COLORS[order.paymentStatus] ?? 'default'}>
+          <AdminBadge variant={(PAYMENT_STATUS_COLORS[order.paymentStatus] ?? 'default') as BadgeVariant}>
             {order.paymentMethod.toUpperCase()} — {order.paymentStatus}
           </AdminBadge>
           <OrderStatusSelect
@@ -201,7 +202,7 @@ export default function OrderDetailPage() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--color-text-secondary)' }}>Status</span>
-                  <AdminBadge variant={PAYMENT_STATUS_COLORS[order.transaction.status] ?? 'default'}>
+                  <AdminBadge variant={(PAYMENT_STATUS_COLORS[order.transaction.status] ?? 'default') as BadgeVariant}>
                     {order.transaction.status}
                   </AdminBadge>
                 </div>
