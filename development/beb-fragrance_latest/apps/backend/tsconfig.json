@@ -5,6 +5,7 @@
     "rootDir": "./src",
     "baseUrl": "./src",
     "lib": ["ES2020", "dom"],
+    "types": ["node"],
     "typeRoots": [
       "../../node_modules/@types",
       "./node_modules/@types"

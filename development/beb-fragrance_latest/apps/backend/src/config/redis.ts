@@ -1,13 +1,13 @@
-import { createClient } from 'redis';
+import { createClient, RedisClientType } from 'redis';
 import { env } from './env';
 
-type RedisClient = ReturnType<typeof createClient>;
+type RedisClient = RedisClientType<any, any, any>;
 
 let redisClient: RedisClient;
 
 export function getRedisClient(): RedisClient {
   if (!redisClient) {
-    redisClient = createClient({ url: env.REDIS_URL });
+    redisClient = createClient({ url: env.REDIS_URL }) as RedisClient;
 
     redisClient.on('error', (err: Error) => {
       console.error('❌  Redis error:', err);
