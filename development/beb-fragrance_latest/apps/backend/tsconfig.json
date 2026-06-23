@@ -5,7 +5,6 @@
     "rootDir": "./src",
     "baseUrl": "./src",
     "lib": ["ES2020", "dom"],
-    "types": ["node"],
     "typeRoots": [
       "../../node_modules/@types",
       "./node_modules/@types"
@@ -18,7 +17,7 @@
     "noUncheckedIndexedAccess": false,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": false,
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
