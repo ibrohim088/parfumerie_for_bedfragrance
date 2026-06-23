@@ -2,17 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type Step = 'phone' | 'otp';
-
-interface ApiError {
-  message: string;
-  code?: string;
-}
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -54,12 +48,12 @@ async function apiSendOtp(phone: string): Promise<void> {
     body: JSON.stringify({ phone }),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.message ?? 'OTP yuborishda xato');
+    const errData = await res.json().catch(() => ({})) as { message?: string };
+    throw new Error(errData.message ?? 'OTP yuborishda xato');
   }
 }
 
-async function apiVerifyOtp(phone: string, otp: string): Promise<{ accessToken: string; refreshToken: string; user: any }> {
+async function apiVerifyOtp(phone: string, otp: string): Promise<{ accessToken: string; refreshToken: string; user: { id: string; firstName: string; lastName: string; phone: string; role: string; email?: string | null } }> {
   const res = await fetch(`${API_BASE}/auth/verify-otp`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -106,7 +100,7 @@ export default function LoginPage() {
       timerRef.current = setInterval(() => {
         setResendTimer(prev => {
           if (prev <= 1) {
-            clearInterval(timerRef.current!);
+            if (timerRef.current) clearInterval(timerRef.current);
             return 0;
           }
           return prev - 1;
@@ -133,8 +127,8 @@ export default function LoginPage() {
       setStep('otp');
       setResendTimer(RESEND_TIMEOUT);
       setTimeout(() => otpRefs.current[0]?.focus(), 100);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Xatolik yuz berdi');
     } finally {
       setIsLoading(false);
     }
@@ -172,10 +166,11 @@ export default function LoginPage() {
       localStorage.setItem('admin_user', JSON.stringify(result.user));
 
       router.replace('/');
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : 'Xatolik yuz berdi';
+      setError(errMsg);
       // clear OTP on wrong code
-      if (err.message.includes("noto'g'ri") || err.message.toLowerCase().includes('invalid')) {
+      if (errMsg.includes("noto'g'ri") || errMsg.toLowerCase().includes('invalid')) {
         setOtp(Array(OTP_LENGTH).fill(''));
         setTimeout(() => otpRefs.current[0]?.focus(), 50);
       }
@@ -237,8 +232,8 @@ export default function LoginPage() {
       await apiSendOtp(phone);
       setResendTimer(RESEND_TIMEOUT);
       setTimeout(() => otpRefs.current[0]?.focus(), 100);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Xatolik yuz berdi');
     } finally {
       setIsLoading(false);
     }

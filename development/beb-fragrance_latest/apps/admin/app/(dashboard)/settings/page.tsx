@@ -1,6 +1,6 @@
 'use client';
 
-import { Sun, Moon, Info, CheckCircle2 } from 'lucide-react';
+import { Sun, Moon, Info } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { AdminInput } from '@/components/ui/AdminInput/AdminInput';

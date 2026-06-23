@@ -3,29 +3,29 @@
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useOrder } from '@/hooks/useOrder';
-import { OrderDetailCard } from '@/components/orders/OrderDetailCard/OrderDetailCard';
 import { OrderStatusSelect } from '@/components/orders/OrderStatusSelect/OrderStatusSelect';
 import { AdminBadge } from '@/components/ui/AdminBadge/AdminBadge';
 import { AdminButton } from '@/components/ui/AdminButton/AdminButton';
 import { Spinner } from '@/components/ui/Spinner/Spinner';
 
-const STATUS_COLORS: Record<string, string> = {
-  pending: 'warning',
-  confirmed: 'info',
-  processing: 'info',
-  shipped: 'info',
-  delivered: 'success',
-  cancelled: 'error',
-  refunded: 'default',
-};
+// STATUS_COLORS olib tashlandi (ishlatilmasdi) — AdminBadge variant to'g'ridanga map qilindi
 
-const PAYMENT_STATUS_COLORS: Record<string, string> = {
+const PAYMENT_STATUS_COLORS: Record<string, 'warning' | 'success' | 'error' | 'default'> = {
   pending: 'warning',
   pending_cash: 'warning',
   paid: 'success',
   failed: 'error',
   refunded: 'default',
 };
+
+interface OrderItem {
+  id: string;
+  product?: { name: string };
+  variant?: { volume: number };
+  quantity: number;
+  totalPrice: number;
+  unitPrice: number;
+}
 
 function formatPrice(amount: number): string {
   return new Intl.NumberFormat('uz-UZ').format(amount) + ' UZS';
@@ -74,7 +74,7 @@ export default function OrderDetailPage() {
           </div>
         </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <AdminBadge variant={PAYMENT_STATUS_COLORS[order.paymentStatus] as any}>
+          <AdminBadge variant={PAYMENT_STATUS_COLORS[order.paymentStatus] ?? 'default'}>
             {order.paymentMethod.toUpperCase()} — {order.paymentStatus}
           </AdminBadge>
           <OrderStatusSelect
@@ -96,7 +96,7 @@ export default function OrderDetailPage() {
             padding: '20px',
           }}>
             <h3 style={{ fontWeight: 600, marginBottom: '16px' }}>Mahsulotlar</h3>
-            {order.items.map((item: any) => (
+            {order.items.map((item: OrderItem) => (
               <div
                 key={item.id}
                 style={{
@@ -201,7 +201,7 @@ export default function OrderDetailPage() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--color-text-secondary)' }}>Status</span>
-                  <AdminBadge variant={PAYMENT_STATUS_COLORS[order.transaction.status] as any}>
+                  <AdminBadge variant={PAYMENT_STATUS_COLORS[order.transaction.status] ?? 'default'}>
                     {order.transaction.status}
                   </AdminBadge>
                 </div>

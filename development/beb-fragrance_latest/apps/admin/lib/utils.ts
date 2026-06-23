@@ -31,7 +31,9 @@ export const truncate = (text: string, maxLength: number = 80): string => {
   return text.slice(0, maxLength) + '...';
 };
 
-export const debounce = <T extends (...args: any[]) => void>(
+type AnyFunction = (...args: unknown[]) => void;
+
+export const debounce = <T extends AnyFunction>(
   func: T,
   delay: number
 ): ((...args: Parameters<T>) => void) => {

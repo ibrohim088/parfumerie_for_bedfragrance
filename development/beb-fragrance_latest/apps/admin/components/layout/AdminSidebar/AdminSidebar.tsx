@@ -164,7 +164,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                     </button>
                     {!isCollapsed && isExpanded && (
                       <ul className={styles.subNav}>
-                        {item.children!.map((child) => (
+                        {(item.children ?? []).map((child) => (
                           <li key={child.href}>
                             <Link
                               href={child.href}

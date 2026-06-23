@@ -66,12 +66,12 @@ export default function OrdersPage() {
         />
         <AdminSelect
           value={status}
-          onChange={(v) => { setStatus(v); setPage(1); }}
+          onChange={(e) => { setStatus(e.target.value); setPage(1); }}
           options={STATUS_OPTIONS}
         />
         <AdminSelect
           value={paymentStatus}
-          onChange={(v) => { setPaymentStatus(v); setPage(1); }}
+          onChange={(e) => { setPaymentStatus(e.target.value); setPage(1); }}
           options={PAYMENT_STATUS_OPTIONS}
         />
       </div>

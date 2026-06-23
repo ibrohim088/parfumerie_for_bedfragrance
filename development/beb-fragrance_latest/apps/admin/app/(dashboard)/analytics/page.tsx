@@ -6,12 +6,13 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 import { RevenueChart } from '@/components/dashboard/RevenueChart/RevenueChart';
 import { TopProducts } from '@/components/dashboard/TopProducts/TopProducts';
 import { OrdersByStatusChart } from '@/components/analytics/OrdersByStatusChart/OrdersByStatusChart';
-import { UserGrowthChart } from '@/components/analytics/UserGrowthChart/UserGrowthChart';
 import { PaymentMethodChart } from '@/components/analytics/PaymentMethodChart/PaymentMethodChart';
 import { StatCard } from '@/components/ui/StatCard/StatCard';
 import { AdminSelect } from '@/components/ui/AdminSelect/AdminSelect';
 import { Spinner } from '@/components/ui/Spinner/Spinner';
 import type { RevenuePeriod } from '@/types/analytics';
+
+// UserGrowthChart olib tashlandi — userStats inline ko'rsatiladi (chart ishlatilmagan)
 
 function formatPrice(amount: number): string {
   return new Intl.NumberFormat('uz-UZ').format(amount) + ' UZS';
