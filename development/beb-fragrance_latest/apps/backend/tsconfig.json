@@ -4,7 +4,6 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "baseUrl": "./src",
-    "types": ["node"],
     "paths": {
       "@beb/shared": ["../../packages/shared/types/index.ts"]
     },
@@ -12,8 +11,7 @@
     "noImplicitAny": false,
     "noUncheckedIndexedAccess": false,
     "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": false,
-    "ignoreDeprecations": "6.0"
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
