@@ -4,6 +4,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "baseUrl": "./src",
+    "lib": ["ES2020", "dom"],
     "paths": {
       "@beb/shared": ["../../packages/shared/types/index.ts"]
     },
