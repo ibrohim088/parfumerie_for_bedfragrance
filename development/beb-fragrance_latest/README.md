@@ -1,118 +1,279 @@
-# BEB Fragrance — E-Commerce Platform
+# BEB Fragrance — Monorepo
 
-**@bebfragrance** | Original & Exclusive Perfumes | Toshkent, O'zbekiston
-
----
-
-## Loyiha haqida
-
-BEB Fragrance — original va eksklyuziv atirlar savdosi uchun to'liq e-commerce platformasi.
-776K+ Instagram follower bilan O'zbekistondagi yetakchi parfyumeriya brendining onlayn savdo tizimi.
+Full-stack e-commerce platform for BEB Fragrance. Built with **Turborepo** monorepo architecture.
 
 ---
 
-## Arxitektura
+## Tech Stack
+
+| Layer      | Technology                              |
+|------------|-----------------------------------------|
+| Monorepo   | Turborepo + npm workspaces              |
+| Backend    | Node.js, Express, TypeScript, Prisma    |
+| Frontend   | Next.js 14, TypeScript, SCSS, Zustand   |
+| Admin      | Next.js 14, TypeScript, Recharts        |
+| Bot        | Telegraf (Telegram Bot), TypeScript     |
+| Database   | PostgreSQL (via Prisma ORM)             |
+| Cache      | Redis                                   |
+| Storage    | AWS S3                                  |
+| Payments   | Payme, Click                            |
+
+---
+
+## Project Structure
 
 ```
-beb-fragrance/              ← Turborepo Monorepo
+beb-fragrance/
 ├── apps/
-│   ├── backend/            ← Express + TypeScript + Prisma
-│   ├── frontend/           ← Next.js 14 + TypeScript + SCSS
-│   ├── admin/              ← Next.js 14 (Admin Dashboard)
-│   └── bot/                ← Telegram Bot (Telegraf)
-└── packages/
-    └── shared/             ← Umumiy TypeScript tiplar
+│   ├── backend/        # Express REST API (port 4000)
+│   ├── frontend/       # Next.js user-facing site (port 3000)
+│   ├── admin/          # Next.js admin dashboard (port 3001)
+│   └── bot/            # Telegram bot (Telegraf)
+├── packages/
+│   └── shared/         # Shared TypeScript types
+├── package.json        # Root workspace config
+├── turbo.json          # Turborepo pipeline config
+├── tsconfig.base.json  # Base TypeScript config
+└── .env.example        # Environment variables reference
 ```
 
 ---
 
-## Texnologiyalar
+## Prerequisites
 
-| Qatlam     | Stack                                              |
-|------------|----------------------------------------------------|
-| Backend    | Express, TypeScript, Prisma, PostgreSQL, Redis     |
-| Frontend   | Next.js 14, SCSS Modules, TanStack Query, Zustand  |
-| Admin      | Next.js 14, SCSS Modules, Recharts, TanStack Query |
-| Bot        | Telegraf, Telegram WebApp API                      |
-| To'lov     | Payme, Click, Naqt pul                             |
-| Infra      | Docker, Turborepo, AWS S3                          |
+- **Node.js** >= 20.0.0
+- **npm** >= 10.0.0
+- **PostgreSQL** running locally (port 5432)
+- **Redis** running locally (port 6379)
 
 ---
 
-## Ishga tushirish
+## Quick Start
 
-### 1. Talablar
-
-- Node.js >= 20.0.0
-- npm >= 10.0.0
-- PostgreSQL
-- Redis
-
-### 2. O'rnatish
+### 1. Install dependencies
 
 ```bash
-git clone https://github.com/your-org/beb-fragrance.git
-cd beb-fragrance
 npm install
 ```
 
-### 3. Environment o'zgaruvchilar
+### 2. Configure environment variables
+
+Each app has its own `.env` file. Copy and fill them in:
 
 ```bash
-# Har bir app uchun .env.example dan nusxa oling
-cp apps/backend/.env.example apps/backend/.env
-cp apps/frontend/.env.example apps/frontend/.env.local
-cp apps/admin/.env.example apps/admin/.env.local
-cp apps/bot/.env.example apps/bot/.env
+# Backend
+cp .env.example apps/backend/.env
+
+# Frontend
+cp .env.example apps/frontend/.env.local
+
+# Admin
+cp .env.example apps/admin/.env.local
+
+# Bot
+cp .env.example apps/bot/.env
 ```
 
-### 4. Database
+See `.env.example` for all required variables.
+
+### 3. Set up the database
 
 ```bash
 cd apps/backend
-npx prisma migrate dev
-npx prisma db seed
+npm run db:generate   # Generate Prisma client
+npm run db:migrate    # Run migrations
+npm run db:seed       # (Optional) Seed initial data
 ```
 
-### 5. Development
+### 4. Run all apps in development
 
 ```bash
-# Barcha applarni bir vaqtda ishga tushirish
 npm run dev
+```
 
-# Alohida ishga tushirish
-cd apps/backend  && npm run dev   # → http://localhost:4000
-cd apps/frontend && npm run dev   # → http://localhost:3000
-cd apps/admin    && npm run dev   # → http://localhost:3001
-cd apps/bot      && npm run dev   # → Telegram bot
+This starts all apps simultaneously via Turborepo:
+
+| App      | URL                        |
+|----------|----------------------------|
+| Backend  | http://localhost:4000      |
+| Frontend | http://localhost:3000      |
+| Admin    | http://localhost:3001      |
+| Bot      | (polling mode, no port)    |
+
+---
+
+## NPM Scripts (Root)
+
+| Command              | Description                                      |
+|----------------------|--------------------------------------------------|
+| `npm run dev`        | Start all apps in development mode (parallel)    |
+| `npm run build`      | Build all apps for production                    |
+| `npm run start`      | Start all built apps in production mode          |
+| `npm run lint`       | Lint all apps                                    |
+| `npm run type-check` | TypeScript type check across all apps            |
+| `npm run format`     | Format all files with Prettier                   |
+| `npm run clean`      | Remove all build artifacts and node_modules      |
+
+---
+
+## Environment Variables Overview
+
+Key variables from `.env.example`:
+
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/beb_fragrance
+
+# JWT
+JWT_SECRET=...
+JWT_REFRESH_SECRET=...
+
+# Redis
+REDIS_URL=redis://localhost:6379
+
+# AWS S3 (image storage)
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_BUCKET_NAME=beb-fragrance
+AWS_REGION=us-east-1
+
+# Payments
+PAYME_MERCHANT_ID=...
+PAYME_SECRET_KEY=...
+CLICK_MERCHANT_ID=...
+CLICK_SERVICE_ID=...
+CLICK_SECRET_KEY=...
+
+# Telegram Bot
+TELEGRAM_BOT_TOKEN=...
+ADMIN_CHAT_ID=...
+
+# Frontend
+NEXT_PUBLIC_API_URL=http://localhost:4000
+NEXTAUTH_SECRET=...
 ```
 
 ---
 
-## URLs
+## Shared Package
 
-| App      | Development              | Production                        |
-|----------|--------------------------|-----------------------------------|
-| Frontend | http://localhost:3000    | https://bebfragrance.uz           |
-| Admin    | http://localhost:3001    | https://admin.bebfragrance.uz     |
-| Backend  | http://localhost:4000    | https://api.bebfragrance.uz       |
+`packages/shared` — shared TypeScript types used across backend, frontend, admin, and bot. Referenced as `@beb/shared` in each app.
 
 ---
 
-## To'lov tizimlari
+## 🚀 Production Deployment — Render
 
-- **Payme** — JSON-RPC 2.0 + Basic Auth webhook
-- **Click** — REST API + MD5 imzo (prepare/complete)
-- **Naqt pul** — Telegram bot orqali admin tasdiqlaydi
+The project is deployed on **[Render](https://render.com)** under the `Parfumerie` workspace.
+
+### Live Services
+
+| Service                  | Type            | Runtime      | Region  | Status     |
+|--------------------------|-----------------|--------------|---------|------------|
+| `beb-fragrance-admin`    | Web Service     | Node         | Oregon  | ✅ Deployed |
+| `beb-fragrance-frontend` | Web Service     | Node         | Oregon  | ✅ Deployed |
+| `beb-fragrance-backend`  | Web Service     | Node         | Oregon  | ✅ Deployed |
+| `beb-fragrance-db`       | PostgreSQL 18   | —            | Oregon  | ✅ Available |
+
+> Render Dashboard: [dashboard.render.com/project/prj-d8s3lo6q1p3s738lt7v0](https://dashboard.render.com/project/prj-d8s3lo6q1p3s738lt7v0)
 
 ---
 
-## Loyiha strukturasi
+### Deploying to Render
 
-Batafsil: `MVP/file structure/Beb_file_structure_v5.txt`
+Each app has its own **Web Service** on Render. Below are the recommended settings per service.
+
+#### `beb-fragrance-backend`
+
+| Setting          | Value                                 |
+|------------------|---------------------------------------|
+| Root Directory   | `apps/backend`                        |
+| Build Command    | `npm install && npm run build`        |
+| Start Command    | `npm run start`                       |
+| Environment      | Node                                  |
+| Port             | `4000`                                |
+
+#### `beb-fragrance-frontend`
+
+| Setting          | Value                                 |
+|------------------|---------------------------------------|
+| Root Directory   | `apps/frontend`                       |
+| Build Command    | `npm install && npm run build`        |
+| Start Command    | `npm run start`                       |
+| Environment      | Node                                  |
+| Port             | `3000`                                |
+
+#### `beb-fragrance-admin`
+
+| Setting          | Value                                 |
+|------------------|---------------------------------------|
+| Root Directory   | `apps/admin`                          |
+| Build Command    | `npm install && npm run build`        |
+| Start Command    | `npm run start`                       |
+| Environment      | Node                                  |
+| Port             | `3001`                                |
+
+#### `beb-fragrance-db`
+
+Managed **PostgreSQL 18** database on Render. After creation, copy the **Internal Database URL** and set it as `DATABASE_URL` in the backend service's environment variables.
 
 ---
 
-## Litsenziya
+### Environment Variables on Render
 
-Xususiy. Barcha huquqlar himoyalangan © 2026 Parfum Exclusive Limited.
+Set these in each service's **Environment** tab on the Render dashboard.
+
+**Backend service** — all variables from `apps/backend/.env` (use production values):
+
+```env
+NODE_ENV=production
+DATABASE_URL=<Render Internal DB URL>
+REDIS_URL=<Redis URL if used>
+JWT_SECRET=...
+JWT_REFRESH_SECRET=...
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+PAYME_MERCHANT_ID=...
+PAYME_SECRET_KEY=...
+CLICK_MERCHANT_ID=...
+CLICK_SERVICE_ID=...
+CLICK_SECRET_KEY=...
+PAYMENT_CALLBACK_BASE_URL=https://your-backend.onrender.com/api
+TELEGRAM_BOT_TOKEN=...
+ADMIN_CHAT_ID=...
+SMTP_HOST=...
+SMTP_USER=...
+SMTP_PASS=...
+```
+
+**Frontend service:**
+
+```env
+NODE_ENV=production
+NEXT_PUBLIC_API_URL=https://your-backend.onrender.com
+NEXTAUTH_SECRET=...
+NEXTAUTH_URL=https://your-frontend.onrender.com
+NEXT_PUBLIC_PAYME_MERCHANT_ID=...
+NEXT_PUBLIC_CLICK_MERCHANT_ID=...
+NEXT_PUBLIC_CLICK_SERVICE_ID=...
+```
+
+**Admin service:**
+
+```env
+NODE_ENV=production
+NEXT_PUBLIC_API_URL=https://your-backend.onrender.com
+NEXTAUTH_SECRET=...
+NEXTAUTH_URL=https://your-admin.onrender.com
+```
+
+---
+
+### After First Deploy — Run Migrations
+
+After the backend service is deployed for the first time, run database migrations via Render's **Shell** tab:
+
+```bash
+npm run db:generate
+npm run db:migrate
+npm run db:seed   # optional
+```
