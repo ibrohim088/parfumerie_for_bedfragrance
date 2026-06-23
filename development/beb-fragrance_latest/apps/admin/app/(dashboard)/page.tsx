@@ -69,7 +69,7 @@ export default function DashboardPage() {
       {/* Charts row */}
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
         <RevenueChart data={revenue ?? []} />
-        <TopProducts data={topProducts ?? []} />
+        <TopProducts products={topProducts ?? []} />
       </div>
 
       {/* Recent orders */}
