@@ -50,12 +50,12 @@ export default function PaymentsPage() {
       <div style={{ display: 'flex', gap: '12px' }}>
         <AdminSelect
           value={status}
-          onChange={(v) => { setStatus(v); setPage(1); }}
+          onChange={(e) => { setStatus(e.target.value); setPage(1); }}
           options={STATUS_OPTIONS}
         />
         <AdminSelect
           value={provider}
-          onChange={(v) => { setProvider(v); setPage(1); }}
+          onChange={(e) => { setProvider(e.target.value); setPage(1); }}
           options={PROVIDER_OPTIONS}
         />
       </div>
