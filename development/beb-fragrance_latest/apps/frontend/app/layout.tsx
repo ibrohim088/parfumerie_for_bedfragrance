@@ -4,6 +4,48 @@ import './globals.scss';
 
 export const metadata: Metadata = {
   title: 'BEB Fragrance - Premium Atirlar',
+  description: "Eng yaxshi sifatdagi xalqa mashhur atirlar. Payme, Click, Naqt to'lovlar qabul qilinadi.",
+  keywords: 'atir, fragrance, parfyum, Tashkent, Uzbekistan',
+  authors: [{ name: 'BEB Fragrance' }],
+  openGraph: {
+    type: 'website',
+    locale: 'uz_UZ',
+    url: 'https://bebfragrance.uz',
+    siteName: 'BEB Fragrance',
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <script src="https://telegram.org/js/telegram-web-app.js" />
+      </head>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
+}
+
+
+/*
+import type { Metadata, Viewport } from 'next';
+import { ReactNode } from 'react';
+import './globals.scss';
+
+export const metadata: Metadata = {
+  title: 'BEB Fragrance - Premium Atirlar',
   description: 'Eng yaxshi sifatdagi xalqa mashhur atirlar. Payme, Click, Naqt to\'lovlar qabul qilinadi.',
   keywords: 'atir, fragrance, parfyum, Tashkent, Uzbekistan',
   authors: [{ name: 'BEB Fragrance' }],
@@ -36,6 +78,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
+*/
+
 
 /*
 import type { Metadata } from 'next';
